@@ -1,0 +1,65 @@
+[
+	{
+		"id": 1,
+		"title": "Agua con gas",
+		"description": "Botella 600ml",
+		"price": 100,
+		"thumbnail": "agua_con_gas_600ml.jpg",
+		"code": 1,
+		"stock": 4900
+	},
+	{
+		"id": 2,
+		"title": "Agua sin gas",
+		"description": "Botella 600ml",
+		"price": 70,
+		"thumbnail": "agua_sin_gas_600ml.jpg",
+		"code": 2,
+		"stock": 11000
+	},
+	{
+		"id": 4,
+		"title": "Agua sin gas",
+		"description": "Botella 1l",
+		"price": 100,
+		"thumbnail": "agua_sin_gas_1l.jpg",
+		"code": 4,
+		"stock": 1000
+	},
+	{
+		"id": 5,
+		"title": "Pomelo",
+		"description": "Botella 1l",
+		"price": 150,
+		"thumbnail": "pomelo_1L.jpg",
+		"code": 5,
+		"stock": 990
+	},
+	{
+		"id": 6,
+		"title": "Pomelo Light",
+		"description": "Botella 1l",
+		"price": 150,
+		"thumbnail": "pomelo_light_1L.jpg",
+		"code": 6,
+		"stock": 5690
+	},
+	{
+		"id": 7,
+		"title": "Pomelo",
+		"description": "Botella 600ml",
+		"price": 120,
+		"thumbnail": "pomelo_600ml.jpg",
+		"code": 7,
+		"stock": 890
+	},
+	{
+		"id": 8,
+		"title": "Coca Cola",
+		"description": "Botella 600ml",
+		"price": 110,
+		"thumbnail": "coca_cola_600ml.jpg",
+		"code": 8,
+		"stock": 907
+	}
+]
