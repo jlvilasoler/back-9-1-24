@@ -66,29 +66,15 @@ class ProductManager {
     }
 
 
-    //Actualiza los datos del objeto determinado, si hay modificaciones
-    /*async updateProduct(id, updatedProduct) {
-        try {
-            let contentObj = await this.getProducts();
-            const index = contentObj.findIndex((product) => product.id === id);
-            if (index >= 0) {
-                contentObj[index] = { ...contentObj[index], ...updatedProduct };
-                await fs.promises.writeFile("./Products.json", JSON.stringify(contentObj, null, "\t"));
-            } else {
-                console.log(`No se encontró el producto con el id ${id}`);
-            }
-        } catch (error) {
-            console.log(error);*/
+    async updateProduct(productId) {
+        const data = await fs.promises.readfile("products.json", "utf-8");
+        const products = JSON.parse(data);
+        const product = products.find(({ id }) => id === productId)
 
-async updateProduct(productId) {
-    const data = await fs.promises.readfile("products.json", "utf-8");
-    const products = JSON.parse(data);
-    const product = products.find(({ id }) => id === productId)
+        product.atribute = newValue;
 
-    product.atribute = newValue;
-
-    await fs.promises.writeFile("products.json", JSON.stringify(products));
-}
+        await fs.promises.writeFile("products.json", JSON.stringify(products));
+    }
 }
 
 module.exports = ProductManager;
