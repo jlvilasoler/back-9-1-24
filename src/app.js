@@ -1,5 +1,5 @@
 const express = require("express");
-const ProductManager = require('./productmanager.js'); // Importa la clase desde el archivo correcto
+const ProductManager = require('./productmanager.js'); // Importa la clase desde el archivo
 const productManager = new ProductManager();
 
 const app = express();
