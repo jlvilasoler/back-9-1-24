@@ -11,17 +11,6 @@
     "category": "aguas"
   },
   {
-    "id": 2,
-    "title": "Agua sin gas",
-    "description": "Botella 600ml",
-    "price": 70,
-    "thumbnail": "agua_sin_gas_600ml.jpg",
-    "code": 2,
-    "stock": 11000,
-    "status": true,
-    "category": "bebidas"
-  },
-  {
     "id": 4,
     "title": "Agua sin gas",
     "description": "Botella 1l",

@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
             status,
             category,
         } = req.body;
-        const newProd = await productManager.addProduct(title, description, price, thumbnail, code, stock);
+        const newProd = await productManager.addProduct(title, description, price, thumbnail, code, stock, status, category);
         res.json(newProd);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -70,9 +70,17 @@ router.put('/:pid', async(req, res) => {
     }
 });
 
-/*router.delete('/products/:pid', async(req, res) => {
+router.delete('/products/:pid', async(req, res) => {
+    try {
+        const productId = req.params.pid;
+        const eliminar = await productManager.deleteProduct(productId);
+        res.json(eliminar);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 
-}*/
+
 
 export default router;
