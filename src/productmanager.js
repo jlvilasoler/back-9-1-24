@@ -8,8 +8,8 @@ export class ProductManager {
         this.idCounter = 1;
     }
 
-    async addProduct(title, description, price, thumbnail, code, stock) {
-        if (!title || !description || !price || !thumbnail || !code || !stock) {
+    async addProduct(title, description, price, thumbnail, code, stock, status, category) {
+        if (!title || !description || !price || !thumbnail || !code || !stock || !status || !category) {
             console.log("Operación inválida, debe llenar todos los campos");
             return;
         }
@@ -29,6 +29,8 @@ export class ProductManager {
                 thumbnail,
                 code,
                 stock,
+                status,
+                category,
             };
 
             contentObj.push(product);

@@ -44,6 +44,8 @@ router.post('/', async (req, res) => {
             thumbnail,
             code,
             stock,
+            status,
+            category,
         } = req.body;
         const newProd = await productManager.addProduct(title, description, price, thumbnail, code, stock);
         res.json(newProd);
