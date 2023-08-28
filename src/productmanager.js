@@ -1,6 +1,6 @@
-const fs = require("fs");
+import fs from "fs"
 
-class ProductManager {
+export class ProductManager {
     static id = 0;
     constructor() {
         this.products = [];
@@ -8,7 +8,7 @@ class ProductManager {
         this.idCounter = 1;
     }
 
-    async addProduct(title, description, price, thumbnail, code, stock, id) {
+    async addProduct(title, description, price, thumbnail, code, stock) {
         if (!title || !description || !price || !thumbnail || !code || !stock) {
             console.log("Operación inválida, debe llenar todos los campos");
             return;
@@ -35,7 +35,7 @@ class ProductManager {
             product.id = this.idCounter++;
             this.products.push(product);
 
-            await fs.promises.writeFile("./Products.json", JSON.stringify(contentObj, null, "\t"));
+            await fs.promises.writeFile("./src/products.json", JSON.stringify(contentObj, null, "\t"));
         } catch (error) {
             console.log(error);
         }
@@ -44,7 +44,7 @@ class ProductManager {
     async deleteProduct(id) {
         const products = await this.getProducts();
         const productsNotId = products.filter((product) => product.id != id);
-        await fs.promises.writeFile("./Products.json", JSON.stringify(productsNotId, null, "\t"));
+        await fs.promises.writeFile("./src/Products.json", JSON.stringify(productsNotId, null, "\t"));
     }
 
 
@@ -54,27 +54,28 @@ class ProductManager {
             const contentObj = JSON.parse(content);
             return contentObj;
         } catch (error) {
-            console.log("No se pudo leer el archivo Products.json. Se creará uno nuevo.", error);
+            console.log("No se pudo leer el archivo products.json. Se creará uno nuevo.", error);
             return [];
         }
     }
 
     async getProductById(id) {
-        let data = await this.getProducts()
-        let productFind = data.find(product => product.id == id)
-        return productFind === undefined ? console.log(`No se encontró el ID:${id} que desea buscar`) : productFind
+        try {
+            let data = await this.getProducts()
+            let productFind = data.find(product => product.id == id)
+            return productFind === undefined ? console.log(`No se encontró el ID:${id} que desea buscar`) : productFind
+        } catch (error) {
+            console.log("No se pudo leer el archivo products.json. Se creará uno nuevo.", error);
+            return [];
+        }
+    }
+
+    async updateProduct(id, product) {
+        let data = await this.getProducts();
+        let i = data.findIndex((e) => e.id === id);
+        data.splice(i, 1, product);
+        await fs.promises.writeFile("./src/Products.json", JSON.stringify(data, null, 2));
+    }
     }
 
 
-    async updateProduct(productId) {
-        const data = await fs.promises.readfile("products.json", "utf-8");
-        const products = JSON.parse(data);
-        const product = products.find(({ id }) => id === productId)
-
-        product.atribute = newValue;
-
-        await fs.promises.writeFile("products.json", JSON.stringify(products));
-    }
-}
-
-module.exports = ProductManager;

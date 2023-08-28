@@ -61,5 +61,14 @@
 		"thumbnail": "coca_cola_600ml.jpg",
 		"code": 8,
 		"stock": 907
+	},
+	{
+		"id": 1,
+		"title": "Agua",
+		"description": "Botella 1l",
+		"price": 1,
+		"thumbnail": "agua.jpg",
+		"code": 100000,
+		"stock": 1
 	}
 ]
