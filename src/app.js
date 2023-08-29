@@ -1,9 +1,8 @@
-import { ProductManager } from "./productmanager.js"; 
-import productRouter from "../routes/productRouter.js"
+import { ProductManager } from "./productManager.js"; 
+import cartRouter from "../routes/cartRouter.js"
+import productRouter from "../routes/productRouter.js";
 import express from "express";
 const productManager = new ProductManager();
-
-
 
 
 
@@ -12,9 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-app.use('/api', productRouter)
+app.use('/api', productRouter);
+app.use('/api', cartRouter);
 
-const PORT = 8080;
-app.listen(PORT, () => {
-    console.log(`Servidor en ejecución en el puerto ${PORT}`);
+app.listen(8080, () => {
+    console.log(`Servidor en ejecución en el puerto 8080`);
 });
