@@ -29,7 +29,7 @@ export default class ShoppingCart {
         return cartfinder;
     }
 
-    async addProductCart(pid, cid, product) {
+    async addProductsToCart(pid, cid, product) {
         try {
             const carts = await this.getCarts();
             const selectCart = carts[cid - 1];
@@ -49,4 +49,5 @@ export default class ShoppingCart {
         }
     }
 }
+
 

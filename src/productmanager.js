@@ -1,43 +1,48 @@
 import fs from "fs"
 
 export class ProductManager {
-    static id = 0;
+
+
     constructor() {
         this.products = [];
-        this.path = "./Products.json";
-        this.idCounter = 1;
+        this.path = "./src/products.json";
+
     }
 
-    async addProduct(title, description, price, thumbnail, code, stock, status, category) {
-        if (!title || !description || !price || !thumbnail || !code || !stock || !status || !category) {
-            console.log("Operación inválida, debe llenar todos los campos");
-            return;
-        }
+    async getId() {
+        let data = await this.getProducts();
+        return data.length + 1;
+    }
+
+
+    async addProduct(title, description, category, price, thumbnail, code, stock, status) {
+        const newProduct = {
+            title,
+            description,
+            category,
+            price,
+            thumbnail,
+            code,
+            stock,
+            status,
+        };
 
         try {
-            const contentObj = await this.getProducts();
-            if (contentObj.some((product) => product.code === code)) {
-                console.log(`Atención: no se puede agregar un nuevo código ${code} , debido a que ya existe otro código con el mismo número`);
-                return;
+            if (!fs.existsSync(this.path)) {
+                const newList = [];
+                newList.push({ ...newProduct, id: await this.getId() });
+
+                await fs.promises.writeFile(this.path, JSON.stringify(newList, null, '\t'))
+
+            } else {
+                const data = await this.getProducts();
+                const repeatCode = this.products.some(e => e.code == newProduct.code)
+                repeatCode == true ? console.log("El codigo esta repetido") : data.push({ ...newProduct, id: await this.getId()});
+                await fs.promises.writeFile(
+                this.path, 
+                JSON.stringify(data, null, '\t'));
+
             }
-
-            const product = {
-                id: ProductManager.id++,
-                title,
-                description,
-                price,
-                thumbnail,
-                code,
-                stock,
-                status,
-                category,
-            };
-
-            contentObj.push(product);
-            product.id = this.idCounter++;
-            this.products.push(product);
-
-            await fs.promises.writeFile("./src/products.json", JSON.stringify(contentObj, null, "\t"));
         } catch (error) {
             console.log(error);
         }
@@ -81,3 +86,4 @@ export class ProductManager {
     }
 
 
+    export default ProductManager;

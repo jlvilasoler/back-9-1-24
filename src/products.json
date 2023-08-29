@@ -55,14 +55,25 @@
 		"category": "bebidas"
 	},
 	{
-		"id": 8,
-		"title": "Coca Cola",
+		"title": "Pomelo",
 		"description": "Botella 600ml",
-		"price": 110,
-		"thumbnail": "coca_cola_600ml.jpg",
-		"code": 8,
-		"stock": 907,
-		"status": true,
-		"category": "bebidas"
+		"category": 120,
+		"price": "pomelo_600ml.jpg",
+		"thumbnail": 21,
+		"code": 890,
+		"stock": true,
+		"status": "bebidas",
+		"id": 6
+	},
+	{
+		"title": "Pomelo",
+		"description": "Botella 600ml",
+		"category": 120,
+		"price": "pomelo_600ml.jpg",
+		"thumbnail": 21,
+		"code": 890,
+		"stock": true,
+		"status": "bebidas",
+		"id": 7
 	}
 ]

@@ -6,7 +6,7 @@ const productManager = new ProductManager();
 const router = Router();
 
 // En la ruta GET, debe devolver un producto específico según el productId
-router.get('/', async(req, res) =>{
+router.get('/products/', async(req, res) =>{
     const {limit} = req.query
     const readproduct = await productManager.getProducts();
     // let objectJS = JSON.parse(readproduct)
@@ -35,7 +35,7 @@ router.get('/products/:pid', async (req, res) => {
 });
 
 // En la ruta POST, debe agregar un nuevo producto
-router.post('/', async (req, res) => {
+router.post('/products/', async (req, res) => {
     try {
         const {
             title,
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:pid', async(req, res) => {
+router.put('/products/:pid', async(req, res) => {
     try {
         const prod = req.body
         const {pid} = req.params
