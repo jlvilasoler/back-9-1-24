@@ -4,6 +4,7 @@ const router = Router();
 
 import ProductManager from "../src/productManager.js";
 const products = new ProductManager("../src/productManager.json");
+
 import CartManager from "../src/cartManager.js";
 const cart = new CartManager("../src/cart.json");
 
@@ -20,18 +21,19 @@ router.get('/cart', async (req, res) => {
 
 //GET 1
 router.post('/cart/:cid', async (req, res) => {
+    try {
         const cid = parseInt(req.params.cid, 10);
         const cartId = await cart.getCartById(cid);
+
         if (!cartId) {
             res.status(404).send("Cart not found");
         } else {
             res.send(cartId.products);
-        }});
-        /*
+        }
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-});*/
+});
 
 
 
