@@ -1,10 +1,15 @@
 import { ProductManager } from "./productManager.js"; 
+import  CartManager  from "./cartmanager.js";
+
 import cartRouter from "../routes/cartRouter.js"
 import productRouter from "../routes/productRouter.js";
-import express from "express";
+
+
+
 const productManager = new ProductManager();
+const cartManager = new CartManager();
 
-
+import express from "express";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));

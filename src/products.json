@@ -75,16 +75,5 @@
 		"stock": true,
 		"status": "bebidas",
 		"id": 7
-	},
-	{
-		"title": "Pomelo",
-		"description": "Botella 600ml",
-		"category": 120,
-		"price": "pomelo_600ml.jpg",
-		"thumbnail": 21,
-		"code": 890,
-		"stock": true,
-		"status": "bebidas",
-		"id": 8
 	}
 ]
