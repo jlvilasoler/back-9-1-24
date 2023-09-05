@@ -1,4 +1,6 @@
 const socketClient = io();
+console.log(io)
+
 
 
 const form = document.getElementById('form');
@@ -20,9 +22,6 @@ const inputDelete = document.getElementById('prod-delete');
 
 
 
-
-
-
 form.addEventListener('submit', (event)=>{
     event.preventDefault()
     const category = inputCategory.value
@@ -32,5 +31,5 @@ form.addEventListener('submit', (event)=>{
     const thumbnail = inputThumnail.value
     const code = inputCode.value
     const stock = inputStock.value
-    socketClient.emit('newProduct', {category, title, description, price, thumbnail, code, stock}) 
+    socketClient.emit('newProduct', {category, title, description, price, thumbnail, code, stock})
 })
