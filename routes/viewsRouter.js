@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 router.get('/realtimeproducts', async (req, res) => {
     const socketServer = req.context.socketServer;
     const products = await productManager.getProducts();
-    res.render('home', {products});
+    res.render('realTimeProducts', {products});
 });
 
 
