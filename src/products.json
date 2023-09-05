@@ -60,20 +60,31 @@
 		"category": 120,
 		"price": "pomelo_600ml.jpg",
 		"thumbnail": 21,
-		"code": 890,
+		"code": 8,
 		"stock": true,
 		"status": "bebidas",
-		"id": 6
+		"id": 8
 	},
 	{
 		"title": "Pomelo",
-		"description": "Botella 600ml",
+		"description": "Botella 500ml",
 		"category": 120,
-		"price": "pomelo_600ml.jpg",
-		"thumbnail": 21,
-		"code": 890,
+		"price": "pomelo_500ml.jpg",
+		"thumbnail": "https://f.fcdn.app/imgs/0bcdc1/www.distribuidoradelacosta.com.uy/dicouy/db2b/original/catalogo/1005251005251/1920-1200/pomelo-paso-de-los-toros-500cc-pomelo-paso-de-los-toros-500cc.jpg",
+		"code": 9,
 		"stock": true,
 		"status": "bebidas",
-		"id": 7
+		"id": 9
+	},
+	{
+		"id": 10,
+		"title": "Chocolate Mars",
+		"description": "Mini Mars",
+		"price": 60,
+		"thumbnail": "mars.jpg",
+		"code": 10,
+		"stock": 4900,
+		"status": true,
+		"category": "chocolates"
 	}
 ]

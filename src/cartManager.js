@@ -1,21 +1,21 @@
 import fs from "fs";
 
 export default class CartManager {
-    constructor(path) {
-        this.path = path;
+    constructor() {
+        this.path = "./src/cart.json";
         this.loadCarts();
     }
 
     // busca los carritos que hay guardados
-    getAllCarts() {
+    async getAllCarts() {
         return this.carts;
     }
 
     // se cargan los carritos
-    loadCarts() {
+    async loadCarts() {
         try {
             const data = fs.readFileSync(this.path, 'utf-8');
-            this.carts = JSON.parse(data);
+            this.carts = await JSON.parse(data);
         } catch (error) {
             console.log("Error loading carts:", error.message);
             this.carts = []; 
@@ -23,7 +23,7 @@ export default class CartManager {
     }
 
     // guarda la informacion de los carritos de compras en un archivo en el disco
-    saveCarts() {
+    async saveCarts() {
         try {
             const data = JSON.stringify(this.carts, null, 2)
             fs.writeFileSync(this.path, data, "utf-8");
@@ -33,35 +33,38 @@ export default class CartManager {
     }
 
     // Agrega un nuevo carrito
-    addCart(cart) {
+    async addCart(cart) {
         const newCart = { ...cart };
+        console.log(this.carts.length);
+
         if (this.carts.length === 0) {
             newCart.id = 1;
         } else {
             newCart.id = this.carts[this.carts.length - 1].id + 1;
         }
         this.carts.push(newCart);
-        this.saveCarts();
+        await this.saveCarts();
+        console.log(newCart);
         return newCart.id;
     }
 
     // busca un carrito en la lista de carritos
-    getCartById(id) {
-        return this.carts.find((cart) => cart.id === id);
+    async getCartById(id) {
+        return await this.carts.find((cart) => cart.id === id);
     }
 
     // agrega un producto al carrito, agrega un producto a un carrito determinado, segun su Id
-    addProductToCart(cartId, productId, quantity) {
-        const cartIndex = this.carts.findIndex((cart) => cart.id === cartId);
+    async addProductToCart(cartId, productId, quantity) {
+        const cartIndex = await this.carts.findIndex((cart) => cart.id === cartId);
 
         if (cartIndex !== -1) {
-            const cartToUpdate = this.carts[cartIndex];
-            const existingProduct = cartToUpdate.products.find((product) => product.productId === productId);
+            const cartToUpdate = await this.carts[cartIndex];
+            const existingProduct = await cartToUpdate.products.find((product) => product.productId === productId);
 
             if (existingProduct) {
                 existingProduct.quantity += quantity;
             } else {
-                cartToUpdate.products.push({ productId, quantity });
+               await cartToUpdate.products.push({ productId, quantity });
             }
 
             this.saveCarts();
@@ -71,8 +74,8 @@ export default class CartManager {
     }
 
     // nos da la lista de productos del carrito 
-    getProductsInCart(cartId) {
-        const cart = this.getCartById(cartId);
+    async getProductsInCart(cartId) {
+        const cart = await this.getCartById(cartId);
 
         if (cart) {
             return cart.products;

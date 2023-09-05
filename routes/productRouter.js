@@ -48,6 +48,9 @@ router.post('/products/', async (req, res) => {
             category,
         } = req.body;
         const newProd = await productManager.addProduct(title, description, price, thumbnail, code, stock, status, category);
+        
+        req.context.socketServer.emit();
+        
         res.json(newProd);
     } catch (error) {
         res.status(500).json({ message: error.message });
