@@ -24,7 +24,7 @@ const socketServer = new Server(httpServer);
 app.engine('handlebars', handlebars.engine());
 app.set('views', './src/views');
 app.set('view engine', 'handlebars');
-app.use(express.static('./src/public'));
+app.use(express.static('/public/js'));
 
 app.use((req, res, next) => {
     req.context = { socketServer };
@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/', viewsRouter);
-app.use('/realtimeproducts', viewsRouter);
+app.use('/products', viewsRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);
 
