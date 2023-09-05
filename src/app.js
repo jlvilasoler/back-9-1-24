@@ -24,7 +24,7 @@ const socketServer = new Server(httpServer);
 app.engine('handlebars', handlebars.engine());
 app.set('views', './src/views');
 app.set('view engine', 'handlebars');
-app.use(express.static('/public/js'));
+app.use(express.static('./src/public/js'));
 
 app.use((req, res, next) => {
     req.context = { socketServer };
