@@ -51,15 +51,22 @@ socketServer.on('connection', (socket) => {
         socketServer.emit('updateStateProduct', newProdFromSocket);
     })
 
-    socket.on('deleteProduct', async (idDelete) => {
-        const idToDelete = parseInt(idDelete, 10);
-        console.log(`info recibida del socket cliente`, idToDelete);
+    socket.on('deleteProduct', async (data) => {
+        const idToDelete = parseInt(data.idDeleteFromSocketClient, 10);
+        console.log(`Solicitud de eliminación recibida del cliente:`, idToDelete);
+        
+        // Lógica para eliminar el producto en tu ProductManager
         await product.deleteProduct(idToDelete);
-    
-        const newListFromSocket = await product.getProducts();
-        socketServer.emit('updateStateProduct2', newListFromSocket);
-    })
 
-
+        // Emitir una actualización a todos los clientes conectados
+        const updatedProducts = await product.getProducts();
+        io.emit('updateStateProduct2', updatedProducts);
     });
 
+    socket.on('disconnect', () => {
+        console.log(`Usuario desconectado con ID: ${socket.id}`);
+
+    
+
+    });
+});
