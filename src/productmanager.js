@@ -15,17 +15,17 @@ export class ProductManager {
     }
 
     // Agrega un nuevo producto a la lista de productos
-    async addProduct(id, title, description, category, price, thumbnail, code, stock, status) {
+    async addProduct(id, title, description, price, thumbnail, code, stock, status, category) {
         const newProduct = {
             id,
             title,
             description,
-            category,
             price,
             thumbnail,
             code,
             stock,
             status,
+            category,
         };
 
         try {

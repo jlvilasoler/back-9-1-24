@@ -46,7 +46,7 @@ socketServer.on('connection', (socket) => {
     socket.emit("productos", productManager.getProducts());
     const product = new ProductManager("/products.json")
     socket.on('newProduct', async(productPost)=>{
-        await product.addProduct(productPost.id, productPost.title, productPost.description, productPost.category, productPost.price, productPost.thumbnail, productPost.code, productPost.stock, productPost.status)
+        await product.addProduct(productPost.id, productPost.title, productPost.description, productPost.price, productPost.thumbnail, productPost.code, productPost.stock, productPost.status, productPost.category)
         const newProdFromSocket = await product.getProducts();
         socketServer.emit('updateStateProduct', newProdFromSocket);
     })

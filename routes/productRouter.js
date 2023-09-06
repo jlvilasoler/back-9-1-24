@@ -41,14 +41,14 @@ router.post('/products/', async (req, res) => {
             id,
             title,
             description,
-            category,
             price,
             thumbnail,
             code,
             stock,
             status,
+            category
         } = req.body;
-        const newProd = await productManager.addProduct(id, title, description, category, price, thumbnail, code, stock, status);
+        const newProd = await productManager.addProduct(id, title, description, price, thumbnail, code, stock, status, category);
         
         req.context.socketServer.emit()
         
