@@ -8,16 +8,17 @@
         <form id="form">
             <h1 style="margin-bottom: 5px; font-size: 20px;">Add Products:</h1>
             <br / style="font-size: 10px">
-            <input type="text" id="prod-category" name="prod-category" placeholder="Category"><br>
             <input type="text" id="prod-title" name="prod-title" placeholder="Title"><br>
             <input type="text" id="prod-description" name="prod-description" placeholder="Description"><br>
-            <input type="text" id="prod-price" name="prod-price" placeholder="Price"><br>
+            <input type="text" id="prod-category" name="prod-category" placeholder="Category"><br>
+            <input type="number" id="prod-price" name="prod-price" placeholder="Price"><br>
             <input type="text" id="prod-thumbnail" name="prod-thumbnail" placeholder="Thumbnail"><br>
-            <input type="text" id="prod-code" name="prod-code" placeholder="Code"><br>
+            <input type="number" id="prod-code" name="prod-code" placeholder="Code"><br>
             <input type="text" id="prod-stock" name="prod-stock" placeholder="Stock"><br>
 
+
             <br />
-            <input id="post" type="submit" value="Post">
+            <input id="post" type="submit" value="Post" class="btn btn-primary">
         </form>
     </div>
 
@@ -27,9 +28,10 @@
         <h1 style="font-size: 20px;">Put the id number for delete a Product:</h1>
         <input type="number" id="prod-delete" name="prod-delete" placeholder="id">
         <br / style="font-size: 30px"> <br />
-        <input id="post-delete" type="submit" value="Delete">
+        <input id="post-delete" type="submit" value="Delete" class="btn btn-danger">
     </div>
     </div>
 </section>
 
-<script src="/js/index.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realTimeProducts.js"></script>

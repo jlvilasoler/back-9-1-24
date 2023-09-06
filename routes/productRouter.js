@@ -38,16 +38,17 @@ router.get('/products/:pid', async (req, res) => {
 router.post('/products/', async (req, res) => {
     try {
         const {
+            id,
             title,
             description,
+            category,
             price,
             thumbnail,
             code,
             stock,
             status,
-            category,
         } = req.body;
-        const newProd = await productManager.addProduct(title, description, price, thumbnail, code, stock, status, category);
+        const newProd = await productManager.addProduct(id, title, description, category, price, thumbnail, code, stock, status);
         
         req.context.socketServer.emit()
         

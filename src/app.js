@@ -24,7 +24,7 @@ const socketServer = new Server(httpServer);
 app.engine('handlebars', handlebars.engine());
 app.set('views', './src/views');
 app.set('view engine', 'handlebars');
-app.use(express.static('./src/public/js'));
+app.use(express.static('./src/public'));
 
 app.use((req, res, next) => {
     req.context = { socketServer };
@@ -43,4 +43,13 @@ app.use('/api', cartRouter);
 
 socketServer.on('connection', (socket) => {
     console.log('Se conectó el usuario:', socket.id);
-});
+    socket.emit("productos", productManager.getProducts());
+    const product = new ProductManager("/products.json")
+    socket.on('newProduct', async(productPost)=>{
+        await product.addProduct(productPost.id, productPost.title, productPost.description, productPost.category, productPost.price, productPost.thumbnail, productPost.code, productPost.stock, productPost.status)
+        const newProdFromSocket = await product.getProducts();
+        socketServer.emit('updateStateProduct', newProdFromSocket);
+    })
+
+    });
+

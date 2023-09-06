@@ -1,16 +1,5 @@
 [
 	{
-		"id": 1,
-		"title": "Agua Salus con gas",
-		"description": "Botella 600ml",
-		"price": 100,
-		"thumbnail": "https://devotouy.vtexassets.com/arquivos/ids/907129-1200-auto?v=638278950991730000&width=1200&height=auto&aspect=true",
-		"code": 1,
-		"stock": 4900,
-		"status": true,
-		"category": "aguas"
-	},
-	{
 		"id": 4,
 		"title": "Agua Salus sin gas",
 		"description": "Botella 1l",
@@ -86,5 +75,15 @@
 		"stock": 4900,
 		"status": true,
 		"category": "chocolates"
+	},
+	{
+		"id": 15,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"category": "chocolates",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12,
+		"stock": 900
 	}
 ]
