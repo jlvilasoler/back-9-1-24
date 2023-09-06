@@ -1,12 +1,10 @@
 const socketClient = io();
 console.log(io);
 
-
 const form = document.getElementById('form');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-
 
     const inputTitle = document.getElementById('prod-title').value;
     const inputDescription = document.getElementById('prod-description').value;
@@ -28,9 +26,27 @@ form.addEventListener('submit', (event) => {
     console.log("Status:", inputStatus);
     console.log("Categoría:", inputCategory);
 
-    // Aquí, utiliza las variables en el objeto que enviarás al servidor
-    socketClient.emit('newProduct', {
 
+
+    if (
+        !inputTitle ||
+        !inputDescription ||
+        isNaN(inputPrice) ||
+        !inputThumnail ||
+        isNaN(inputCode) ||
+        isNaN(inputStock) ||
+        !inputStatus ||
+        !inputCategory
+    ) {
+        alert('Please complete all the form fields product for add the product');
+        return;
+    }else{
+        alert('Product added successful');
+    }
+
+
+
+    socketClient.emit('newProduct', {
         title: inputTitle,
         description: inputDescription,
         price: inputPrice,
@@ -44,3 +60,13 @@ form.addEventListener('submit', (event) => {
 
 
 
+
+const deleteProduct = document.getElementById('post-delete')
+const inputDelete = document.getElementById('prod-delete')
+
+
+deleteProduct.addEventListener('click', (event)=>{
+    event.preventDefault()
+    const idDeleteFromSocketClient = inputDelete.value
+    socketClient.emit('deleteProduct', {idDeleteFromSocketClient})
+})

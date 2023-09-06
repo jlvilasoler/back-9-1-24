@@ -51,5 +51,15 @@ socketServer.on('connection', (socket) => {
         socketServer.emit('updateStateProduct', newProdFromSocket);
     })
 
+    socket.on('deleteProduct', async (idDelete) => {
+        const idToDelete = parseInt(idDelete, 10);
+        console.log(`info recibida del socket cliente`, idToDelete);
+        await product.deleteProduct(idToDelete);
+    
+        const newListFromSocket = await product.getProducts();
+        socketServer.emit('updateStateProduct2', newListFromSocket);
+    })
+
+
     });
 
