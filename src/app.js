@@ -41,32 +41,26 @@ app.use('/api', productRouter);
 app.use('/api', cartRouter);
 
 
-socketServer.on('connection', (socket) => {
+socketServer.on('connection', async (socket) => {
     console.log('Se conectó el usuario:', socket.id);
-    socket.emit("productos", productManager.getProducts());
+
+    socket.emit("Socket-Products", await productManager.getProducts()); //le aviso al usuario que hay productos a visualizar
+
     const product = new ProductManager("/products.json")
-    socket.on('newProduct', async(productPost)=>{
+    socket.on('newProduct', async(productPost)=>{ // me entero (como servidor) que un socket agrega un nuevo producto
         await product.addProduct(productPost.id, productPost.title, productPost.description, productPost.price, productPost.thumbnail, productPost.code, productPost.stock, productPost.status, productPost.category)
-        const newProdFromSocket = await product.getProducts();
-        socketServer.emit('updateStateProduct', newProdFromSocket);
+        socketServer.emit('Socket-Products', await product.getProducts()); //aviso a todos los sockets que hay nuevos productos
     })
 
     socket.on('deleteProduct', async (data) => {
         const idToDelete = parseInt(data.idDeleteFromSocketClient, 10);
         console.log(`Solicitud de eliminación recibida del cliente:`, idToDelete);
-        
-        // Lógica para eliminar el producto en tu ProductManager
         await product.deleteProduct(idToDelete);
-
-        // Emitir una actualización a todos los clientes conectados
-        const updatedProducts = await product.getProducts();
-        io.emit('updateStateProduct2', updatedProducts);
+        socketServer.emit('Socket-Products', await product.getProducts());
     });
 
     socket.on('disconnect', () => {
         console.log(`Usuario desconectado con ID: ${socket.id}`);
-
-    
 
     });
 });

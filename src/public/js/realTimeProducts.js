@@ -3,6 +3,11 @@ console.log(io);
 
 const form = document.getElementById('form');
 
+const productListContainer = document.getElementById('productListContainer'); 
+// captura de la etiqueta ul (lista vacia)
+
+
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -41,7 +46,7 @@ form.addEventListener('submit', (event) => {
         alert('Please complete all the form fields product for add the product');
         return;
     }else{
-        alert('Product added successful');
+        alert('Product added successfully');
     }
 
 
@@ -61,12 +66,25 @@ form.addEventListener('submit', (event) => {
 
 
 
+
+// DELETE
 const deleteProduct = document.getElementById('post-delete')
 const inputDelete = document.getElementById('prod-delete')
-
 
 deleteProduct.addEventListener('click', (event)=>{
     event.preventDefault()
     const idDeleteFromSocketClient = inputDelete.value
     socketClient.emit('deleteProduct', {idDeleteFromSocketClient})
 })
+
+
+
+
+socketClient.on('Socket-Products', (productsList) => { 
+    //recibimos la lista actualizada de productos
+    productListContainer.innerHTML = '';
+    productsList.forEach(product => {
+        productListContainer.innerHTML = productListContainer.innerHTML + `<li>(id: ${product.id}) ${product.title}</li>`;
+    }) 
+
+});
