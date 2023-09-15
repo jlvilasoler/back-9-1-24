@@ -18,6 +18,8 @@ const httpServer = app.listen(8080, () => {
     console.log("Servidor http en ejecución en el puerto 8080");
 });
 
+const mensajes = [];
+
 const socketServer = new Server(httpServer);
 
 
@@ -41,6 +43,9 @@ app.use('/api', productRouter);
 app.use('/api', cartRouter);
 
 
+
+
+
 socketServer.on('connection', async (socket) => {
     console.log('Se conectó el usuario:', socket.id);
 
@@ -59,6 +64,12 @@ socketServer.on('connection', async (socket) => {
         socketServer.emit('Socket-Products', await product.getProducts());
     });
 
+
+    socket.on('mensaje', (data) => {
+        mensajes.push(data);
+        socketServer.emit("nuevo-mensaje", mensajes)
+    })
+    
     socket.on('disconnect', () => {
         console.log(`Usuario desconectado con ID: ${socket.id}`);
 

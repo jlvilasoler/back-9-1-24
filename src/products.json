@@ -108,5 +108,16 @@
 		"stock": 500,
 		"status": "true",
 		"category": "bebidas"
+	},
+	{
+		"id": 11,
+		"title": "Cafetera ",
+		"description": "Dolce Gusto",
+		"price": 9000,
+		"thumbnail": "https://prod-resize.tiendainglesa.com.uy/images/medium/P430490-7.jpg?20221103110827,Cafetera-DOLCE-GUSTO-Genio-Nuevo-Modelo-en-Tienda-Inglesa",
+		"code": 23213,
+		"stock": 12,
+		"status": "true",
+		"category": "cafeteras"
 	}
 ]
