@@ -1,6 +1,6 @@
 import fs from "fs"
 
-export class ProductManager {
+export default class ProductManager {
 
 
     constructor() {
