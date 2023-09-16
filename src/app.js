@@ -1,4 +1,4 @@
-import { ProductManager } from './productManager.js';
+import ProductManager from './productManager.js';
 import CartManager from './cartmanager.js';
 import handlebars from 'express-handlebars';
 import cartRouter from '../routes/cartRouter.js';
