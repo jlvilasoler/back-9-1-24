@@ -18,5 +18,8 @@ router.get('/realtimeproducts', async (req, res) => {
 router.get('/chat', async (req, res) => res.render('chat',
 {}));
 
+router.get('/verimg', (req, res) => res.render('img', 
+{}));
+
 
 export default router;
