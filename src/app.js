@@ -1,4 +1,4 @@
-import ProductManager from '../src/productManager.js';
+import productManager from '../src/productManager.js';
 import CartManager from './cartmanager.js';
 import handlebars from 'express-handlebars';
 import cartRouter from '../routes/cartRouter.js';
@@ -8,7 +8,7 @@ import { Server } from 'socket.io';
 import { Socket } from 'socket.io';
 
 
-const productManager = new ProductManager();
+const productManager = new productManager();
 const cartManager = new CartManager();
 
 import express from "express";
