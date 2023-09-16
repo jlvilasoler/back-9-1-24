@@ -119,5 +119,16 @@
 		"stock": 12,
 		"status": "true",
 		"category": "cafeteras"
+	},
+	{
+		"id": 12,
+		"title": "Cafetera Nespresso",
+		"description": "De'Longhi ",
+		"price": 14000,
+		"thumbnail": "https://http2.mlstatic.com/D_NQ_NP_2X_894669-MLA45993722718_052021-F.webp",
+		"code": 1213,
+		"stock": 50,
+		"status": "true",
+		"category": "cafeteras"
 	}
 ]
