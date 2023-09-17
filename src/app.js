@@ -11,8 +11,18 @@ import imgRouter from '../routes/imgRouter.js'
 
 
 mongoose.connect(
-'mongodb+srv://jlvila:sieteochoseis@jlvila.w8q6kim.mongodb.net/?retryWrites=true&w=majority'
-);
+'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/?retryWrites=true&w=majority', {
+useNewUrlParser: true,
+useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error'));
+db.once('open', () => {
+console.log('Connection to MongoDB established successfully');
+});
+
+
 
 const productManager = new ProductManager();
 const cartManager = new CartManager();
@@ -21,7 +31,7 @@ import express from "express";
 
 const app = express();
 const httpServer = app.listen(8080, () => {
-    console.log("Servidor http en ejecución en el puerto 8080");
+    console.log("HTTP server running on port 8080");
 });
 
 const mensajes = [];
@@ -59,7 +69,7 @@ app.use('/img', imgRouter);
 
 
 socketServer.on('connection', async (socket) => {
-    console.log('Se conectó el usuario:', socket.id);
+    console.log('A user has connected:', socket.id);
 
     socket.emit("Socket-Products", await productManager.getProducts()); //le aviso al usuario que hay productos a visualizar
 
