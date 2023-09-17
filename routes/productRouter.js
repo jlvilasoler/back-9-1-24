@@ -1,7 +1,9 @@
 import { Router } from "express";
 import ProductManager from "../src/productManager.js";
+import productManager from "../src/dao/models/db/productmanager.js";
 
 const productManager = new ProductManager();
+const ProdManager = new productManager(); // se agrega para el mongoo
 
 const router = Router();
 
