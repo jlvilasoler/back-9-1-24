@@ -141,5 +141,16 @@
 		"stock": 12,
 		"status": "true",
 		"category": "cafeteras"
+	},
+	{
+		"id": 15,
+		"title": "Brahma",
+		"description": "Cerveza 473 ml",
+		"price": 30,
+		"thumbnail": "https://discouy.vtexassets.com/arquivos/ids/1407574-1200-auto?v=638296908121570000&width=1200&height=auto&aspect=true",
+		"code": 900,
+		"stock": 2000,
+		"status": "true",
+		"category": "cervezas"
 	}
 ]
