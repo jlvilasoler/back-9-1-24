@@ -1,6 +1,6 @@
 import fs from "fs"
 
-export class ProductManager {
+export default class ProductManager {
 
 
     constructor() {
@@ -88,6 +88,3 @@ export class ProductManager {
         await fs.promises.writeFile("./src/Products.json", JSON.stringify(data, null, 2));
     }
 }
-
-
-export default ProductManager;
