@@ -1,6 +1,6 @@
 import { Router } from "express";
-import CartManager from "../src/cartmanager.js";
-import ProductManager from "../src/productManager.js";
+import CartManager from "../src/dao/database/cartManager.js";
+import ProductManager from "../src/dao/filesystem/productManager.js";
 
 const cartManager = new CartManager();
 const productManager = new ProductManager("../../products.json");
@@ -32,7 +32,7 @@ router.get('/cart/', async (req, res) => {
 // En la ruta GET, Listado de productos según carrito
 router.get('/cart/:cid', async (req, res) => {
     try {
-        const cartId = parseInt(req.params.cid, 10);
+        const cartId = req.params.cid;
         const products = await cartManager.getProductsInCart(cartId);
         res.json(products);
     } catch (error) {

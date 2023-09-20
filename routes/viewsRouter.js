@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ProductManager } from "../src/productManager.js";
+import { ProductManager } from "../src/dao/filesystem/productManager.js";
 
 const productManager = new ProductManager();
 
@@ -15,10 +15,10 @@ router.get('/realtimeproducts', async (req, res) => {
     res.render('realTimeProducts', {});
 });
 
-router.get('/chat', async (req, res) => res.render('chat',
+router.get('/messages', async (req, res) => res.render('chat',
 {}));
 
-router.get('/verimg', (req, res) => res.render('img', 
+router.get('/verimg', (req, res) => res.render('img',
 {}));
 
 

@@ -1,5 +1,5 @@
-import ProductManager from './productManager.js';
-import CartManager from './cartmanager.js';
+import ProductManager from './dao/filesystem/productManager.js';
+import CartManager from './dao/filesystem/cartManager.js';
 import handlebars from 'express-handlebars';
 import cartRouter from '../routes/cartRouter.js';
 import productRouter from '../routes/productRouter.js';
@@ -11,7 +11,7 @@ import imgRouter from '../routes/imgRouter.js'
 
 
 mongoose.connect(
-'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/?retryWrites=true&w=majority', {
+'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/ecommerce?retryWrites=true&w=majority', {
 useNewUrlParser: true,
 useUnifiedTopology: true
 });

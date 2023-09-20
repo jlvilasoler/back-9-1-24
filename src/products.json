@@ -143,14 +143,80 @@
 		"category": "cafeteras"
 	},
 	{
-		"id": 15,
-		"title": "Brahma",
-		"description": "Cerveza 473 ml",
-		"price": 30,
-		"thumbnail": "https://discouy.vtexassets.com/arquivos/ids/1407574-1200-auto?v=638296908121570000&width=1200&height=auto&aspect=true",
-		"code": 900,
-		"stock": 2000,
+		"id": 14,
+		"title": "Budweiser",
+		"description": "330 ml",
+		"price": 80,
+		"thumbnail": "https://prod-resize.tiendainglesa.com.uy/images/large/P081199-1.jpg?20220516075621,Cerveza-Botella-BUDWEISER-330-ml-en-Tienda-Inglesa",
+		"code": 1323,
+		"stock": 900,
 		"status": "true",
 		"category": "cervezas"
+	},
+	{
+		"id": 15,
+		"title": "Budweiser",
+		"description": "330 ml",
+		"price": 80,
+		"thumbnail": "https://prod-resize.tiendainglesa.com.uy/images/large/P081199-1.jpg?20220516075621,Cerveza-Botella-BUDWEISER-330-ml-en-Tienda-Inglesa",
+		"code": 1323,
+		"stock": 900,
+		"status": "true",
+		"category": "cervezas"
+	},
+	{
+		"id": 16,
+		"title": "Budweiser",
+		"description": "330 ml",
+		"price": 80,
+		"thumbnail": "https://prod-resize.tiendainglesa.com.uy/images/large/P081199-1.jpg?20220516075621,Cerveza-Botella-BUDWEISER-330-ml-en-Tienda-Inglesa",
+		"code": 1323,
+		"stock": 900,
+		"status": "true",
+		"category": "cervezas"
+	},
+	{
+		"id": 17,
+		"title": "Budweiser",
+		"description": "330 ml",
+		"price": 80,
+		"thumbnail": "https://prod-resize.tiendainglesa.com.uy/images/large/P081199-1.jpg?20220516075621,Cerveza-Botella-BUDWEISER-330-ml-en-Tienda-Inglesa",
+		"code": 1323,
+		"stock": 900,
+		"status": "true",
+		"category": "cervezas"
+	},
+	{
+		"id": 18,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "sdsdsd",
+		"code": 2121,
+		"stock": 100,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 19,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "sdsdsd",
+		"code": 2121,
+		"stock": 100,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 20,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "sdsdsd",
+		"code": 2121,
+		"stock": 100,
+		"status": "true",
+		"category": "chocolates"
 	}
 ]

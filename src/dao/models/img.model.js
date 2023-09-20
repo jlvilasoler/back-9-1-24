@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const imgCollection = "images";
+const imageCollection = "images";
 
 const imageSchema = new mongoose.Schema( {
     name: {
@@ -13,5 +13,5 @@ const imageSchema = new mongoose.Schema( {
     }
 });
 
-const imageModel = mongoose.model(imgCollection, imageSchema);
+const imageModel = mongoose.model(imageCollection, imageSchema);
 export { imageModel };
