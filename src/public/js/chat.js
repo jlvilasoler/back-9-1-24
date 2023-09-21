@@ -3,18 +3,35 @@ console.log(io);
 
 let usuario = '';
 
-const caja = document.getElementById("caja");
-const contenido = document.getElementById("contenido");
+const caja = document.getElementById("caja"); // Contenido campo escribir mensaje
+const contenido = document.getElementById("contenido"); // Contenido chat
+const btnSend = document.getElementById("btnSend"); // Botón de consola de escribir mensaje
 
-
-
-    caja.addEventListener("change", (e) => {
+btnSend.addEventListener("click", () => {
+    const mensaje = caja.value.trim(); // Obtenemos el contenido del input y eliminamos espacios en blanco al principio y al final
+    if (mensaje !== "") {
         socket.emit("mensaje", {
             user: usuario,
-            mensaje: e.target.value,
+            mensaje: mensaje,
         });
-        console.log("mensaje enviado")
-    });
+        console.log("Mensaje enviado:", mensaje);
+        caja.value = "";
+    } 
+});
+
+
+caja.addEventListener("change", () => {
+    const mensaje = caja.value.trim(); // Obtenemos el contenido del input y eliminamos espacios en blanco al principio y al final
+    if (mensaje !== "") {
+        socket.emit("mensaje", {
+            user: usuario,
+            mensaje: mensaje,
+        });
+        console.log("Mensaje enviado:", mensaje);
+        caja.value = "";
+    }
+});
+
 
 
 
@@ -28,7 +45,6 @@ Swal.fire({
     showLoaderOnConfirm: true,
 }).then((result) => {usuario = result.value;
 });
-
 
 
 socket.on("nuevo-mensaje", (data) => {
