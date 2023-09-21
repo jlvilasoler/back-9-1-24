@@ -9,6 +9,7 @@ import { Socket } from 'socket.io';
 import mongoose from 'mongoose';
 import imgRouter from '../routes/imgRouter.js'
 
+import { messageModel } from './dao/models/chat.model.js';
 
 mongoose.connect(
 'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/ecommerce?retryWrites=true&w=majority', {
@@ -62,7 +63,7 @@ app.use('/products', viewsRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);
 app.use(viewsRouter);
-app.use('/img', imgRouter);
+
 
 
 
@@ -87,8 +88,10 @@ socketServer.on('connection', async (socket) => {
     });
 
 
-    socket.on('mensaje', (data) => {
-        mensajes.push(data);
+    socket.on('mensaje', async (data) => {
+        await messageModel.create(data);
+        const mensajes = await messageModel.find().lean();
+        console.log(mensajes);
         socketServer.emit("nuevo-mensaje", mensajes)
     })
     

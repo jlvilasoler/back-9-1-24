@@ -218,5 +218,126 @@
 		"stock": 100,
 		"status": "true",
 		"category": "chocolates"
+	},
+	{
+		"id": 21,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 22,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 23,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 24,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 25,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 26,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 27,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 28,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 29,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 30,
+		"title": "Chocolates Snickers2",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 31,
+		"title": "Chocolates Snickers2",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
 	}
 ]

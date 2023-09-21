@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ProductManager from "../src/dao/filesystem/productManager.js";
+import ProductManager from "../src/dao/database/productManager.js";
 
 
 const productManager = new ProductManager();
@@ -22,12 +22,11 @@ router.get('/products/', async (req, res) => {
 // En la ruta GET, debe devolver un producto específico según el productId
 router.get('/products/:pid', async (req, res) => {
     try {
-        const pid = parseInt(req.params.pid, 10);
+        const pid = req.params.pid;
         const product = await productManager.getProducts();
-        const busquedaId = product.find((prod) => prod.id === pid)
 
-        if (busquedaId) {
-            res.send(busquedaId);
+        if (product) {
+            res.send(product);
         } else {
             res.status(404).send("Product not found");
         }
@@ -63,11 +62,11 @@ router.post('/products/', async (req, res) => {
 // En la ruta PUT, debe actualizar el producto
 router.put('/products/:pid', async (req, res) => {
     try {
-        const prod = req.body
+
         const { pid } = req.params
-        const prodFind = await productManager.getProductById(parseInt(pid))
+        const prodFind = await productManager.getProductById(pid)
         if (prodFind) {
-            await productManager.updateProduct(parseInt(pid), prod)
+            await productManager.updateProduct(pid);
             res.send("Product updated successfully")
         } else {
             res.status(404).send('product not found');
