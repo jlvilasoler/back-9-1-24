@@ -64,7 +64,7 @@ app.use('/api', productRouter);
 app.use('/api', cartRouter);
 app.use(viewsRouter);
 
-
+app.use('/img', imgRouter);
 
 
 
