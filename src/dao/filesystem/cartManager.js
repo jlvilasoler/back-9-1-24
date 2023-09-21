@@ -18,7 +18,7 @@ export default class CartManager {
             this.carts = await JSON.parse(data);
         } catch (error) {
             console.log("Error loading carts:", error.message);
-            this.carts = []; 
+            this.carts = [];
         }
     }
 
@@ -64,7 +64,7 @@ export default class CartManager {
             if (existingProduct) {
                 existingProduct.quantity += quantity;
             } else {
-               await cartToUpdate.products.push({ productId, quantity });
+                await cartToUpdate.products.push({ productId, quantity });
             }
 
             this.saveCarts();

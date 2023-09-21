@@ -27,7 +27,6 @@ export class ProductManager {
             status,
             category,
         };
-
         try {
             if (!fs.existsSync(this.path)) {
                 const newList = [];

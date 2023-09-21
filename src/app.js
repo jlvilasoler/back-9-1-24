@@ -9,7 +9,10 @@ import { Socket } from 'socket.io';
 import mongoose from 'mongoose';
 import imgRouter from '../routes/imgRouter.js'
 
+
 import { messageModel } from './dao/models/chat.model.js';
+
+
 
 mongoose.connect(
 'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/ecommerce?retryWrites=true&w=majority', {
@@ -68,7 +71,6 @@ app.use('/img', imgRouter);
 
 
 
-
 socketServer.on('connection', async (socket) => {
     console.log('A user has connected:', socket.id);
 
@@ -95,6 +97,8 @@ socketServer.on('connection', async (socket) => {
         socketServer.emit("nuevo-mensaje", mensajes)
     })
     
+
+
     socket.on('disconnect', () => {
         console.log(`Usuario desconectado con ID: ${socket.id}`);
 

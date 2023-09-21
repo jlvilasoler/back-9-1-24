@@ -9,9 +9,9 @@ export default class ProductManager {
     }
 
     async getProductById(id) {
-            const product = await productModel.find({_id: id}).lean();
-            return product;
-        }
+        const product = await productModel.find({ _id: id }).lean();
+        return product;
+    }
 
 
     async addProduct(id, title, description, price, thumbnail, code, stock, status, category) {
@@ -26,39 +26,35 @@ export default class ProductManager {
             status,
             category,
         };
-        const repeatCode = await productModel.find({code: newProduct.code});
+        const repeatCode = await productModel.find({ code: newProduct.code });
         if (repeatCode.length > 0) {
             console.log("El codigo está repetido")
             return;
         }
-    try {
-        const products = await productModel.create(newProduct);
-        return products;
+        try {
+            const products = await productModel.create(newProduct);
+            return products;
 
-    } catch (error) {
-        console.log(error);
+        } catch (error) {
+            console.log(error);
+        }
     }
-}
 
 
-async updateProduct(id, obj) {
-    try {
-        await productModel.updateOne({_id: id}, obj);
+    async updateProduct(id, obj) {
+        await productModel.updateOne({ _id: id }, obj).lean();
         return obj;
-    } catch (error) {
-        console.log(error);
     }
-}
 
 
-async deleteProduct(id) {
-    try {
-        const products = await productModel.findByIdAndDelete(id);
-        return products;
-    } catch (error) {
-        console.log(error);
+    async deleteProduct(id) {
+        try {
+            const products = await productModel.findByIdAndDelete(id);
+            return products;
+        } catch (error) {
+            console.log(error);
+        }
     }
-}
 
 
 }

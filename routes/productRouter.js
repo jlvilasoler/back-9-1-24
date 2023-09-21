@@ -62,17 +62,17 @@ router.post('/products/', async (req, res) => {
 // En la ruta PUT, debe actualizar el producto
 router.put('/products/:pid', async (req, res) => {
     try {
-
-        const { pid } = req.params
-        const prodFind = await productManager.getProductById(pid)
+        const prod = req.body;
+        const { pid } = req.params;
+        const prodFind = await productManager.getProductById(pid);
         if (prodFind) {
-            await productManager.updateProduct(pid);
-            res.send("Product updated successfully")
+            await productManager.updateProduct(pid, prod);
+            res.send("Product updated successfully");
         } else {
-            res.status(404).send('product not found');
+            res.status(404).send('Product not found');
         }
     } catch (error) {
-        res.status(404).json({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
 });
 
