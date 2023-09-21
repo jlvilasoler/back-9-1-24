@@ -26,4 +26,23 @@ export default class CartManager {
             return [];
         }
     }
-}
+
+    async addProductToCartId(cid, productId) { 
+        const cart = await this.getCartById(cid); 
+        console.log('Cart:', cart);
+
+        let item = cart.products.find((p) => p.product == productId); 
+        console.log('Item:', item);
+        if (item) { 
+            item.quantity++; 
+        } else { 
+            item = { product: productId, quantity: 1 }; 
+            cart.products.push(item); 
+        } 
+
+        await cart.save(); 
+        return item; 
+    }
+    
+    }
+

@@ -196,5 +196,16 @@
 		"stock": 100,
 		"status": "true",
 		"category": "chocolates"
+	},
+	{
+		"id": 19,
+		"title": "Chocolates Snickers211111",
+		"description": "45g",
+		"price": 70,
+		"thumbnail": "https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg",
+		"code": 12121,
+		"stock": 212,
+		"status": "true",
+		"category": "chocolates"
 	}
 ]

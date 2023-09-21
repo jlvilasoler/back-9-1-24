@@ -43,8 +43,8 @@ router.get('/cart/:cid', async (req, res) => {
 // En la ruta POST, Agregar pid a cart segun su cid
 router.post('/cart/:cid/product/:pid', async (req, res) => {
     try {
-        const cid = parseInt(req.params.cid, 10);
-        const pid = parseInt(req.params.pid, 10);
+        const cid = req.params.cid;
+        const pid = req.params.pid;
         const quantity = req.body.quantity || 1;
 
         if (quantity <= 0) {
@@ -60,7 +60,7 @@ router.post('/cart/:cid/product/:pid', async (req, res) => {
             return res.status(404).json({ error: 'Product not found' });
         }
 
-        cartManager.addProductToCart(cid, pid, quantity);
+        cartManager.addProductToCartId(cid, pid, quantity);
         res.json({ message: 'New product added to cart!', productId: pid, cartId: cid });
 
     } catch (error) {
