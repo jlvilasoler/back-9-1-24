@@ -12,7 +12,7 @@ export default class CartManager {
     }
 
     async getCartById(id) {
-        const cart = await cartModel.find( {_id: id} ).lean();
+        const cart = await cartModel.findOne( {_id: id} );
         return cart;
     }
 
@@ -29,17 +29,18 @@ export default class CartManager {
 
     async addProductToCartId(cid, productId) { 
         const cart = await this.getCartById(cid); 
-        console.log('Cart:', cart);
+        console.log(cart);
 
-        let item = cart.products.find((p) => p.product == productId); 
-        console.log('Item:', item);
+        let item = cart.products.find((p) => p.product === productId); 
+        console.log(productId);
         if (item) { 
             item.quantity++; 
         } else { 
             item = { product: productId, quantity: 1 }; 
+            console.log(item);
             cart.products.push(item); 
         } 
-
+        console.log(cart);
         await cart.save(); 
         return item; 
     }
