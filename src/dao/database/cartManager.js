@@ -45,6 +45,9 @@ export default class CartManager {
         return item; 
     }
 
+
+
+/////////////////////////////// Ultima Entrega
 // Eliminando un producto del carrito
 async deleteProductFromCart(cid, id) {
     try {
