@@ -54,7 +54,7 @@ router.post('/cart/:cid/products/:pid', async (req, res) => {
         const cart = await cartManager.getCartById(cid);
         if (!cart) {
             return res.status(404).json({ error: 'Cart not found' });
-        }
+        } console.log
         const product = await productManager.getProductById(pid);
         if (!product) {
             return res.status(404).json({ error: 'Product not found' });
@@ -68,6 +68,40 @@ router.post('/cart/:cid/products/:pid', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
+
+// PARTE NUEVA:
+// En la ruta POST, Agregar pid a cart segun su cid
+router.delete('/cart/:cid/products/:pid', async (req, res) => {
+    try {
+        const cid = req.params.cid;
+        const pid = req.params.pid;
+        const quantity = req.body.quantity || 1;
+
+        if (quantity <= 0) {
+            return res.status(400).json({ error: 'Quantity must be more than 0' });
+        }
+
+        const cart = await cartManager.getCartById(cid);
+        if (!cart) {
+            return res.status(404).json({ error: 'Cart not found' });
+        } console.log
+        const product = await productManager.getProductById(pid);
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        await cartManager.deleteProductFromCart(cid, pid, quantity);
+        res.json({ message: 'Product deleted from cart!', productId: pid, cartId: cid });
+
+    } catch (error) {
+        console.error('Error adding product to cart', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
 
 
 export default router;

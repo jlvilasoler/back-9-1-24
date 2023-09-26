@@ -44,6 +44,27 @@ export default class CartManager {
         await cart.save(); 
         return item; 
     }
-    
-    }
 
+// Eliminando un producto del carrito
+async deleteProductFromCart(cid, id) {
+    try {
+        console.log(`Deleting product ${id} from cart ${cid}`);
+        const cart = await this.getCartById(cid);
+
+        const itemIndex = cart.products.findIndex((product) => product._id.toString() === id);
+
+        if (itemIndex !== -1) {
+            // Si se encuentra el producto en el carrito, eliminarlo
+            cart.products.splice(itemIndex, 1);
+        } else {
+            console.log(`Product with _id ${id} not found in cart.`);
+        }
+
+        console.log(`Cart after deleted product: ${(cart)}`);
+        await cart.save();
+        return id; // Devolvemos el _id del producto eliminado
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}}
