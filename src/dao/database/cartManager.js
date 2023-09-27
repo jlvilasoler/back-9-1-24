@@ -70,4 +70,17 @@ async deleteProductFromCart(cid, id) {
         console.error('Error:', error);
         throw error;
     }
-}}
+}
+
+
+
+// ver aca ULTIMO SIN TERMINAR .-------------------------------- 
+async updateCart(cid, obj) {
+    const updateCartResult = await cartModel.updateOne({ _id: cid }, obj).lean();
+    if (updateCartResult.nModified === 1) {
+        return obj;
+    }
+    // Si llegas aquí, significa que no se modificó ningún documento.
+    return null;
+}
+}

@@ -71,8 +71,8 @@ router.post('/cart/:cid/products/:pid', async (req, res) => {
 
 
 
-// PARTE NUEVA:
-// En la ruta POST, Agregar pid a cart segun su cid
+// PARTE NUEVA: (OK)
+// En la ruta DELETE, Eliminar pid a cart segun su cid
 router.delete('/cart/:cid/products/:pid', async (req, res) => {
     try {
         const cid = req.params.cid;
@@ -100,6 +100,48 @@ router.delete('/cart/:cid/products/:pid', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
+// En la ruta DELETE, Eliminar todos los productos de un cart
+router.delete('/cart/:cid', async (req, res) => {
+    try {
+        const cartId = req.params.cid;
+        const cart = await cartManager.getCartById(cartId); // Buscamos el carrito 
+        if (!cart) {
+            return res.status(404).json({ message: 'Cart not found' });
+        }
+
+
+        cart.products = []; //si hay carrito se deja en cero [] )
+        await cart.save(); //guarda el carrito en cero unidades
+        return res.json({ message: 'All products removed from cart' });
+    
+    } catch (error) {
+        console.error('Error:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+// NUEVO ULTIMO - SIN TERMINAR
+// En la ruta PUT, debe actualizar el carrito
+router.put('/cart/:cid', async (req, res) => {
+    try {
+
+        const { cid } = req.params;
+        const cart = await cartManager.getCartById(cid);
+        if (cart) {
+
+            //ver aca
+            await cartManager.updateCart(pid, prod);
+            res.send("Product updated successfully");
+        } else {
+            res.status(404).send('Product not found');
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 
 
 
