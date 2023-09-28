@@ -10,7 +10,8 @@
                     <h2 style="text-align: center; font-size:20px;" class="card-text"> $ {{this.price}}</h2>
                     <h2 style="color:red; text-align: center; font-size:10px;" class="card-text"> Stock: {{this.stock}}</h2>
 
-                    <button id="addToCart" style="display: block; margin: 0 auto;" href="#" class="btn btn-primary">Agregar al carrito</button>
+                <button onclick="window.location.href='/cart'" style="display: block; margin: 0 auto;" class="btn btn-primary">ADD TO CART</button>
+
                 </div>
             </div>
             {{/each}}
@@ -39,11 +40,17 @@
   </div>
 </footer>
 
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/socket.io/socket.io.js"></script>
 
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/products.js"></script>
+
+    <script src="src/public/js/products.js"></script>
 

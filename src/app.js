@@ -22,7 +22,7 @@ useUnifiedTopology: true
 
 
 let response = await cartModel.find({}).explain("executionStats");
-console.log(response);
+
 
 
 const db = mongoose.connection;
@@ -72,8 +72,10 @@ app.use('/api', productRouter);
 app.use('/api', cartRouter);
 app.use(viewsRouter);
 
-app.use('/img', imgRouter);
 
+
+app.use('/img', imgRouter);
+app.use('/cart', viewsRouter);
 
 
 

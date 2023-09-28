@@ -2,6 +2,7 @@ import { Router } from "express";
 import { ProductManager } from "../src/dao/filesystem/productManager.js";
 import { productModel } from "../src/dao/models/product.model.js";
 import { cartModel } from "../src/dao/models/cart.model.js";
+import CartManager from "../src/dao/database/cartManager.js";
 
 const productManager = new ProductManager();
 
@@ -17,7 +18,10 @@ router.get("/products", async (req, res) => {
     const sort = req.query.sort || 'asc';
     const query = req.query.query || '';
     const stockQuery = req.query.status || '';
-
+/*
+    res.render("products", {products: doc.payload, paginate: doc.hasNextPage});
+    res.json(res);
+*/
     //Sort
     const sortOptions = {};
     if (sort === "asc") {
@@ -40,7 +44,8 @@ router.get("/products", async (req, res) => {
     {   filter.status = stockQuery === 'true';}
 
 
-    
+
+
 
 
 
@@ -55,9 +60,6 @@ router.get("/products", async (req, res) => {
     }
     );
 
-
-
-    
     const prevPage = pageId > 1 ? pageId - 1 : null; // Página previa o null si no hay
     const nextPage = result.hasNextPage ? pageId + 1 : null; // Página siguiente o null si no hay
 
@@ -84,8 +86,12 @@ router.get("/products", async (req, res) => {
             link: nextLink,
             isNext: true
         });
+        
     }
+
     res.render('products', {
+        status: "success",
+        payload: result.docs,
         products: result.docs,
         prevLink,
         nextLink,
@@ -96,8 +102,25 @@ router.get("/products", async (req, res) => {
         currentQuery: query,
         currentStock: stockQuery,
     });
-    console.log(result, "RESULTADO RENDERIZADO")
-    
+
+
+
+// RESUMEN RENDERIZADO:
+   const responseObject = {
+    status: "success",
+    payload: result.docs,
+    totalDocs: result.totalDocs,
+    limit: result.limit,
+    totalPages: result.totalPages,
+    page: result.page,
+    pagingCounter: result.pagingCounter,
+    hasPrevPage: result.hasPrevPage,
+    hasNextPage: result.hasNextPage,
+    prevPage: result.prevPage,
+    nextPage: result.nextPage
+};
+
+console.log("RESUMEN RENDERIZADO:", responseObject);
 });
 // Ejemplos: http://localhost:8080/products?page=1&limit=15&query=pomelo&sort=desc&status=true
 //           http://localhost:8080/products?page=1&limit=15&query=chocolate&sort=desc&status=true
@@ -121,6 +144,8 @@ router.get('/messages', async (req, res) => res.render('chat',
 
 router.get('/verimg', async (req, res) => res.render('img',
     {}));
+
+
 
     router.get('/cart', async (req, res) => res.render('cart',
     {}));

@@ -1,4 +1,5 @@
 import { productModel } from "../models/product.model.js";
+import CartManager from "./cartManager.js";
 
 export default class ProductManager {
 
@@ -55,6 +56,17 @@ export default class ProductManager {
             console.log(error);
         }
     }
+
+    
+
+
+
+
+
+
+
+
+
 
 
 }

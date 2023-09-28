@@ -71,7 +71,7 @@ router.post('/cart/:cid/products/:pid', async (req, res) => {
 
 
 
-// PARTE NUEVA: (OK)
+
 // En la ruta DELETE, Eliminar pid a cart segun su cid
 router.delete('/cart/:cid/products/:pid', async (req, res) => {
     try {
@@ -122,7 +122,7 @@ router.delete('/cart/:cid', async (req, res) => {
     }
 });
 
-// NUEVO ULTIMO - SIN TERMINAR
+
 // En la ruta PUT, debe actualizar el carrito
 router.put('/cart/:cid', async (req, res) => {
     try {
@@ -137,7 +137,6 @@ router.put('/cart/:cid', async (req, res) => {
         }
 
         // Actualizar los campos relevantes del carrito con los datos proporcionados
-        // Puedes actualizar cualquier campo del carrito según tus necesidades
         if (updatedCartData.products) {
             cart.products = updatedCartData.products;
         }
@@ -149,6 +148,39 @@ router.put('/cart/:cid', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+
+
+
+
+// NUEVAAAAAAA
+// En la ruta PUT, debe actualizar solo la cantidad de ejemplares del carrito
+router.put('/cart/:cid/products/:pid', async (req, res) => {
+    const cid = req.params.cid;
+    const pid = req.params.pid;
+    const quantity = req.body.quantity;
+    console.log('pid:', pid);
+
+
+    const cart = await cartManager.getCartById(cid);
+    console.log('Cart:', cart);
+
+
+    if (!cart) {
+        return res.status(404).json({ error: 'Cart not found' });
+    } console.log(cart);
+
+
+    const product = await productManager.getProductById(pid);
+    if (!product) {
+        return res.status(404).json({ error: 'Product not found' });
+    }console.log();
+
+    await productManager.updateProduct(cid, pid, quantity);
+    console.log(quantity);
+    res.json({ message: 'Product quantity modified!', productId: pid, cartId: cid });
+});
+
 
 
 

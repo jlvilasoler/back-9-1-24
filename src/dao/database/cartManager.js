@@ -72,6 +72,41 @@ async deleteProductFromCart(cid, id) {
     }
 }
 
+
+
+async updateProductQuantity(cid, pid, quantity) { 
+    try {
+        const cart = await this.getCartById(cid);
+        if (!cart) {
+            throw new Error("Cart not found");
+        }
+
+            const findProd = cart.products.findIndex((product) => product._id.toString() === pid);
+
+        if (!findProd) {
+            throw new Error("Product not found in cart");
+        }
+
+        if (isNaN(quantity) || quantity < 0) {
+            throw new Error("Invalid quantity value");
+        }
+
+        findProd.quantity = quantity;
+        await cart.save();
+
+        return cart;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+
+
+
+
+
+
 /*
 
 // Actualizando carrito 
@@ -83,6 +118,11 @@ async updateCart(cid, obj) {
     return null;
 }
 */
+
+
+
+
+
 
 
 }
