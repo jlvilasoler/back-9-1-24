@@ -176,7 +176,7 @@ router.put('/cart/:cid/products/:pid', async (req, res) => {
         return res.status(404).json({ error: 'Product not found' });
     }console.log();
 
-    await productManager.updateProduct(cid, pid, quantity);
+    await cartManager.updateProductQuantity(cid, pid, quantity);
     console.log(quantity);
     res.json({ message: 'Product quantity modified!', productId: pid, cartId: cid });
 });

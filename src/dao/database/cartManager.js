@@ -73,31 +73,28 @@ async deleteProductFromCart(cid, id) {
 }
 
 
-
-async updateProductQuantity(cid, pid, quantity) { 
+// VER ESTE CDIGO QUE NO ANDA
+async updateProductQuantity(cid, pid, quantity) {
     try {
-        const cart = await this.getCartById(cid);
-        if (!cart) {
-            throw new Error("Cart not found");
-        }
+    const cart = await cartModel.findById(cid);
+    console.log(cart, "CARRITO ENCONTRADO")
+    if (!cart) {
+        throw new Error("Cart not found");
+    }
 
-            const findProd = cart.products.findIndex((product) => product._id.toString() === pid);
+    const productToUpdate = cart.products.find(
+        (product) => product._id.toString() === pid
+    );    console.log(productToUpdate, "PRODUCTO ENCONTRADO")
+    if (!productToUpdate) {
+        throw new Error("Product not found in cart");
+    }
 
-        if (!findProd) {
-            throw new Error("Product not found in cart");
-        }
+    productToUpdate.quantity = quantity;
+    await cart.save();
 
-        if (isNaN(quantity) || quantity < 0) {
-            throw new Error("Invalid quantity value");
-        }
-
-        findProd.quantity = quantity;
-        await cart.save();
-
-        return cart;
+    return cart;
     } catch (error) {
-        console.log(error);
-        throw error;
+    console.log(error);
     }
 }
 
