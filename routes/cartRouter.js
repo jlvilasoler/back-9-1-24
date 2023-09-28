@@ -126,19 +126,27 @@ router.delete('/cart/:cid', async (req, res) => {
 // En la ruta PUT, debe actualizar el carrito
 router.put('/cart/:cid', async (req, res) => {
     try {
+        const cartId = req.params.cid; // obtenemos el valor cid de la url y lo almacenamos
+        const updatedCartData = req.body; // Datos actualizados del carrito
 
-        const { cid } = req.params;
-        const cart = await cartManager.getCartById(cid);
-        if (cart) {
+        // Buscar y obtener el documento de carrito específico en la base de datos
+        const cart = await cartManager.getCartById(cartId);
 
-            //ver aca
-            await cartManager.updateCart(pid, prod);
-            res.send("Product updated successfully");
-        } else {
-            res.status(404).send('Product not found');
+        if (!cart) {
+            return res.status(404).json({ error: 'Cart not found' });
         }
+
+        // Actualizar los campos relevantes del carrito con los datos proporcionados
+        // Puedes actualizar cualquier campo del carrito según tus necesidades
+        if (updatedCartData.products) {
+            cart.products = updatedCartData.products;
+        }
+        await cart.save(); // guarda el carrito
+
+        res.json({ message: 'Cart updated successfully', cart });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error('Error updating cart:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 

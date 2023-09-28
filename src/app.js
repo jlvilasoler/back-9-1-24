@@ -11,14 +11,19 @@ import imgRouter from '../routes/imgRouter.js'
 
 
 import { messageModel } from './dao/models/chat.model.js';
-
-
+import { productModel } from './dao/models/product.model.js';
+import { cartModel } from './dao/models/cart.model.js';
 
 mongoose.connect(
 'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/ecommerce?retryWrites=true&w=majority', {
 useNewUrlParser: true,
 useUnifiedTopology: true
 });
+
+
+let response = await cartModel.find({}).explain("executionStats");
+console.log(response);
+
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
@@ -57,7 +62,7 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/static', express.static('./public'));
+app.use('/static', express.static('./src/public'));
 
 
 
@@ -68,6 +73,7 @@ app.use('/api', cartRouter);
 app.use(viewsRouter);
 
 app.use('/img', imgRouter);
+
 
 
 

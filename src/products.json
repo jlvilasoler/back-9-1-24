@@ -207,5 +207,27 @@
 		"stock": 212,
 		"status": "true",
 		"category": "chocolates"
+	},
+	{
+		"id": 20,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 67,
+		"thumbnail": "NO IMAGE",
+		"code": 901,
+		"stock": 11,
+		"status": "true",
+		"category": "chocolates"
+	},
+	{
+		"id": 21,
+		"title": "Chocolates Snickers",
+		"description": "45g",
+		"price": 67,
+		"thumbnail": "NO IMAGE",
+		"code": 901,
+		"stock": 11,
+		"status": "true",
+		"category": "chocolates"
 	}
 ]

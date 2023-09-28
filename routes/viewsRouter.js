@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { ProductManager } from "../src/dao/filesystem/productManager.js";
 import { productModel } from "../src/dao/models/product.model.js";
+import { cartModel } from "../src/dao/models/cart.model.js";
 
 const productManager = new ProductManager();
 
@@ -15,7 +16,7 @@ router.get("/products", async (req, res) => {
     const limit = parseInt(req.query.limit) || 10; //Por defecto es limite 10 por pagina , pero se le puede poner un lmite n
     const sort = req.query.sort || 'asc';
     const query = req.query.query || '';
-    const stockQuery = req.query.stock || '';
+    const stockQuery = req.query.status || '';
 
     //Sort
     const sortOptions = {};
@@ -35,10 +36,11 @@ router.get("/products", async (req, res) => {
         ];
     }
 
-    if (stockQuery) {
-        filter.stock = stockQuery;
-    }
+    if (stockQuery === 'true' || stockQuery === 'false') 
+    {   filter.status = stockQuery === 'true';}
 
+
+    
 
 
 
@@ -94,8 +96,14 @@ router.get("/products", async (req, res) => {
         currentQuery: query,
         currentStock: stockQuery,
     });
-    console.log(result);
+    console.log(result, "RESULTADO RENDERIZADO")
+    
 });
+// Ejemplos: http://localhost:8080/products?page=1&limit=15&query=pomelo&sort=desc&status=true
+//           http://localhost:8080/products?page=1&limit=15&query=chocolate&sort=desc&status=true
+//           http://localhost:8080/products?page=1&limit=15&query=monster&sort=asc&status=true
+
+
 
 
 router.get('/', async (req, res) => {
@@ -111,7 +119,10 @@ router.get('/realtimeproducts', async (req, res) => {
 router.get('/messages', async (req, res) => res.render('chat',
     {}));
 
-router.get('/verimg', (req, res) => res.render('img',
+router.get('/verimg', async (req, res) => res.render('img',
+    {}));
+
+    router.get('/cart', async (req, res) => res.render('cart',
     {}));
 
 

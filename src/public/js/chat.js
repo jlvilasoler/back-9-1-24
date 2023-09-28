@@ -16,7 +16,7 @@ btnSend.addEventListener("click", () => {
         });
         console.log("Mensaje enviado:", mensaje);
         caja.value = "";
-    } 
+    }
 });
 
 
