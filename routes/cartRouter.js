@@ -72,7 +72,7 @@ router.post('/cart/:cid/products/:pid', async (req, res) => {
 
 
 
-// En la ruta DELETE, Eliminar pid a cart segun su cid
+// En la ruta DELETE, Elimina pid a un cart segun su cid
 router.delete('/cart/:cid/products/:pid', async (req, res) => {
     try {
         const cid = req.params.cid;
@@ -100,7 +100,6 @@ router.delete('/cart/:cid/products/:pid', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
 
 // En la ruta DELETE, Eliminar todos los productos de un cart
 router.delete('/cart/:cid', async (req, res) => {
@@ -153,7 +152,6 @@ router.put('/cart/:cid', async (req, res) => {
 
 
 
-// NUEVAAAAAAA
 // En la ruta PUT, debe actualizar solo la cantidad de ejemplares del carrito
 router.put('/cart/:cid/products/:pid', async (req, res) => {
     const cid = req.params.cid;

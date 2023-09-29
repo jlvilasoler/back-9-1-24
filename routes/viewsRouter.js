@@ -6,6 +6,8 @@ import CartManager from "../src/dao/database/cartManager.js";
 
 const productManager = new ProductManager();
 
+const cartManager = new CartManager();
+
 const router = Router();
 
 
@@ -147,8 +149,13 @@ router.get('/verimg', async (req, res) => res.render('img',
 
 
 
-    router.get('/cart', async (req, res) => res.render('cart',
-    {}));
+    router.get('/carts/:cid', async (req, res) => {
+        console.log(req.params.cid)
+        const cart = await cartManager.getCartById(req.params.cid);
+        console.log(cart)
+        res.render('cart',
+        {cart})
+    });
 
 
 export default router;

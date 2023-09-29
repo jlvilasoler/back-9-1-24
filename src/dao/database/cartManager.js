@@ -31,7 +31,7 @@ export default class CartManager {
         const cart = await this.getCartById(cid); 
         console.log(cart);
 
-        let item = cart.products.find((p) => p.product === productId); 
+        let item = cart.products.find((p) => p.product.toString() === productId); 
         console.log(productId);
         if (item) { 
             item.quantity++; 
@@ -47,33 +47,31 @@ export default class CartManager {
 
 
 
-/////////////////////////////// Ultima Entrega
+
 // Eliminando un producto del carrito
-async deleteProductFromCart(cid, id) {
+async deleteProductFromCart(cid, pid) {
     try {
-        console.log(`Deleting product ${id} from cart ${cid}`);
+        console.log(`Deleting product ${pid} from cart ${cid}`);
         const cart = await this.getCartById(cid);
 
-        const itemIndex = cart.products.findIndex((product) => product._id.toString() === id);
+        const itemIndex = cart.products.findIndex((product) => product.product.toString() === pid);
 
         if (itemIndex !== -1) {
             // Si se encuentra el producto en el carrito, eliminarlo
             cart.products.splice(itemIndex, 1);
         } else {
-            console.log(`Product with _id ${id} not found in cart.`);
+            console.log(`Product with id ${pid} not found in cart.`);
         }
 
         console.log(`Cart after deleted product: ${(cart)}`);
         await cart.save();
-        return id; // Devolvemos el _id del producto eliminado
+        return pid; 
     } catch (error) {
         console.error('Error:', error);
         throw error;
     }
 }
 
-
-// VER ESTE CDIGO QUE NO ANDA
 async updateProductQuantity(cid, pid, quantity) {
     try {
     const cart = await cartModel.findById(cid);
@@ -83,7 +81,7 @@ async updateProductQuantity(cid, pid, quantity) {
     }
 
     const productToUpdate = cart.products.find(
-        (product) => product._id.toString() === pid
+        (product) => product.toString() === pid
     );    console.log(productToUpdate, "PRODUCTO ENCONTRADO")
     if (!productToUpdate) {
         throw new Error("Product not found in cart");
@@ -97,29 +95,6 @@ async updateProductQuantity(cid, pid, quantity) {
     console.log(error);
     }
 }
-
-
-
-
-
-
-
-/*
-
-// Actualizando carrito 
-async updateCart(cid, obj) {
-    const updateCartResult = await cartModel.updateOne({ _id: cid }, obj).lean();
-    if (updateCartResult.nModified === 1) {
-        return obj;
-    }
-    return null;
-}
-*/
-
-
-
-
-
 
 
 }

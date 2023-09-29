@@ -5,8 +5,8 @@ const cartCollection = "carts";
 const cartSchema = new mongoose.Schema( {
     products: [
     {
-        product: { type: mongoose.Schema.Types.ObjectId, ref: "products" },
-        quantity: { type: Number, }
+        quantity: { type: Number, },
+        product: { type: mongoose.Schema.Types.ObjectId, ref: "products" }
     },
 ],
 });
