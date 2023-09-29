@@ -20,10 +20,7 @@ router.get("/products", async (req, res) => {
     const sort = req.query.sort || 'asc';
     const query = req.query.query || '';
     const stockQuery = req.query.status || '';
-/*
-    res.render("products", {products: doc.payload, paginate: doc.hasNextPage});
-    res.json(res);
-*/
+
     //Sort
     const sortOptions = {};
     if (sort === "asc") {

@@ -6,7 +6,7 @@ const addToCart = async (cid, pid) => {
     //const json = await res.json();
     console.log(res);
     
-    alert(`Estamos agregando el producto ${pid} al cart ${cid}`);
+    alert(`Product added to cart`);
 
 }
 

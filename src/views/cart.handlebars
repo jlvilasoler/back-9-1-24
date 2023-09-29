@@ -4,7 +4,7 @@
     <div style="padding: 80px"; class="row">
         {{#each cart}}
             <div class="card" style="width: 2000px;">
-                <p style="text-align: left;" class="card-text"> Id: {{this.product.quantity}}</p>
+                <p style="text-align: left;" class="card-text"> Id: {{cart}}</p>
                 <img style="margin: 0 auto; width:150px; text-align: center;" src="{{this.product.thumbnail}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h1 style="text-align: center; font-size:25px;" class="card-text"> {{this.title}}</h1>
@@ -26,7 +26,7 @@
 </div>
 
 <footer style="position: relative;">
-<button onclick="window.location.href='/products'" style="margin-left: 700px; position: absolute; right: 0; top: 50%; transform: translateY(100%);" class="btn btn-primary">HOME</button>
+<button onclick="window.location.href='/products'" style="margin-left: 700px; position: absolute; right: 0; top: 10%; transform: translateY(100%);" class="btn btn-primary">HOME</button>
 </footer>
 
 
