@@ -2,13 +2,17 @@ import { Router } from "express";
 import CartManager from "../src/dao/database/cartManager.js";
 import ProductManager from "../src/dao/database/productManager.js"; // X
 
+import privateRoutes from "../src/middlewares/privateRoutes.js";
+import publicRoutes from "../src/middlewares/publicRoutes.js";
+
+
 const cartManager = new CartManager();
 const productManager = new ProductManager("../../products.json");
 const router = Router();
 
 
 // En la ruta POST, Crear nuevo carrito (va creando un cartId automatico, según el addCart)
-router.post('/cart/', async (req, res) => {
+router.post('/cart/', privateRoutes, async (req, res) => {
     try {
         const cart = { products: [] };
         const cartId = await cartManager.addCart(cart);
@@ -20,7 +24,7 @@ router.post('/cart/', async (req, res) => {
 });
 
 // En la ruta GET, Lee todos los carritos guardados
-router.get('/cart/', async (req, res) => {
+router.get('/cart/', privateRoutes,  async (req, res) => {
     try {
         const allCarts = await cartManager.getAllCarts();
         res.json(allCarts);
@@ -30,7 +34,7 @@ router.get('/cart/', async (req, res) => {
 });
 
 // En la ruta GET, Listado de productos según carrito
-router.get('/cart/:cid', async (req, res) => {
+router.get('/cart/:cid', privateRoutes,  async (req, res) => {
     try {
         const cartId = req.params.cid;
         const products = await cartManager.getProductsInCart(cartId);
@@ -41,7 +45,7 @@ router.get('/cart/:cid', async (req, res) => {
 });
 
 // En la ruta POST, Agregar pid a cart segun su cid
-router.post('/cart/:cid/products/:pid', async (req, res) => {
+router.post('/cart/:cid/products/:pid', privateRoutes,  async (req, res) => {
     try {
         const cid = req.params.cid;
         const pid = req.params.pid;
@@ -73,7 +77,7 @@ router.post('/cart/:cid/products/:pid', async (req, res) => {
 
 
 // En la ruta DELETE, Elimina pid a un cart segun su cid
-router.delete('/cart/:cid/products/:pid', async (req, res) => {
+router.delete('/cart/:cid/products/:pid', privateRoutes,  async (req, res) => {
     try {
         const cid = req.params.cid;
         const pid = req.params.pid;
@@ -102,7 +106,7 @@ router.delete('/cart/:cid/products/:pid', async (req, res) => {
 });
 
 // En la ruta DELETE, Eliminar todos los productos de un cart
-router.delete('/cart/:cid', async (req, res) => {
+router.delete('/cart/:cid', privateRoutes,  async (req, res) => {
     try {
         const cartId = req.params.cid;
         const cart = await cartManager.getCartById(cartId); // Buscamos el carrito 
@@ -123,7 +127,7 @@ router.delete('/cart/:cid', async (req, res) => {
 
 
 // En la ruta PUT, debe actualizar el carrito
-router.put('/cart/:cid', async (req, res) => {
+router.put('/cart/:cid', privateRoutes,  async (req, res) => {
     try {
         const cartId = req.params.cid; // obtenemos el valor cid de la url y lo almacenamos
         const updatedCartData = req.body; // Datos actualizados del carrito
@@ -153,7 +157,7 @@ router.put('/cart/:cid', async (req, res) => {
 
 
 // En la ruta PUT, debe actualizar solo la cantidad de ejemplares del carrito
-router.put('/cart/:cid/products/:pid', async (req, res) => {
+router.put('/cart/:cid/products/:pid', privateRoutes, async (req, res) => {
     const cid = req.params.cid;
     const pid = req.params.pid;
     const quantity = req.body.quantity;

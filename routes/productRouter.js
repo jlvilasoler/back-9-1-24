@@ -1,6 +1,7 @@
 import { Router } from "express";
 import ProductManager from "../src/dao/database/productManager.js";
-
+import privateRoutes from "../src/middlewares/privateRoutes.js";
+import publicRoutes from "../src/middlewares/publicRoutes.js";
 
 const productManager = new ProductManager();
 
@@ -8,7 +9,7 @@ const productManager = new ProductManager();
 const router = Router();
 
 // En la ruta GET, debe devolver los productos
-router.get('/products/', async (req, res) => {
+router.get('/products/', privateRoutes, async (req, res) => {
     const { limit } = req.query
     const readproduct = await productManager.getProducts();
     if (limit) {
@@ -20,7 +21,7 @@ router.get('/products/', async (req, res) => {
 });
 
 // En la ruta GET, debe devolver un producto específico según el productId
-router.get('/products/:pid', async (req, res) => {
+router.get('/products/:pid', privateRoutes,  async (req, res) => {
     try {
         const pid = req.params.pid;
         const product = await productManager.getProductById(pid);
@@ -36,7 +37,7 @@ router.get('/products/:pid', async (req, res) => {
 });
 
 // En la ruta POST, debe agregar un nuevo producto
-router.post('/products/', async (req, res) => {
+router.post('/products/', privateRoutes,  async (req, res) => {
     try {
         const {
             id,
@@ -60,7 +61,7 @@ router.post('/products/', async (req, res) => {
 });
 
 // En la ruta PUT, debe actualizar el producto
-router.put('/products/:pid', async (req, res) => {
+router.put('/products/:pid', privateRoutes,  async (req, res) => {
     try {
         const prod = req.body;
         const { pid } = req.params;
@@ -77,7 +78,7 @@ router.put('/products/:pid', async (req, res) => {
 });
 
 // En la ruta DELETE, debe borrar el producto especificado en la ruta
-router.delete('/products/:pid', async (req, res) => {
+router.delete('/products/:pid', privateRoutes,  async (req, res) => {
     try {
         const productId = req.params.pid;
         const eliminar = await productManager.deleteProduct(productId);

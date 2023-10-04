@@ -121,7 +121,7 @@ router.get("/products", async (req, res) => {
         nextPage: result.nextPage
     };
 
-    console.log("RESUMEN RENDERIZADO:", responseObject);
+    //console.log("RESUMEN RENDERIZADO:", responseObject);
 });
 // Ejemplos: http://localhost:8080/products?page=1&limit=15&query=pomelo&sort=desc&status=true
 //           http://localhost:8080/products?page=1&limit=15&query=chocolate&sort=desc&status=true
@@ -149,9 +149,9 @@ router.get('/verimg', async (req, res) => res.render('img',
 
 
 router.get('/carts/:cid', async (req, res) => {
-    console.log(req.params.cid)
+    //console.log(req.params.cid)
     const cart = await cartManager.getCartById(req.params.cid);
-    console.log(cart)
+    //console.log(cart)
     res.render('cart',
         { cart })
 });
@@ -223,6 +223,13 @@ router.get('/profile', privateRoutes, (req, res) => {
     const { first_name, last_name, email, age } = req.session;
     res.render('profile', { first_name, last_name, email, age });
 });
+
+
+router.get('/logout', privateRoutes, (req, res) => {
+    req.session.destroy();
+    res.redirect('/login');
+    console.log(res.redirect)
+    });
 
 
 export default router;

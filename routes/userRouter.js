@@ -1,11 +1,14 @@
 import { Router } from "express";
 import { userModel } from "../src/dao/models/user.model.js";
+import privateRoutes from "../src/middlewares/privateRoutes.js";
+import publicRoutes from "../src/middlewares/publicRoutes.js";
+
 
 const router = Router();
 
-
+//ok
 //registrar el usuario en la base de datos
-router.post('/signup', async (req, res) => {
+router.post('/signup', publicRoutes,  async (req, res) => {
     const { first_name, last_name, email, age, password } = req.body; // leemos los datos que llegan de formulario
 
     const userExist = await userModel.findOne( {email} ); // buscamos si el usuario existe 
@@ -25,12 +28,12 @@ router.post('/signup', async (req, res) => {
 
     req.session.isLogged = true;
 
-    res.redirect('/profile'); // lo redirigimos a profile
+    res.redirect('/profile'); // lo redirigimos a profile //antes decia profile
 });
 
 
-
-router.post('/login', async (req, res) => {
+//ok
+router.post('/login', publicRoutes,   async (req, res) => {
     const { email, password } = req.body; // leemos los datos que llegan de formulario
     const user = await userModel.findOne( {email, password} ).lean();
 
@@ -45,7 +48,7 @@ router.post('/login', async (req, res) => {
 
     req.session.isLogged = true;
 
-    res.redirect('/profile');
+    res.redirect('/profile'); //antes decia profile
 });
 
 export default router;
