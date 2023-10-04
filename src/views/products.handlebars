@@ -1,11 +1,15 @@
 <button onclick="window.location.href='/carts/65161b18b4f0ae3a37ba72e2'" style="margin-left: 700px; position: absolute; right: 0;" class="btn btn-primary">MY CART</button>
+<button onclick="logoutAndRedirect();" style="margin-left: 500px; position: absolute; left: 100;" class="btn btn-primary">LOG OUT</button>
+
 
 <div class="container">
     <div style="padding: 80px"; class="row">
 
-
+        <h1> Hola {{first_name}} {{last_name}} </h1>
 
         {{#each products}}
+
+
             <div class="card" style="width: 18rem;">
                 <p style="text-align: left;" class="card-text"> Id: {{this.id}}</p>
                 <img style="margin: 0 auto; width:150px; text-align: center;" src="{{this.thumbnail}}" class="card-img-top" alt="...">
@@ -57,5 +61,5 @@
 
 
 
-    <script src="/js/products.js"></script>
+    <script src="../public/js/products.js"></script>
 

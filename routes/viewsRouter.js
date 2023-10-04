@@ -1,15 +1,18 @@
-import { Router } from "express";
+import { Router, application } from "express";
 import { ProductManager } from "../src/dao/filesystem/productManager.js";
 import { productModel } from "../src/dao/models/product.model.js";
 import { cartModel } from "../src/dao/models/cart.model.js";
 import CartManager from "../src/dao/database/cartManager.js";
+import handlebars from "express-handlebars";
+import publicRoutes from "../src/middlewares/publicRoutes.js";
+import privateRoutes from "../src/middlewares/privateRoutes.js";
+
 
 const productManager = new ProductManager();
 
 const cartManager = new CartManager();
 
 const router = Router();
-
 
 
 
@@ -39,8 +42,7 @@ router.get("/products", async (req, res) => {
         ];
     }
 
-    if (stockQuery === 'true' || stockQuery === 'false') 
-    {   filter.status = stockQuery === 'true';}
+    if (stockQuery === 'true' || stockQuery === 'false') { filter.status = stockQuery === 'true'; }
 
 
 
@@ -56,7 +58,7 @@ router.get("/products", async (req, res) => {
             limit, // con limite de tantos productos
             sort: sortOptions, // sort con Opciones: asc y desc
             lean: true,
-    }
+        }
     );
 
     const prevPage = pageId > 1 ? pageId - 1 : null; // Página previa o null si no hay
@@ -85,7 +87,7 @@ router.get("/products", async (req, res) => {
             link: nextLink,
             isNext: true
         });
-        
+
     }
 
     res.render('products', {
@@ -104,22 +106,22 @@ router.get("/products", async (req, res) => {
 
 
 
-// RESUMEN RENDERIZADO:
-   const responseObject = {
-    status: "success",
-    payload: result.docs,
-    totalDocs: result.totalDocs,
-    limit: result.limit,
-    totalPages: result.totalPages,
-    page: result.page,
-    pagingCounter: result.pagingCounter,
-    hasPrevPage: result.hasPrevPage,
-    hasNextPage: result.hasNextPage,
-    prevPage: result.prevPage,
-    nextPage: result.nextPage
-};
+    // RESUMEN RENDERIZADO:
+    const responseObject = {
+        status: "success",
+        payload: result.docs,
+        totalDocs: result.totalDocs,
+        limit: result.limit,
+        totalPages: result.totalPages,
+        page: result.page,
+        pagingCounter: result.pagingCounter,
+        hasPrevPage: result.hasPrevPage,
+        hasNextPage: result.hasNextPage,
+        prevPage: result.prevPage,
+        nextPage: result.nextPage
+    };
 
-console.log("RESUMEN RENDERIZADO:", responseObject);
+    console.log("RESUMEN RENDERIZADO:", responseObject);
 });
 // Ejemplos: http://localhost:8080/products?page=1&limit=15&query=pomelo&sort=desc&status=true
 //           http://localhost:8080/products?page=1&limit=15&query=chocolate&sort=desc&status=true
@@ -146,13 +148,81 @@ router.get('/verimg', async (req, res) => res.render('img',
 
 
 
-    router.get('/carts/:cid', async (req, res) => {
-        console.log(req.params.cid)
-        const cart = await cartManager.getCartById(req.params.cid);
-        console.log(cart)
-        res.render('cart',
-        {cart})
-    });
+router.get('/carts/:cid', async (req, res) => {
+    console.log(req.params.cid)
+    const cart = await cartManager.getCartById(req.params.cid);
+    console.log(cart)
+    res.render('cart',
+        { cart })
+});
+
+
+router.get('/cookies', (req, res) => {
+    res.render('cookies');
+});
+
+
+router.get('/getCookies', (req, res) => {
+    res.send(req.cookies);
+});
+
+
+router.post('/setCookies', (req, res) => {
+    const { nombre, valor } = req.body;
+    res.cookie(nombre, valor, { maxAge: 1000 * 10 }).send('Cookie creada'); // con maxAge se borra la cookie , si no queremos que se borre hay que sacar maxAge
+})
+
+/*
+//sesion
+router.get('/root', (req, res) => {
+    if(req.session?.nombre) {
+        const counter = req.session.counter++;
+        res.send(`hola ${req.session.nombre}, visitaste el sitio ${counter} veces`);
+    } else {
+        const nombre = req.query.nombre;
+        req.session.nombre = nombre;
+        req.session.counter = 1;
+        res.send(`Te damos la bienvenida`);
+    }
+});
+*/
+
+
+
+router.get('/logear', (req, res) => {
+
+    if (req.session.isLogged) {
+        return res.send("You are logged in")
+    }
+
+    req.session.isLogged = true;
+    res.send("You are logged in again");
+})
+
+
+
+router.get('/login', publicRoutes,(req, res) => {
+    if (req.session.isLogged) {
+        return res.redirect('/profile')
+    }
+    res.render('login')
+})
+
+router.get('/signup', publicRoutes, (req, res) => {
+    if (req.session.isLogged) {
+        return res.redirect('/profile')
+    }
+    res.render('signup')
+})
+
+router.get('/profile', privateRoutes, (req, res) => {
+    if(!req.session.isLogged) {
+        return res.redirect('/login');
+    }
+
+    const { first_name, last_name, email, age } = req.session;
+    res.render('profile', { first_name, last_name, email, age });
+});
 
 
 export default router;

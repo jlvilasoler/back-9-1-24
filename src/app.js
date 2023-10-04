@@ -8,6 +8,10 @@ import { Server } from 'socket.io';
 import { Socket } from 'socket.io';
 import mongoose from 'mongoose';
 import imgRouter from '../routes/imgRouter.js'
+/*import cookieParser from 'cookie-parser';*/
+import session from "express-session";
+import MongoStore from 'connect-mongo';
+import userRouter from '../routes/userRouter.js'
 
 
 import { messageModel } from './dao/models/chat.model.js';
@@ -31,8 +35,6 @@ db.once('open', () => {
 console.log('Connection to MongoDB established successfully');
 });
 
-
-
 const productManager = new ProductManager();
 const cartManager = new CartManager();
 
@@ -49,7 +51,7 @@ const socketServer = new Server(httpServer);
 
 
 app.engine('handlebars', handlebars.engine());
-app.set('views', './src/views');
+app.set('views', './src/views'); // declaramos donde van a estar las vistas
 app.set('view engine', 'handlebars');
 app.use(express.static('./src/public'));
 
@@ -62,20 +64,45 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/static', express.static('./src/public'));
 
+app.use(
+    session({
+        store: MongoStore.create({
+            mongoUrl: 'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/ecommerce?retryWrites=true&w=majority', 
+            ttl: 15, //segundos
+        }),
+        secret: "Jose",
+        resave: true,
+        saveUninitialized: true, //se guarda , para crear la sesion
+        })
+);
+
+
+
+/*
+app.use(cookieParser());
+app.use(session({
+    secret: "Jose",
+    resave: true,
+    saveUninitialized: true, //se guarda , para crear la sesion 
+}));
+*/
+
+app.use('/static', express.static('./src/public'));
 
 
 app.use('/', viewsRouter);
 app.use('/products', viewsRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);
+app.use('/api', userRouter);
 app.use(viewsRouter);
 
 
 
 app.use('/img', imgRouter);
 app.use('/cart', viewsRouter);
+app.use('/cookies', viewsRouter)
 
 
 

@@ -96,6 +96,14 @@ async updateProductQuantity(cid, pid, quantity) {
     }
 }
 
+async getCartById(id) {
+    const cart = await cartModel
+      .findById(id)
+      .populate("products.product")
+      .lean();
+    return cart;
+  } 
+
 
 }
 
