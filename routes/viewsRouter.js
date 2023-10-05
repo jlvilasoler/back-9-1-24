@@ -188,7 +188,7 @@ router.get('/root', (req, res) => {
 */
 
 
-
+/*
 router.get('/logear', (req, res) => {
 
     if (req.session.isLogged) {
@@ -198,13 +198,14 @@ router.get('/logear', (req, res) => {
     req.session.isLogged = true;
     res.send("You are logged in again");
 })
+*/
 
 
-
-router.get('/login', publicRoutes,(req, res) => {
+router.get('/login', publicRoutes, (req, res) => {
     if (req.session.isLogged) {
         return res.redirect('/profile')
     }
+
     res.render('login')
 })
 
@@ -216,12 +217,12 @@ router.get('/signup', publicRoutes, (req, res) => {
 })
 
 router.get('/profile', privateRoutes, (req, res) => {
-    if(!req.session.isLogged) {
+    if (!req.session.isLogged) {
         return res.redirect('/login');
     }
 
-    const { first_name, last_name, email, age } = req.session;
-    res.render('profile', { first_name, last_name, email, age });
+    const { first_name, last_name, email, age, role } = req.session;
+    res.render('profile', { first_name, last_name, email, age, role });
 });
 
 
@@ -229,7 +230,10 @@ router.get('/logout', privateRoutes, (req, res) => {
     req.session.destroy();
     res.redirect('/login');
     console.log(res.redirect)
-    });
+});
 
 
 export default router;
+
+
+

@@ -69,7 +69,7 @@ app.use(
     session({
         store: MongoStore.create({
             mongoUrl: 'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/ecommerce?retryWrites=true&w=majority', 
-            ttl: 15, //segundos
+            ttl: 50, //segundos
         }),
         secret: "Jose",
         resave: true,
