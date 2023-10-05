@@ -35,6 +35,7 @@ router.post('/signup', publicRoutes, async (req, res) => {
         req.session.last_name = last_name;
         req.session.email = email;
         req.session.age = age;
+        req.session.user = user;
 
         req.session.isLogged = true;
 
