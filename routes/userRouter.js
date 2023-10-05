@@ -6,7 +6,7 @@ import publicRoutes from "../src/middlewares/publicRoutes.js";
 
 const router = Router();
 
-//ok
+
 //registrar el usuario en la base de datos
 router.post('/signup', publicRoutes, async (req, res) => {
     try {
@@ -15,8 +15,11 @@ router.post('/signup', publicRoutes, async (req, res) => {
 
         if (email === "adminCoder@coder.com" && password === "adminCod3r123") {
             // Asigna un rol de "admin" a las credenciales específicas si lo deseas
-            role = "Admin";
+            role = "admin";
+
         }
+
+
 
         const userExist = await userModel.findOne({ email }); // buscamos si el usuario existe
 
@@ -43,7 +46,7 @@ router.post('/signup', publicRoutes, async (req, res) => {
 });
 
 
-//ok
+
 router.post('/login', publicRoutes,   async (req, res) => {
     const { email, password } = req.body; // leemos los datos que llegan de formulario
     const user = await userModel.findOne( {email, password} ).lean();

@@ -17,7 +17,7 @@ const router = Router();
 
 
 //router de Productos y paginación:
-router.get("/products", async (req, res) => {
+router.get("/products", privateRoutes,  async (req, res) => {
     const pageId = parseInt(req.query.page) || 1; //con esto sabemos a la pagina que vamos a acceder, para hacer la numeracion de cada pagina /1, /2 ,/3...
     const limit = parseInt(req.query.limit) || 10; //Por defecto es limite 10 por pagina , pero se le puede poner un lmite n
     const sort = req.query.sort || 'asc';
@@ -132,23 +132,23 @@ router.get("/products", async (req, res) => {
 
 router.get('/', async (req, res) => {
     const products = await productManager.getProducts();
-    res.render('home', { products });
+    res.render('login', { products });
 });
 
-router.get('/realtimeproducts', async (req, res) => {
+router.get('/realtimeproducts', privateRoutes,  async (req, res) => {
     const products = await productManager.getProducts();
     res.render('realTimeProducts', {});
 });
 
-router.get('/messages', async (req, res) => res.render('chat',
+router.get('/messages', privateRoutes,  async (req, res) => res.render('chat',
     {}));
 
-router.get('/verimg', async (req, res) => res.render('img',
+router.get('/verimg', privateRoutes,  async (req, res) => res.render('img',
     {}));
 
 
 
-router.get('/carts/:cid', async (req, res) => {
+router.get('/carts/:cid', privateRoutes,  async (req, res) => {
     //console.log(req.params.cid)
     const cart = await cartManager.getCartById(req.params.cid);
     //console.log(cart)
@@ -157,48 +157,24 @@ router.get('/carts/:cid', async (req, res) => {
 });
 
 
-router.get('/cookies', (req, res) => {
+router.get('/cookies', privateRoutes,  (req, res) => {
     res.render('cookies');
 });
 
 
-router.get('/getCookies', (req, res) => {
+router.get('/getCookies', privateRoutes,  (req, res) => {
     res.send(req.cookies);
 });
 
 
-router.post('/setCookies', (req, res) => {
+router.post('/setCookies', privateRoutes,  (req, res) => {
     const { nombre, valor } = req.body;
     res.cookie(nombre, valor, { maxAge: 1000 * 10 }).send('Cookie creada'); // con maxAge se borra la cookie , si no queremos que se borre hay que sacar maxAge
 })
 
-/*
-//sesion
-router.get('/root', (req, res) => {
-    if(req.session?.nombre) {
-        const counter = req.session.counter++;
-        res.send(`hola ${req.session.nombre}, visitaste el sitio ${counter} veces`);
-    } else {
-        const nombre = req.query.nombre;
-        req.session.nombre = nombre;
-        req.session.counter = 1;
-        res.send(`Te damos la bienvenida`);
-    }
-});
-*/
 
 
-/*
-router.get('/logear', (req, res) => {
 
-    if (req.session.isLogged) {
-        return res.send("You are logged in")
-    }
-
-    req.session.isLogged = true;
-    res.send("You are logged in again");
-})
-*/
 
 
 router.get('/login', publicRoutes, (req, res) => {
