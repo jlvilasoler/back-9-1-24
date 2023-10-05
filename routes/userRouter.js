@@ -16,7 +16,6 @@ router.post('/signup', publicRoutes, async (req, res) => {
         if (email === "adminCoder@coder.com" && password === "adminCod3r123") {
             // Asigna un rol de "admin" a las credenciales específicas si lo deseas
             role = "admin";
-
         }
 
 
@@ -28,7 +27,7 @@ router.post('/signup', publicRoutes, async (req, res) => {
         }
 
         const user = await userModel.create({
-            first_name, last_name, email, age, password, role,
+            first_name, last_name, email, age, password, role, user,
         });
 
         req.session.first_name = first_name;
