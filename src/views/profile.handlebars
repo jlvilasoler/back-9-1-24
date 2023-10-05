@@ -1,16 +1,34 @@
 <a href="/logout" style="margin-left: 2070px; position: absolute; left: 100;" class="btn btn-dark">LOG OUT</a>
 
+<header>
 
-<h1 style="padding-top: 50px; padding-left: 30px; font-size:20px; color: white;"> Hello, {{first_name}} {{last_name}}:
-</h1>
+    <h1 style="padding-top: 80px; padding-left: 30px; font-size:20px; color: white;"> Hello, {{first_name}}
+        {{last_name}}:
+    </h1>
+
+</header>
 
 
-<h2 style="padding-top: 20px; padding-left: 30px; font-size:15px; color: white;">({{email}})</h2>
-<h2 style="padding-top: 0px; padding-left: 30px; font-size:15px; color: white;">Account type: {{role}}</h2>
+
+
+</div style="margin-top: 1000px; box-shadow: 5px 5px 10px #888888;">
+<div class="card border-dark mb-3 box-shadow: 5px 5px 10px #888888;" style="max-width: 18rem;">
+    <h2 style="padding-top: 20px; padding-left: 30px; font-size:15px; color: black;">Email: {{email}}</h2>
+    <h2 style="padding-top: 0px; padding-left: 30px; font-size:15px; color: black;">Account type: {{role}}</h2>
+    <p style="padding-top: 0px; padding-left: 30px; font-size:15px; color: black;">Number of logins: {{visitCount}} </p>
+    <p style="padding-top: 0px; padding-left: 30px; font-size:15px; color: black;">Date: {{dateToday}} </p>
+</div>
+</div>
 
 
 
-<section style="padding-top: 300px;" class="d-flex justify-content-center align-items-center">
+
+
+
+
+
+
+<section style="padding-top: 100px;" class="d-flex justify-content-center align-items-center">
 
 
     <div class="card" style="display: flex; width: 400px; height: 400px;">
@@ -18,7 +36,8 @@
             style="display: flex; width: 400px; height: 273px" ; class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Shop from the comfort of your home...</h5>
-            <a href="http://localhost:8080/products" style="width: 200px" class="align-items-center btn btn-success">GO TO STORE</a>
+            <a href="http://localhost:8080/products" style="width: 200px" class="align-items-center btn btn-success">GO
+                TO STORE</a>
         </div>
     </div>
 

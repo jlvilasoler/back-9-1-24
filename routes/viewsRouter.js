@@ -192,13 +192,24 @@ router.get('/signup', publicRoutes, (req, res) => {
     res.render('signup')
 })
 
+// Bd de cantidad de visitas (acumulado), inicia con 0
+const visitCountDB = {
+    count: 0
+};
+
 router.get('/profile', privateRoutes, (req, res) => {
     if (!req.session.isLogged) {
         return res.redirect('/login');
     }
 
+    // Incrementa el contador de visitas
+    visitCountDB.count++;
+
+   // Obtiene la fecha de hoy en formato 'YYYY-MM-DD'
+   const dateToday = new Date().toISOString().split('T')[0];
+
     const { first_name, last_name, email, age, role } = req.session;
-    res.render('profile', { first_name, last_name, email, age, role });
+    res.render('profile', { first_name, last_name, email, age, role, visitCount: visitCountDB.count, dateToday });
 });
 
 
