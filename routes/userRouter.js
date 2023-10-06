@@ -27,14 +27,13 @@ router.post('/signup', publicRoutes, async (req, res) => {
         }
 
         const user = await userModel.create({
-            first_name, last_name, email, age, password, role, user,
+            first_name, last_name, email, age, password, role,
         });
 
         req.session.first_name = first_name;
         req.session.last_name = last_name;
         req.session.email = email;
         req.session.age = age;
-        req.session.user = user;
 
         req.session.isLogged = true;
 
