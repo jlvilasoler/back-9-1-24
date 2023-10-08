@@ -2,7 +2,7 @@ import { Router } from "express";
 import { userModel } from "../src/dao/models/user.model.js";
 import privateRoutes from "../src/middlewares/privateRoutes.js";
 import publicRoutes from "../src/middlewares/publicRoutes.js";
-
+import bcrypt from "bcrypt"
 
 const router = Router();
 
@@ -27,13 +27,14 @@ router.post('/signup', publicRoutes, async (req, res) => {
         }
 
         const user = await userModel.create({
-            first_name, last_name, email, age, password, role,
+            first_name, last_name, email, age, password: bcrypt.hashSync(password, bcrypt.genSaltSync(10)), role,
         });
 
         req.session.first_name = first_name;
         req.session.last_name = last_name;
         req.session.email = email;
         req.session.age = age;
+        
 
         req.session.isLogged = true;
 
@@ -48,9 +49,13 @@ router.post('/signup', publicRoutes, async (req, res) => {
 
 router.post('/login', publicRoutes,   async (req, res) => {
     const { email, password } = req.body; // leemos los datos que llegan de formulario
-    const user = await userModel.findOne( {email, password} ).lean();
+    const user = await userModel.findOne( {email} ).lean();
 
     if(!user) {
+        return res.send("The username or password is not valid");
+    }
+
+    if(!bcrypt.compareSync(password, user.password)) {
         return res.send("The username or password is not valid");
     }
 
@@ -64,5 +69,27 @@ router.post('/login', publicRoutes,   async (req, res) => {
 
     res.redirect('/profile'); //antes decia profile
 });
+
+
+
+
+
+
+
+router.post('/recover', publicRoutes,   async (req, res) => {
+    const { email, password } = req.body; // leemos los datos que llegan de formulario
+    const user = await userModel.findOne( {email} ).lean();
+
+    if(!user) {
+        return res.send("The email is not valid");
+    }
+
+    user.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+    await userModel.updateOne({email}, user);
+
+    res.redirect('/login'); //antes decia profile
+});
+
+
 
 export default router;

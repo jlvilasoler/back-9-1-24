@@ -91,11 +91,13 @@ app.use(session({
 app.use('/static', express.static('./src/public'));
 
 
+
+app.use('/api', userRouter); //este app.use va arriba de viewsrouter
 app.use('/', viewsRouter);
 app.use('/products', viewsRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);
-app.use('/api', userRouter);
+
 app.use(viewsRouter);
 
 
