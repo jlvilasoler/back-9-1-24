@@ -2,9 +2,9 @@ import passport from "passport";
 import local from 'passport-local';
 import { userModel } from "../dao/models/user.model.js";
 import bcrypt from 'bcrypt';
+import LocalStrategy from 'passport-local';
+import GithubStrategy from 'passport-github2';
 
-
-const LocalStrategy = local.Strategy;
 const initializePassport = () => {
     passport.use('register', 
     new LocalStrategy(
@@ -32,13 +32,13 @@ const initializePassport = () => {
     })
     );
 
-    passport.serializeUser((user, done) => {
-        done(null, user._id);
-    });
-    passport.deserializeUser(async (id, done) => {
-        const user = await userModel.findById(id);
-        done(null, user);
-    });
+
+
+
+
+
+
+
 
     passport.use('login', new LocalStrategy({usernameField: 'email'}, 
     async(username, password, done) => {
@@ -62,6 +62,48 @@ const initializePassport = () => {
 
     }))
 
+
+
+    passport.use('github', new GithubStrategy(
+        {
+            clientID: 'Iv1.710443330002733b',
+            clientSecret: '80ee343de62298a1d331fec4b4e4f04e5d9936e5',
+            callbackURL: 'http://localhost:8080/api/githubcallback',
+            scope: ['user:email'],
+        }, async (accessToken, refreshToken, profile, done) => {
+            try {
+            const email = profile.emails[0].value;
+            const user = await userModel.findOne({email});
+
+            if(!user) {
+                const newUser = await userModel.create({
+                    first_name: profile._json.name,
+                    last_name: '',
+                    age: 18,
+                    password: '',
+                    email,
+                    role: "user",
+                });
+
+                return done(null, newUser);
+            } else {
+                done(null, user);
+            }
+        }catch(error) {
+            done(error)
+        }
+        }
+        )
+        );
+
+        passport.serializeUser((user, done) => {
+            done(null, user._id);
+        });
+        passport.deserializeUser(async (id, done) => {
+            const user = await userModel.findById(id);
+            done(null, user);
+        });
 };
+
 
 export default initializePassport;
