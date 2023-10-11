@@ -179,7 +179,7 @@ router.post('/setCookies', privateRoutes,  (req, res) => {
 
 router.get('/login', publicRoutes, (req, res) => {
     if (req.session.isLogged) {
-        return res.redirect('/profile')
+    res.redirect('/profile')
     }
 
     res.render('login')
@@ -192,13 +192,13 @@ router.get('/signup', publicRoutes, (req, res) => {
     res.render('signup')
 })
 
+
+
 // Bd de cantidad de visitas (acumulado), inicia con 0
 const userVisitDB = {};
 
-router.get('/profile', privateRoutes, (req, res) => {
-    if (!req.session.isLogged) {
-        return res.redirect('/login');
-    }
+router.get('/profile' , (req, res) => {
+    
 
     // Verifica si el usuario ya tiene un contador de visitas
     if (!userVisitDB[req.session.email]) {
@@ -210,7 +210,7 @@ router.get('/profile', privateRoutes, (req, res) => {
    // Obtiene la fecha de hoy en formato 'YYYY-MM-DD'
    const dateToday = new Date().toISOString().split('T')[0];
 
-    const { first_name, last_name, email, age, role } = req.session;
+    const { first_name, last_name, email, age, role } = req.session.user;
     res.render('profile', { first_name, last_name, email, age, role, visitCount: userVisitDB[req.session.email], dateToday });
 });
 
@@ -223,8 +223,17 @@ router.get('/recover', publicRoutes, (req, res) => {
 router.get('/logout', privateRoutes, (req, res) => {
     req.session.destroy();
     res.redirect('/login');
-    console.log(res.redirect)
 });
+
+
+router.get('/failregister', (req, res) => {
+    res.send("Register failure")
+}) ;
+
+
+router.get('/faillogin', (req, res) => {
+    res.send("Login failure")
+}) ;
 
 
 export default router;

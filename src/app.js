@@ -13,10 +13,15 @@ import session from "express-session";
 import MongoStore from 'connect-mongo';
 import userRouter from '../routes/userRouter.js'
 
+import passport from 'passport';
+import initializePassport from './config/passport.config.js';
+
 
 import { messageModel } from './dao/models/chat.model.js';
 import { productModel } from './dao/models/product.model.js';
 import { cartModel } from './dao/models/cart.model.js';
+
+
 
 mongoose.connect(
 'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/ecommerce?retryWrites=true&w=majority', {
@@ -77,19 +82,15 @@ app.use(
         })
 );
 
+initializePassport();
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
-/*
-app.use(cookieParser());
-app.use(session({
-    secret: "Jose",
-    resave: true,
-    saveUninitialized: true, //se guarda , para crear la sesion 
-}));
-*/
+
 
 app.use('/static', express.static('./src/public'));
-
 
 
 app.use('/api', userRouter); //este app.use va arriba de viewsrouter
