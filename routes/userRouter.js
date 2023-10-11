@@ -11,7 +11,7 @@ const router = Router();
 //registrar el usuario en la base de datos
 router.post('/signup', passport.authenticate('register',
 {failureRedirect: '/failregister'}), async (req, res) => {
-        res.redirect('/profile'); // lo redirigimos a profile
+        res.redirect('/login'); // en vez de redirigirlo a profile , lo redirigimos a login
 });
 
 

@@ -77,8 +77,9 @@ app.use(
             ttl: 50, //segundos
         }),
         secret: "Jose",
-        resave: true,
-        saveUninitialized: true, //se guarda , para crear la sesion
+        resave: false,
+        saveUninitialized: false, //se guarda , para crear la sesion
+
         })
 );
 
