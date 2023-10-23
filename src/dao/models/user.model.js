@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema( {
     password: {
         type: String,
     },
+    cartId: {
+        type: Number,
+    },
     role: {
         type: String,
     }

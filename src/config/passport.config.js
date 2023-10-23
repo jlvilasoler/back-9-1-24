@@ -82,6 +82,7 @@ const initializePassport = () => {
                     age: 18,
                     password: '',
                     email,
+                    cartId,
                     role: "user",
                 });
 
