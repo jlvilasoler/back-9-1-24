@@ -27,7 +27,7 @@ router.post('/login', passport.authenticate('login', { failureRedirect: '/failog
     last_name: req.user.last_name,
     email: req.user.email,
     age: req.user.age,
-    cartId: req.user.cartId,
+    cart: req.user.cart,
     role: req.user.role,
 
   };
@@ -66,7 +66,7 @@ router.get('/githubcallback', passport.authenticate('github', { failureRedirect:
       last_name: req.user.last_name,
       email: req.user.email,
       age: req.user.age,
-      cartId: req.user.cartId,
+      cart: req.user.cart,
       role: req.user.role,
     }
     req.session.isLogged = true;
