@@ -29,7 +29,7 @@ export default class CartManager {
 
     async addProductToCartId(cid, productId) { 
         const cart = await this.getCartById(cid); 
-        console.log(cart);
+
 
         let item = cart.products.find((p) => p.product.toString() === productId); 
         console.log(productId);
@@ -38,11 +38,12 @@ export default class CartManager {
         } else { 
             item = { product: productId, quantity: 1 }; 
             console.log(item);
-            cart.products.push(item); 
+            cart.products.push(item);
         } 
+        console.log(cart._id)
         console.log(cart);
-        await cart.save(); 
-        return item; 
+        await cart.save();
+        return item;
     }
 
 
