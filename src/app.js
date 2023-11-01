@@ -8,7 +8,6 @@ import { Server } from 'socket.io';
 import { Socket } from 'socket.io';
 import mongoose from 'mongoose';
 import imgRouter from '../routes/imgRouter.js'
-/*import cookieParser from 'cookie-parser';*/
 import session from "express-session";
 import MongoStore from 'connect-mongo';
 import userRouter from '../routes/userRouter.js'
@@ -21,18 +20,16 @@ import { messageModel } from './dao/models/chat.model.js';
 import { productModel } from './dao/models/product.model.js';
 import { cartModel } from './dao/models/cart.model.js';
 
-
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 mongoose.connect(
-'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/ecommerce?retryWrites=true&w=majority', {
+    process.env.MONGO_URI, {
 useNewUrlParser: true,
 useUnifiedTopology: true
 });
 
-
 let response = await cartModel.find({}).explain("executionStats");
-
-
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
@@ -73,10 +70,10 @@ app.use(express.json());
 app.use(
     session({
         store: MongoStore.create({
-            mongoUrl: 'mongodb+srv://jlvila:jj123456@jlvila.w8q6kim.mongodb.net/ecommerce?retryWrites=true&w=majority', 
+            mongoUrl: process.env.MONGO_URI, 
             ttl: 500000, //segundos
         }),
-        secret: "Jose",
+        secret: process.env.SECRET_KEY,
         resave: false,
         saveUninitialized: false, //se guarda , para crear la sesion
 
