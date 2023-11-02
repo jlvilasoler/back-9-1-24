@@ -21,7 +21,7 @@ export const addCartService = async (cid) => {
 
 export const getCartByIdService = async (id) => {
     try {
-        const docs = await CM.addCart(id);
+        const docs = await CM.getCartById(id);
         return docs;
     } catch (error) {
         console.log(error);
@@ -30,7 +30,7 @@ export const getCartByIdService = async (id) => {
 
 export const getProductsInCartService = async (id) => {
     try {
-        const docs = await CM.getCartById(id);
+        const docs = await CM.addProductToCartId(id);
         return docs;
     } catch (error) {
         console.log(error);
@@ -39,7 +39,7 @@ export const getProductsInCartService = async (id) => {
 
 export const deleteProductFromCartService = async (cid, pid) => {
     try {
-        const docs = await CM.getCartById(cid, pid);
+        const docs = await CM.deleteProductFromCart(cid, pid);
         return docs;
     } catch (error) {
         console.log(error);

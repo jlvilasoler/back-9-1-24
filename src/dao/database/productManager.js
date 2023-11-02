@@ -14,32 +14,18 @@ export default class ProductManager {
         return product;
     }
 
-
-    async addProduct(id, title, description, price, thumbnail, code, stock, status, category) {
-        const newProduct = {
-            id,
-            title,
-            description,
-            price,
-            thumbnail,
-            code,
-            stock,
-            status,
-            category,
-        };
-        const repeatCode = await productModel.find({ code: newProduct.code });
-        if (repeatCode.length > 0) {
-            console.log("El codigo está repetido")
-            return;
-        }
+//VER
+    async addProduct(id) {
         try {
-            const products = await productModel.create(newProduct);
-            return products;
-
+            const product = await productModel.create({ _id: id });
+            console.log("ssdsd")
+            return product;
         } catch (error) {
             console.log(error);
+            throw error;
         }
     }
+    
 
 
     async updateProduct(id, obj) {

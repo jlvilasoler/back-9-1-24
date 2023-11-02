@@ -1,6 +1,6 @@
 import { productModel } from "../dao/models/product.model.js";
-import { getAllCartsService, getCartByIdServ, addCartService, updateProductQuantityService, deleteProductFromCartService, getProductsInCartService } from "../Services/CartServices.js";
-import { deleteProductService, updateProductService } from "../Services/ProductServices.js";
+import { getAllCartsService, getCartByIdServ } from "../Services/CartServices.js";
+import { addProductService, deleteProductService, updateProductService } from "../Services/ProductServices.js";
 
 
 export const getAllController = async (req, res, next) => {
@@ -19,7 +19,7 @@ export const getProdFilterPaginateController = async (req, res, next) => {
         const sort = req.query.sort || 'asc';
         const query = req.query.query || '';
         const stockQuery = req.query.status || '';
-    
+
         //Sort
         const sortOptions = {};
         if (sort === "asc") {
@@ -27,7 +27,7 @@ export const getProdFilterPaginateController = async (req, res, next) => {
         } else if (sort === "desc") {
             sortOptions.price = -1;
         }
-    
+
         // filtro por category, description y title
         const filter = {};
         if (query) {
@@ -38,7 +38,7 @@ export const getProdFilterPaginateController = async (req, res, next) => {
             ];
         }
         if (stockQuery === 'true' || stockQuery === 'false') { filter.status = stockQuery === 'true'; }
-    
+
         //Paginate:
         const result = await productModel.paginate(
             filter,
@@ -49,14 +49,14 @@ export const getProdFilterPaginateController = async (req, res, next) => {
                 lean: true,
             }
         );
-    
+
         const prevPage = pageId > 1 ? pageId - 1 : null; // Página previa o null si no hay
         const nextPage = result.hasNextPage ? pageId + 1 : null; // Página siguiente o null si no hay
-    
+
         const prevLink = prevPage ? `/products?page=${prevPage}` : null;
         const nextLink = nextPage ? `/products?page=${nextPage}` : null;
-    
-    
+
+
         const pageNumbers = [];
         if (prevPage) {
             pageNumbers.push({
@@ -76,9 +76,9 @@ export const getProdFilterPaginateController = async (req, res, next) => {
                 link: nextLink,
                 isNext: true
             });
-    
+
         }
-    
+
         res.render('products', {
             status: "success",
             payload: result.docs,
@@ -92,7 +92,7 @@ export const getProdFilterPaginateController = async (req, res, next) => {
             currentQuery: query,
             currentStock: stockQuery,
         });
-    
+
         // RESUMEN RENDERIZADO:
         const responseObject = {
             status: "success",
@@ -107,7 +107,7 @@ export const getProdFilterPaginateController = async (req, res, next) => {
             prevPage: result.prevPage,
             nextPage: result.nextPage
         };
-    
+
     } catch (error) {
         next(error)
     }
@@ -116,19 +116,21 @@ export const getProdFilterPaginateController = async (req, res, next) => {
 
 export const getByIdController = async (req, res, next) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const doc = await getCartByIdServ(id);
         res.json(doc)
     } catch (error) {
         next(error)
-    }}
+    }
+}
 
 
 export const createController = async (req, res, next) => {
     try {
-        const {title, description, price,thumbnail, code, stock, status} = req.body;
-        const newDoc = await addCartService({
-            title, 
+
+        const { title, description, price, thumbnail, code, stock, status } = req.body;
+        const newDoc = await addProductService({
+            title,
             description,
             price,
             thumbnail,
@@ -139,36 +141,37 @@ export const createController = async (req, res, next) => {
         res.json(newDoc)
     } catch (error) {
         next(error)
-    }}
-
-
-    export const updateController = async (req, res, next) => {
-        try {
-            const {id} = req.params;
-            const {title, description, price, thumbnail, code, stock, status} = req.body
-            await getCartByIdServ(id);
-            const docUpd = await updateProductService(id, {
-                title,
-                description,
-                price,
-                thumbnail,
-                code,
-                stock,
-                status
-            })
-            res.json(docUpd);
-        } catch (error) {
-            next(error)
-        }
     }
+}
 
 
-    export const deleteController = async (req, res, next) => {
-        try {
-            const {id} = req.params;
-            await deleteProductService(id);
-            res.json({message:'product deleted successfully'})
-        } catch (error) {
-            next(error)
-        }
+export const updateController = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { title, description, price, thumbnail, code, stock, status } = req.body
+        await getCartByIdServ(id);
+        const docUpd = await updateProductService(id, {
+            title,
+            description,
+            price,
+            thumbnail,
+            code,
+            stock,
+            status
+        })
+        res.json(docUpd);
+    } catch (error) {
+        next(error)
     }
+}
+
+
+export const deleteController = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        await deleteProductService(id);
+        res.json({ message: 'product deleted successfully' })
+    } catch (error) {
+        next(error)
+    }
+}

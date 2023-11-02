@@ -20,10 +20,13 @@ export const getProductByIdService = async (id) => {
     }
 };
 
-export const addProductService = async (id, title, description, price, thumbnail, code, stock, status, category) => {
+export const addProductService = async (id) => {
     try {
-        const docs = await PM.addProduct(id, title, description, price, thumbnail, code, stock, status, category);
-        return docs;
+        const newProd = await PM.addProduct(id)
+        console.log("prod agregado")
+        if(!newProd){
+            throw new Error('Validation error')
+        } else return newProd;
     } catch (error) {
         console.log(error);
     }
