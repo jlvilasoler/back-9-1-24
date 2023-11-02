@@ -18,7 +18,6 @@ export default class CartManager {
 
     async getProductsInCart(cartId) {
         const cart = await this.getCartById(cartId);
-
         if (cart) {
             return cart.products;
         } else {
@@ -27,22 +26,40 @@ export default class CartManager {
         }
     }
 
-    async addProductToCartId(cid, productId) { 
-        const cart = await this.getCartById(cid); 
-        let item = cart.products.find((p) => p.product.toString() === productId); 
-        console.log(productId);
-        if (item) { 
-            item.quantity++; 
-        } else { 
-            item = { product: productId, quantity: 1 }; 
-            console.log(item);
-            cart.products.push(item);
-        } 
-        console.log(cart._id)
-        console.log(cart);
-        await cart.save();
-        return item;
-    }
+    async addProductToCartId(cid, pid) { 
+        try {
+            const findCart = await cartModel.findById(cid);
+            const findProduct = await productModel.findById(pid);
+    
+            if (!findProduct) {
+                throw new Error(`The requested product id ${pid} doesnt exist!`);
+            } else {
+                if (findCart) {
+                const productExist = findCart.products.find(
+                    (elemento) => elemento.product ? elemento.product.toString() === pid : false
+                );
+                if (!productExist) {
+                    const newProd = {
+                    quantity: 1,
+                    productId: pid,
+                    };
+                    findCart.products.push(newProd);
+                } else {
+                    const indexProduct = findCart.products.findIndex(
+                    (elemento) =>  elemento.product ? elemento.product.toString() === pid : false
+                    );
+                    findCart.products[indexProduct].quantity += 1;
+                }
+                await findCart.save();
+                return findCart;
+                } else {
+                throw new Error("The cart you are searching for does not exist!");
+                }
+            }
+            } catch (error) {
+            console.log(error);
+            }
+        }
 
 
 

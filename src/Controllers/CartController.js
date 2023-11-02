@@ -1,4 +1,7 @@
+import { cartModel } from "../dao/models/cart.model.js";
+
 import { getAllCartsService, addCartService, getCartByIdService, getProductsInCartService, updateProductQuantityService, getCartByIdServ } from "../Services/CartServices.js";
+import { addProductService } from "../Services/ProductServices.js";
 
 
 export const getCartsController = async (req, res, next) => {
@@ -40,12 +43,12 @@ export const createCartController = async (req, res, next) => {
 export const addProductToCartController = async (req, res, next) => {
     try {
         const { cid, pid } = req.params;
-        const product = await getProductsInCartService(cid,pid);
+        const product = await addProductService(cid,pid);
         if (product) {
             res.status(201).send({status: "success",mensaje: "Product successfully added to cart!",payload: product});
         } else {
             res.status(404).send({status: "error",mensaje:"The product or cart you are searching for could not be found!"});
-        } 
+        }
     } catch (error) {
         next(error);
     }

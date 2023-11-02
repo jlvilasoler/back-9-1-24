@@ -18,6 +18,7 @@ export default class ProductManager {
     async addProduct(id) {
         try {
             const product = await productModel.create({ _id: id }).lean();
+            console.log(id)
             return product;
         } catch (error) {
             throw error;
