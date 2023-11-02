@@ -15,8 +15,6 @@ router.post('/signup', passport.authenticate('register',
     res.redirect('/login'); // en vez de redirigirlo a profile , lo redirigimos a login
   });
 
-
-
 router.post('/login', passport.authenticate('login', { failureRedirect: '/failogin' }), async (req, res) => {
   if (!req.user) {
     res.status(400).send();
@@ -31,14 +29,7 @@ router.post('/login', passport.authenticate('login', { failureRedirect: '/failog
     role: req.user.role,
 
   };
-  res.redirect('/profile')
-});
-
-
-
-
-
-
+  res.redirect('/profile')});
 
 router.post('/recover', async (req, res) => {
   const { email, password } = req.body; // leemos los datos que llegan de formulario
@@ -50,11 +41,8 @@ router.post('/recover', async (req, res) => {
 
   user.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   await userModel.updateOne({ email }, user);
-
-  res.redirect('/login'); //antes decia profile
+  res.redirect('/login');
 });
-
-
 
 router.get('/github', passport.authenticate('github', { scope: ['user:email'] })); // nos lleva a github
 

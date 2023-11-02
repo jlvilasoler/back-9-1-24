@@ -17,11 +17,9 @@ export default class ProductManager {
 //VER
     async addProduct(id) {
         try {
-            const product = await productModel.create({ _id: id });
-            console.log("ssdsd")
+            const product = await productModel.create({ _id: id }).lean();
             return product;
         } catch (error) {
-            console.log(error);
             throw error;
         }
     }
