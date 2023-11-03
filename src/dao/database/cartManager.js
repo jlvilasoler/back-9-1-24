@@ -1,4 +1,5 @@
 import { cartModel } from "../models/cart.model.js";
+import { productModel } from "../models/product.model.js";
 
 export default class CartManager {
     async getAllCarts() {
@@ -26,40 +27,40 @@ export default class CartManager {
         }
     }
 
-    async addProductToCartId(cid, pid) { 
+    async addProductToCartId(cid, pid) {
         try {
             const findCart = await cartModel.findById(cid);
             const findProduct = await productModel.findById(pid);
-    
+
             if (!findProduct) {
                 throw new Error(`The requested product id ${pid} doesnt exist!`);
             } else {
                 if (findCart) {
-                const productExist = findCart.products.find(
-                    (elemento) => elemento.product ? elemento.product.toString() === pid : false
-                );
-                if (!productExist) {
-                    const newProd = {
-                    quantity: 1,
-                    productId: pid,
-                    };
-                    findCart.products.push(newProd);
-                } else {
-                    const indexProduct = findCart.products.findIndex(
-                    (elemento) =>  elemento.product ? elemento.product.toString() === pid : false
+                    const productExist = findCart.products.find(
+                        (elemento) => elemento.product ? elemento.product.toString() === pid : false
                     );
-                    findCart.products[indexProduct].quantity += 1;
-                }
-                await findCart.save();
-                return findCart;
+                    if (!productExist) {
+                        const newProd = {
+                            quantity: 1,
+                            productId: pid,
+                        };
+                        findCart.products.push(newProd);
+                    } else {
+                        const indexProduct = findCart.products.findIndex(
+                            (elemento) => elemento.product ? elemento.product.toString() === pid : false
+                        );
+                        findCart.products[indexProduct].quantity += 1;
+                    }
+                    await findCart.save();
+                    return findCart;
                 } else {
-                throw new Error("The cart you are searching for does not exist!");
+                    throw new Error("The cart you are searching for does not exist!");
                 }
             }
-            } catch (error) {
+        } catch (error) {
             console.log(error);
-            }
         }
+    }
 
 
 
@@ -112,11 +113,15 @@ export default class CartManager {
     }
 
     async getCartById(id) {
-        const cart = await cartModel
-            .findById(id)
-            .populate("products.product")
-            .lean();
-        return cart;
+        try {
+            const cart = await cartModel
+                .findById(id)
+                .populate("products.product")
+                .lean();
+            return cart;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 

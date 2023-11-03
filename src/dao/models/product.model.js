@@ -6,35 +6,35 @@ const productCollection = "products";
 const productSchema = new mongoose.Schema( {
     title: {
         type: String,
-        required: true,
+        //required: true,
     },
     description: {
         type: String,
-        required: true,
+        //required: true,
     },
     price: {
         type: Number,
-        required: true,
+        //required: true,
     },
     thumbnail: {
         type: String,
-        required: true,
+        //required: true,
     },
     code: {
         type: Number,
-        required: true,
+        //required: true,
     },
     stock: {
         type: Number,
-        required: true,
+        //required: true,
     },
     status: {
         type: String,
-        required: true,
+        //required: true,
     },
     category: {
         type: String,
-        required: true,
+        //required: true,
     }
 });
 

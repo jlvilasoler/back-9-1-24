@@ -8,5 +8,3 @@ const addToCart = async (cid, pid) => {
     console.log(json);
     alert(`Product added to cart`);
 }
-
-
