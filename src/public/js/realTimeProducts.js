@@ -1,5 +1,5 @@
 const socketClient = io();
-console.log(io);
+//console.log()io);
 
 const form = document.getElementById('form');
 
@@ -20,16 +20,16 @@ form.addEventListener('submit', (event) => {
     const inputStatus = document.getElementById('prod-status').value;
     const inputCategory = document.getElementById('prod-category').value;
 
-    console.log("formulario enviado");
+    //console.log()"formulario enviado");
 
-    console.log("Título:", inputTitle);
-    console.log("Descripción:", inputDescription);
-    console.log("Precio:", inputPrice);
-    console.log("Thumbnail:", inputThumnail);
-    console.log("Código:", inputCode);
-    console.log("Stock:", inputStock);
-    console.log("Status:", inputStatus);
-    console.log("Categoría:", inputCategory);
+    //console.log()"Título:", inputTitle);
+    //console.log()"Descripción:", inputDescription);
+    //console.log()"Precio:", inputPrice);
+    //console.log()"Thumbnail:", inputThumnail);
+    //console.log()"Código:", inputCode);
+    //console.log()"Stock:", inputStock);
+    //console.log()"Status:", inputStatus);
+    //console.log()"Categoría:", inputCategory);
 
 
 

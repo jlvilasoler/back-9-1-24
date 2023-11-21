@@ -44,7 +44,7 @@ const initializePassport = () => {
     async(username, password, done) => {
         try {
             const user = await userModel.findOne( {email: username} ).lean();
-            console.log(user)
+            ////console.log()user)
             if(!user) {
                 return done(null, false);
             }

@@ -1,5 +1,5 @@
 const socket = io();
-console.log(io);
+//console.log()io);
 
 let usuario = '';
 
@@ -14,7 +14,7 @@ btnSend.addEventListener("click", () => {
             user: usuario,
             mensaje: mensaje,
         });
-        console.log("Mensaje enviado:", mensaje);
+        //console.log()"Mensaje enviado:", mensaje);
         caja.value = "";
     }
 });
@@ -27,7 +27,7 @@ caja.addEventListener("change", () => {
             user: usuario,
             mensaje: mensaje,
         });
-        console.log("Mensaje enviado:", mensaje);
+        //console.log()"Mensaje enviado:", mensaje);
         caja.value = "";
     }
 });

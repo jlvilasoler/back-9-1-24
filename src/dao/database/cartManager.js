@@ -22,7 +22,7 @@ export default class CartManager {
         if (cart) {
             return cart.products;
         } else {
-            console.log('Cart not found');
+            //console.log()'Cart not found');
             return [];
         }
     }
@@ -58,7 +58,7 @@ export default class CartManager {
                 }
             }
         } catch (error) {
-            console.log(error);
+            //console.log()error);
         }
     }
 
@@ -67,7 +67,6 @@ export default class CartManager {
     // Eliminando un producto del carrito
     async deleteProductFromCart(cid, pid) {
         try {
-            console.log(`Deleting product ${pid} from cart ${cid}`);
             const cart = await this.getCartById(cid);
 
             const itemIndex = cart.products.findIndex((product) => product.product.toString() === pid);
@@ -76,10 +75,10 @@ export default class CartManager {
                 // Si se encuentra el producto en el carrito, eliminarlo
                 cart.products.splice(itemIndex, 1);
             } else {
-                console.log(`Product with id ${pid} not found in cart.`);
+                //console.log()`Product with id ${pid} not found in cart.`);
             }
 
-            console.log(`Cart after deleted product: ${(cart)}`);
+            //console.log()`Cart after deleted product: ${(cart)}`);
             await cart.save();
             return pid;
         } catch (error) {
@@ -88,17 +87,35 @@ export default class CartManager {
         }
     }
 
+//DELETE CART
+async deleteCart(cid) {
+    try {
+    const findCart = await cartModel.findById(cid);
+    if (findCart) {
+        findCart.products = [];
+        await findCart.save();
+        return findCart;
+    } else {
+        throw new Error("The cart you are searching for does not exist!");
+    }
+    } catch (error) {
+    //console.log()error);
+    }
+}
+
+
+
     async updateProductQuantity(cid, pid, quantity) {
         try {
             const cart = await cartModel.findById(cid);
-            console.log(cart, "CARRITO ENCONTRADO")
+            //console.log()cart, "CARRITO ENCONTRADO")
             if (!cart) {
                 throw new Error("Cart not found");
             }
 
             const productToUpdate = cart.products.find(
                 (product) => product.toString() === pid
-            ); console.log(productToUpdate, "PRODUCTO ENCONTRADO")
+            ); //console.log()productToUpdate, "PRODUCTO ENCONTRADO")
             if (!productToUpdate) {
                 throw new Error("Product not found in cart");
             }
@@ -108,7 +125,7 @@ export default class CartManager {
 
             return cart;
         } catch (error) {
-            console.log(error);
+            //console.log()error);
         }
     }
 
@@ -120,7 +137,7 @@ export default class CartManager {
                 .lean();
             return cart;
         } catch (error) {
-            console.log(error);
+            //console.log()error);
         }
     }
 

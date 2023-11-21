@@ -1,9 +1,11 @@
 import { cartModel } from "../dao/models/cart.model.js";
 
-import { getAllCartsService, addCartService, getCartByIdService, getProductsInCartService, updateProductQuantityService, getCartByIdServ } from "../Services/CartServices.js";
+import { getAllCartsService, addCartService, getCartByIdService, getProductsInCartService, updateProductQuantityService, getCartByIdServ, deleteProductFromCartService, deleteCartService } from "../Services/CartServices.js";
 import { addProductService } from "../Services/ProductServices.js";
 
 
+
+// MUESTRA TODOS LOS CARRITOS
 export const getCartsController = async (req, res, next) => {
     try {
         const docs = await getAllCartsService();
@@ -17,7 +19,7 @@ export const getCartsController = async (req, res, next) => {
     }
 }
 
-
+// MUESTRA CARRITO POR ID
 export const getCartByIdController = async (req, res, next) => {
     try {
         const { cid } = req.params;
@@ -29,7 +31,7 @@ export const getCartByIdController = async (req, res, next) => {
     }
 };
 
-
+// CREA CARRITO
 export const createCartController = async (req, res, next) => {
     try {
         const docs = await addCartService();
@@ -39,11 +41,12 @@ export const createCartController = async (req, res, next) => {
     }
 };
 
-//...
+//AGREGA UN PRODUCTO AL CARRITO
 export const addProductToCartController = async (req, res, next) => {
     try {
         const { cid, pid } = req.params;
         const product = await addProductService(cid,pid);
+        //console.log(product)
         if (product) {
             res.status(201).send({status: "success",mensaje: "Product successfully added to cart!",payload: product});
         } else {
@@ -54,6 +57,7 @@ export const addProductToCartController = async (req, res, next) => {
     }
 };
 
+//ACTUALIZA CANTIDAD PROD AL CARRITO
 export const updateProductQuantityController = async (req,res, next) => {
     try {
         const { cid, pid } = req.params;
@@ -71,7 +75,7 @@ export const updateProductQuantityController = async (req,res, next) => {
         next(error);
     }
 }
-
+//ACTUALIZA TODO EL CARRITO
 export const updateAllCartController = async (req, res, next) => {
     try {
         const {cid} = req.params;
@@ -89,27 +93,27 @@ export const updateAllCartController = async (req, res, next) => {
         next(error);
     }
 }
-
-export const deleteProductToCartController = async (req, res, next) => {
+//ELIMINA CARRITO
+export const deleteCartController = async (req, res, next) => {
     try {
         const {cid} = req.params;
-        const productsDeleted = await deleteProductToCartController(cid); 
+        const productsDeleted = await deleteCartService(cid); 
         if (productsDeleted ) {
-            res.status(201).send({status: "success",mensaje: "Product/s successfully deleted from cart!",payload: productsDeleted });
+            res.status(201).send({status: "success",mensaje: "Cart deleted successfully!",payload: productsDeleted });
         } else {
-        res.status(404).send({status: "error",mensaje:"The product or cart you are searching for could not be found!"});
+        res.status(404).send({status: "error",mensaje:"Cart not found"});
         } 
     } catch (error) {
         next(error);
     }
 }
-
+//ELIMINA PRODUCTO AL CARRITO
 export const deleteProductFromCartController = async (req, res, next) => {
     try {
         const {cid, pid} = req.params;
-        const productDeleted = await deleteProductFromCartController(cid,pid); 
+        const productDeleted = await deleteProductFromCartService(cid,pid); 
         if (productDeleted ) {
-        res.status(201).send({status: "success",mensaje: "The product/s you have selected has/have been successfully deleted from cart!"});
+        res.status(201).send({status: "success",mensaje: "The product you have selected has been successfully deleted from cart!"});
         } else {
         res.status(404).send({status: "error",mensaje:"The product or cart you are searching for could not be found!"});
         } 

@@ -6,7 +6,7 @@ export default class ProductManager {
     async getProducts() {
         try {
         const products = await productModel.find({}).lean();
-        console.log(products);
+        //console.log()products);
         return products;
     } catch (error) {
         throw error;
@@ -49,7 +49,7 @@ export default class ProductManager {
             const products = await productModel.findByIdAndDelete(id);
             return products;
         } catch (error) {
-            console.log(error);
+            //console.log()error);
         }
     }
 

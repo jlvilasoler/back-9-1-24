@@ -48,7 +48,7 @@ router.get('/github', passport.authenticate('github', { scope: ['user:email'] })
 
 router.get('/githubcallback', passport.authenticate('github', { failureRedirect: '/login' }),
   (req, res) => {
-    console.log(req.user);
+    //console.log()req.user);
     req.session.user = {
       first_name: req.user.first_name,
       last_name: req.user.last_name,

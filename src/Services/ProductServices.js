@@ -7,7 +7,7 @@ export const getProductsService = async () => {
         const docs = await PM.getProducts();
         return docs;
     } catch (error) {
-        console.log(error);
+        //console.log()error);
     }
 };
 
@@ -16,28 +16,30 @@ export const getProductByIdService = async (id) => {
         const docs = await PM.getProductById(id);
         return docs;
     } catch (error) {
-        console.log(error);
+        //console.log()error);
     }
 };
 
-export const addProductService = async (id) => {
+/*
+//...
+export const addProductService = async (id, obj) => {
     try {
-        const newProd = await PM.addProduct(id)
-        console.log("prod agregado")
+        const newProd = await PM.updateProduct(id, obj)
+        console.log(newProd)
         if(!newProd){
             throw new Error('Validation error')
         } else return newProd;
     } catch (error) {
         console.log(error);
     }
-};
+};*/
 
 export const updateProductService = async (id, obj) => {
     try {
         const docs = await PM.updateProduct(id, obj);
         return docs;
     } catch (error) {
-        console.log(error);
+        //console.log()error);
     }
 };
 
@@ -46,6 +48,6 @@ export const deleteProductService = async (id) => {
         const docs = await PM.deleteProduct(id);
         return docs;
     } catch (error) {
-        console.log(error);
+        //console.log()error);
     }
 };

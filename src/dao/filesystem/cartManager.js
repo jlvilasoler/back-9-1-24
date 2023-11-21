@@ -17,7 +17,7 @@ export default class CartManager {
             const data = fs.readFileSync(this.path, 'utf-8');
             this.carts = await JSON.parse(data);
         } catch (error) {
-            console.log("Error loading carts:", error.message);
+            //console.log()"Error loading carts:", error.message);
             this.carts = [];
         }
     }
@@ -28,14 +28,14 @@ export default class CartManager {
             const data = JSON.stringify(this.carts, null, 2)
             fs.writeFileSync(this.path, data, "utf-8");
         } catch (error) {
-            console.log("Saving cart error", error.message);
+            //console.log()"Saving cart error", error.message);
         }
     }
 
     // Agrega un nuevo carrito
     async addCart(cart) {
         const newCart = { ...cart };
-        console.log(this.carts.length);
+        //console.log()this.carts.length);
 
         if (this.carts.length === 0) {
             newCart.id = 1;
@@ -44,7 +44,7 @@ export default class CartManager {
         }
         this.carts.push(newCart);
         await this.saveCarts();
-        console.log(newCart);
+        //console.log()newCart);
         return newCart.id;
     }
 
@@ -69,7 +69,7 @@ export default class CartManager {
 
             this.saveCarts();
         } else {
-            console.log('Cart not found');
+            //console.log()'Cart not found');
         }
     }
 
@@ -80,7 +80,7 @@ export default class CartManager {
         if (cart) {
             return cart.products;
         } else {
-            console.log('Cart not found');
+            //console.log()'Cart not found');
             return [];
         }
     }

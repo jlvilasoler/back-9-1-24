@@ -2,7 +2,7 @@ import { Router } from "express";
 import privateRoutes from "../src/middlewares/privateRoutes.js";
 import publicRoutes from "../src/middlewares/publicRoutes.js";
 
-import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteProductFromCartController, deleteProductToCartController } from '../src/Controllers/CartController.js';
+import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteProductFromCartController, deleteCartController } from '../src/Controllers/CartController.js';
 import { updateController } from "../src/Controllers/ProductController.js";
 
 const router = Router();
@@ -24,7 +24,7 @@ router.post('/cart/:cid/products/:pid', privateRoutes, addProductToCartControlle
 router.delete('/cart/:cid/products/:pid', privateRoutes, deleteProductFromCartController);
 
 // En la ruta DELETE, Eliminar todos los productos de un cart
-router.delete('/cart/:cid', privateRoutes, deleteProductToCartController);
+router.delete('/cart/:cid', privateRoutes, deleteCartController);
 
 // En la ruta PUT, debe actualizar el carrito
 router.put('/cart/:cid', privateRoutes, updateAllCartController);

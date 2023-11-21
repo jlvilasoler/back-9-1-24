@@ -44,7 +44,7 @@ export class ProductManager {
 
             }
         } catch (error) {
-            console.log(error);
+            //console.log()error);
         }
     }
 
@@ -62,7 +62,7 @@ export class ProductManager {
             const contentObj = JSON.parse(content);
             return contentObj;
         } catch (error) {
-            console.log("No se pudo leer el archivo products.json. Se creará uno nuevo.", error);
+            //console.log()"No se pudo leer el archivo products.json. Se creará uno nuevo.", error);
             return [];
         }
     }
@@ -72,7 +72,8 @@ export class ProductManager {
         try {
             let data = await this.getProducts()
             let productFind = data.find(product => product.id == id)
-            return productFind === undefined ? console.log(`No se encontró el ID:${id} que desea buscar`) : productFind
+            return productFind === undefined ? 
+            console.log(`No se encontró el ID:${id} que desea buscar`) : productFind
         } catch (error) {
             console.log("No se pudo leer el archivo products.json. Se creará uno nuevo.", error);
             return [];

@@ -1,4 +1,4 @@
-console.log("hola");
+//console.log()"hola");
 
 
 const nombreInput = document.getElementById("nombre");
@@ -12,8 +12,8 @@ const setCookiesButton = document.getElementById("setCookies");
 getCookiesButton.addEventListener('click', (e) => {
     fetch('http://localhost:8080/getCookies')
     .then((response) => response.json())
-    .then((cookies) => console.log(cookies));
-    console.log("me clickeaste");
+    .then((cookies) => console.log());
+
 });
 
 

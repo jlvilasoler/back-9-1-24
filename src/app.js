@@ -34,7 +34,7 @@ let response = await cartModel.find({}).explain("executionStats");
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
 db.once('open', () => {
-console.log('Connection to MongoDB established successfully');
+//console.log()'Connection to MongoDB established successfully');
 });
 
 const productManager = new ProductManager();
@@ -76,7 +76,6 @@ app.use(
         secret: process.env.SECRET_KEY,
         resave: false,
         saveUninitialized: false, //se guarda , para crear la sesion
-
         })
 );
 
@@ -108,7 +107,7 @@ app.use('/cookies', viewsRouter)
 
 
 socketServer.on('connection', async (socket) => {
-    console.log('A user has connected:', socket.id);
+    //console.log()'A user has connected:', socket.id);
 
     socket.emit("Socket-Products", await productManager.getProducts()); //le aviso al usuario que hay productos a visualizar
 
@@ -120,7 +119,7 @@ socketServer.on('connection', async (socket) => {
 
     socket.on('deleteProduct', async (data) => {
         const idToDelete = parseInt(data.idDeleteFromSocketClient, 10);
-        console.log(`Solicitud de eliminación recibida del cliente:`, idToDelete);
+        //console.log()`Solicitud de eliminación recibida del cliente:`, idToDelete);
         await product.deleteProduct(idToDelete);
         socketServer.emit('Socket-Products', await product.getProducts());
     });
@@ -129,14 +128,14 @@ socketServer.on('connection', async (socket) => {
     socket.on('mensaje', async (data) => {
         await messageModel.create(data);
         const mensajes = await messageModel.find().lean();
-        console.log(mensajes);
+        //console.log()mensajes);
         socketServer.emit("nuevo-mensaje", mensajes)
     })
     
 
 
     socket.on('disconnect', () => {
-        console.log(`Usuario desconectado con ID: ${socket.id}`);
+        //console.log()`Usuario desconectado con ID: ${socket.id}`);
 
     });
 });

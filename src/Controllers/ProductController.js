@@ -1,11 +1,11 @@
 import { productModel } from "../dao/models/product.model.js";
 import { getAllCartsService, getCartByIdServ } from "../Services/CartServices.js";
-import { addProductService, deleteProductService, updateProductService } from "../Services/ProductServices.js";
+import { getProductsService, addProductService, deleteProductService, updateProductService } from "../Services/ProductServices.js";
 
-
+//MUESTRA TODOS LOS PRODUCTOS
 export const getAllController = async (req, res, next) => {
     try {
-        const doc = await getAllCartsService();
+        const doc = await getProductsService();
         res.json(doc);
     } catch (error) {
         next(error)
