@@ -1,6 +1,18 @@
 import ProductManager from "../dao/database/productManager.js";
 const PM = new ProductManager();
 
+export const addProductService = async (id, obj) => {
+    try {
+        const newProd = await PM.updateProduct(id, obj)
+        console.log(newProd)
+        if(!newProd){
+            throw new Error('Validation error')
+        } else return newProd;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 
 export const getProductsService = async () => {
     try {
@@ -20,19 +32,16 @@ export const getProductByIdService = async (id) => {
     }
 };
 
-/*
-//...
-export const addProductService = async (id, obj) => {
+
+
+export const deleteProductService  = async (pid) => {
     try {
-        const newProd = await PM.updateProduct(id, obj)
-        console.log(newProd)
-        if(!newProd){
-            throw new Error('Validation error')
-        } else return newProd;
+        const data = await productRepository.deleteRepository({ _id: pid });
+        return data;
     } catch (error) {
-        console.log(error);
+        console.log("Error when deleting product", error)
     }
-};*/
+}
 
 export const updateProductService = async (id, obj) => {
     try {
@@ -41,13 +50,15 @@ export const updateProductService = async (id, obj) => {
     } catch (error) {
         //console.log()error);
     }
-};
+}
 
-export const deleteProductService = async (id) => {
+export const pageProductsService = async (modelQuery, modelLimit, modelPage, modelSort) => {
     try {
-        const docs = await PM.deleteProduct(id);
-        return docs;
+        const page = await productRepository.pageRepository(modelQuery, modelLimit, modelPage, modelSort);
+        return page;
+
     } catch (error) {
-        //console.log()error);
+        console.error("error in pageProducts function:", error);
+        throw error;
     }
 };

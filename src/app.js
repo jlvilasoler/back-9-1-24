@@ -11,11 +11,10 @@ import imgRouter from '../routes/imgRouter.js'
 import session from "express-session";
 import MongoStore from 'connect-mongo';
 import userRouter from '../routes/userRouter.js'
-
+import Express from 'express-session';
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
-
-
+import errorHandler from '../src/middlewares/ErrorHandler.js';
 import { messageModel } from './dao/models/chat.model.js';
 import { productModel } from './dao/models/product.model.js';
 import { cartModel } from './dao/models/cart.model.js';
@@ -57,30 +56,26 @@ app.set('views', './src/views'); // declaramos donde van a estar las vistas
 app.set('view engine', 'handlebars');
 app.use(express.static('./src/public'));
 
+
+app.use(session({
+    secret: 'tu_secreto_aqui',
+    resave: false,
+    saveUninitialized: false,
+}));
+
 app.use((req, res, next) => {
     req.context = { socketServer };
     next();
 })
 
+app.use(errorHandler);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-app.use(
-    session({
-        store: MongoStore.create({
-            mongoUrl: process.env.MONGO_URI, 
-            ttl: 500000, //segundos
-        }),
-        secret: process.env.SECRET_KEY,
-        resave: false,
-        saveUninitialized: false, //se guarda , para crear la sesion
-        })
-);
 
 initializePassport();
-
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -108,7 +103,6 @@ app.use('/cookies', viewsRouter)
 
 socketServer.on('connection', async (socket) => {
     //console.log()'A user has connected:', socket.id);
-
     socket.emit("Socket-Products", await productManager.getProducts()); //le aviso al usuario que hay productos a visualizar
 
     const product = new ProductManager("/products.json")
@@ -132,10 +126,7 @@ socketServer.on('connection', async (socket) => {
         socketServer.emit("nuevo-mensaje", mensajes)
     })
     
-
-
     socket.on('disconnect', () => {
-        //console.log()`Usuario desconectado con ID: ${socket.id}`);
-
+        console.log(`Usuario desconectado con ID: ${socket.id}`);
     });
 });

@@ -1,12 +1,14 @@
-import { Router, application } from "express";
+import { Router } from "express";
 import { ProductManager } from "../src/dao/filesystem/productManager.js";
 import { productModel } from "../src/dao/models/product.model.js";
 import { cartModel } from "../src/dao/models/cart.model.js";
-import CartManager from "../src/dao/database/cartManager.js";
+import { CartManager } from "../src/dao/database/cartManager.js";
 import handlebars from "express-handlebars";
 import publicRoutes from "../src/middlewares/publicRoutes.js";
 import privateRoutes from "../src/middlewares/privateRoutes.js";
 import { getProdFilterPaginateController } from "../src/Controllers/ProductController.js";
+import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteProductFromCartController, deleteCartController } from '../src/Controllers/CartController.js';
+import { updateController } from "../src/Controllers/ProductController.js";
 
 const productManager = new ProductManager();
 
@@ -17,7 +19,7 @@ const router = Router();
 
 
 //router de Productos y paginación:
-router.get("/products", privateRoutes, async (req, res, next) => {
+router.get("/products", /*privateRoutes,*/ async (req, res, next) => {
     await getProdFilterPaginateController(req, res, next);
 });
 
@@ -31,31 +33,31 @@ router.get('/realtimeproducts', privateRoutes, async (req, res) => {
     res.render('realTimeProducts', {});
 });
 
-router.get('/messages', privateRoutes, async (req, res) => res.render('chat',
+router.get('/messages', /*privateRoutes,*/ async (req, res) => res.render('chat',
     {}));
 
-router.get('/verimg', privateRoutes, async (req, res) => res.render('img',
+router.get('/verimg', /*privateRoutes,*/ async (req, res) => res.render('img',
     {}));
 
-router.get('/carts/:cid', privateRoutes, async (req, res) => {
+router.get('/carts/:cid', /*privateRoutes,*/ async (req, res) => {
     const cart = await cartManager.getCartById(req.params.cid);
     res.render('cart', { cart })
 });
 
-router.get('/cookies', privateRoutes, (req, res) => {
+router.get('/cookies', /*privateRoutes,*/ (req, res) => {
     res.render('cookies');
 });
 
-router.get('/getCookies', privateRoutes, (req, res) => {
+router.get('/getCookies',/* privateRoutes,*/ (req, res) => {
     res.send(req.cookies);
 });
 
-router.post('/setCookies', privateRoutes, (req, res) => {
+router.post('/setCookies', /*privateRoutes,*/ (req, res) => {
     const { nombre, valor } = req.body;
     res.cookie(nombre, valor, { maxAge: 1000 * 10 }).send('Cookie creada'); // con maxAge se borra la cookie , si no queremos que se borre hay que sacar maxAge
 })
 
-router.get('/login', publicRoutes, (req, res) => {
+router.get('/login', /*publicRoutes,*/ (req, res) => {
     if (req.session.isLogged) {
         res.redirect('/profile')
     }
@@ -63,7 +65,7 @@ router.get('/login', publicRoutes, (req, res) => {
     res.render('login')
 })
 
-router.get('/signup', publicRoutes, (req, res) => {
+router.get('/signup', /*publicRoutes,*/ (req, res) => {
     if (req.session.isLogged) {
         return res.redirect('/profile')
     }
@@ -86,11 +88,11 @@ router.get('/profile', (req, res) => {
     res.render('profile', { first_name, last_name, email, age, role, visitCount: userVisitDB[req.session.email], dateToday });
 });
 
-router.get('/recover', publicRoutes, (req, res) => {
+router.get('/recover', /*publicRoutes,*/ (req, res) => {
     res.render('recover')
 })
 
-router.get('/logout', privateRoutes, (req, res) => {
+router.get('/logout', /*privateRoutes,*/ (req, res) => {
     req.session.destroy();
     res.redirect('/login');
 });

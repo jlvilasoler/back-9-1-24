@@ -1,37 +1,43 @@
-import { cartModel } from "../dao/models/cart.model.js";
-
-import { getAllCartsService, addCartService, getCartByIdService, getProductsInCartService, updateProductQuantityService, getCartByIdServ, deleteProductFromCartService, deleteCartService } from "../Services/CartServices.js";
+import {
+    getAllCartsService,
+    addCartService,
+    getCartByIdService,
+    getProductsInCartService,
+    updateProductQuantityService,
+    deleteProductFromCartService,
+    deleteCartService,
+    getCartByIdServ,
+    emptyCartService,
+  } from "../../src/Services/CartServices.js";
 import { addProductService } from "../Services/ProductServices.js";
+import errorHandler from "../middlewares/ErrorHandler.js";
 
 
-
-// MUESTRA TODOS LOS CARRITOS
+// MUESTRA TODOS LOS CARRITOS - Ok
 export const getCartsController = async (req, res, next) => {
     try {
-        const docs = await getAllCartsService();
-        if (docs.length === 0) {
-            res.status(400).send({status: "error", message: "We couldn't find any cart", payload: docs})
-        } else {
-            res.status(200).send({status: "success", message:"Cart was found", payload: docs})
-        }
+        const allCarts = await getAllCartsService();
+        res.json(allCarts);
     } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
         next(error);
     }
 }
 
-// MUESTRA CARRITO POR ID
+// MUESTRA CARRITO POR ID - Ok
 export const getCartByIdController = async (req, res, next) => {
     try {
         const { cid } = req.params;
        //const docs = await getCartByIdService(Number(cid));
-        const docs = await getCartByIdService(cid);
+       const docs = await getCartByIdServ(cid);
+
         res.status(200).json(docs);
     } catch (error) {
     next(error);
     }
 };
 
-// CREA CARRITO
+// CREA CARRITO - Ok
 export const createCartController = async (req, res, next) => {
     try {
         const docs = await addCartService();
@@ -55,26 +61,26 @@ export const addProductToCartController = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-};
+}
 
 //ACTUALIZA CANTIDAD PROD AL CARRITO
-export const updateProductQuantityController = async (req,res, next) => {
+export const updateProductQuantityController = async (req, res, next) => {
     try {
         const { cid, pid } = req.params;
         const { quantity } = req.body;
-
         const updatedCart = await updateProductQuantityService(cid, pid, quantity);
         if (!updatedCart) {
-        return res.status(404).json({ message: "Cart or product not found" });
+            return res.status(404).json({ status: "error", message: "Cart or product not found" });
         }
         return res.status(200).json({
+            status: "success",
             message: "Product quantity updated successfully",
             payload: updatedCart,
         });
     } catch (error) {
         next(error);
     }
-}
+};
 //ACTUALIZA TODO EL CARRITO
 export const updateAllCartController = async (req, res, next) => {
     try {
@@ -93,31 +99,46 @@ export const updateAllCartController = async (req, res, next) => {
         next(error);
     }
 }
-//ELIMINA CARRITO
+//DELETE CART
 export const deleteCartController = async (req, res, next) => {
     try {
-        const {cid} = req.params;
-        const productsDeleted = await deleteCartService(cid); 
-        if (productsDeleted ) {
-            res.status(201).send({status: "success",mensaje: "Cart deleted successfully!",payload: productsDeleted });
+        const { cid } = req.params;
+        const productsDeleted = await deleteCartService(cid);
+        if (productsDeleted !== null) {
+            res.status(201).send({ status: "success", mensaje: "Cart deleted successfully!", payload: productsDeleted });
         } else {
-        res.status(404).send({status: "error",mensaje:"Cart not found"});
-        } 
+            res.status(404).send({ status: "error", mensaje: "Cart not found" });
+        }
     } catch (error) {
         next(error);
     }
-}
+};
 //ELIMINA PRODUCTO AL CARRITO
 export const deleteProductFromCartController = async (req, res, next) => {
     try {
-        const {cid, pid} = req.params;
-        const productDeleted = await deleteProductFromCartService(cid,pid); 
-        if (productDeleted ) {
-        res.status(201).send({status: "success",mensaje: "The product you have selected has been successfully deleted from cart!"});
-        } else {
-        res.status(404).send({status: "error",mensaje:"The product or cart you are searching for could not be found!"});
-        } 
+        const cid = req.params.cid;
+        const pid = req.params.pid;
+    
+        await deleteCartService(cid, pid);
+        res.json({ message: 'Product removed from the cart' });
     } catch (error) {
-        next(error);
+        console.error('Error deleting product from the cart:', error);
+        res.status(500).json({ error: 'Internal server error' });
+        next(error)
     }
+}
+
+//VACIAR CARRITO
+export const emptyCartController = async (req, res, next) => {
+    try{
+        const cid = req.params.cid;
+    
+        await emptyCartService(cid); 
+        res.send('Updated successfully');
+        
+        }catch(error){
+            console.error('Error when deleting cart', error);
+            res.status(500).json({ error: 'Internal server error' });
+            next(error)
+        }
 }

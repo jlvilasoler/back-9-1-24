@@ -1,5 +1,5 @@
 import { productModel } from "../dao/models/product.model.js";
-import { getAllCartsService, getCartByIdServ } from "../Services/CartServices.js";
+import { getAllCartsService, getCartByIdService, addCartService } from "../../src/Services/CartServices.js";
 import { getProductsService, addProductService, deleteProductService, updateProductService } from "../Services/ProductServices.js";
 
 //MUESTRA TODOS LOS PRODUCTOS
@@ -127,9 +127,8 @@ export const getByIdController = async (req, res, next) => {
 
 export const createController = async (req, res, next) => {
     try {
-
         const { title, description, price, thumbnail, code, stock, status } = req.body;
-        const newDoc = await addProductService({
+        const newProductId = await addProductService({
             title,
             description,
             price,
@@ -137,13 +136,12 @@ export const createController = async (req, res, next) => {
             code,
             stock,
             status
-        })
-        res.json(newDoc)
+        });
+        res.json({ _id: newProductId });
     } catch (error) {
-        next(error)
+        next(error);
     }
 }
-
 
 export const updateController = async (req, res, next) => {
     try {
