@@ -58,7 +58,7 @@ app.use(express.static('./src/public'));
 
 
 app.use(session({
-    secret: 'tu_secreto_aqui',
+    secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
 }));
