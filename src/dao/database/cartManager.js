@@ -1,8 +1,10 @@
 import { cartModel } from "../models/cart.model.js";
 import { productModel } from "../models/product.model.js";
+import errorHandler from "../../middlewares/errorHandler.js";
 
 export class CartManager {
-    async getAllCarts() { //OK FUNCIONA
+    //Get All Carts - okok
+    async getAllCarts() {
         try {
             const carts = await cartModel.find().lean();
             return carts;
@@ -12,8 +14,8 @@ export class CartManager {
         }
     }
 
-
-    async addCart(cart) {//OK FUNCIONA
+    //Add Cart - okok
+    async addCart(cart) {
         try {
             const newCart = await cartModel.create(cart);
             return newCart.id;
@@ -23,6 +25,7 @@ export class CartManager {
         }
     }
 
+    //Get Cart By Id - okok
     async getCartById(id) {//OK FUNCIONA
         try {
             const cart = await cartModel.findById(id);
@@ -48,7 +51,7 @@ export class CartManager {
             }
         } catch (error) {
             console.error('Error while fetching cart by ID', error);
-            errorHandler(error, null, null, null);
+            errorHandler();
         }
     }
 
@@ -91,30 +94,26 @@ export class CartManager {
 
     // Eliminando un producto del carrito
     async deleteProductFromCart(cid, pid) {
-        try {
-            const cart = await this.getCartById(cid);
-
-            const itemIndex = cart.products.findIndex((product) => product.product.toString() === pid);
-            if (itemIndex !== -1) {
-                // Si se encuentra el producto en el carrito, eliminarlo
-                cart.products.splice(itemIndex, 1);
-                await cart.save();
-                return pid;
-            } else {
-                //console.log()`Product with id ${pid} not found in cart.`);
-                return null; // o puedes lanzar un error si lo prefieres
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            throw error;
+        const cart = await this.getCartById(cid);
+        const itemIndex = cart.products.findIndex((product) => product.product.toString() === pid);
+    
+        if (itemIndex !== -1) {
+            // Si se encuentra el producto en el carrito, eliminarlo
+            cart.products.splice(itemIndex, 1);
+        } else {
+            console.log(`Product with id ${pid} not found in cart.`);
+            return null; // o puedes lanzar un error si lo prefieres
         }
+    
+        await cart.save();
+        return pid;
     }
 
     //DELETE CART
     async deleteCart(cid) {
         try {
             const findCart = await cartModel.findById(cid);
-console.log(findCart)
+            console.log(findCart)
             if (findCart) {
                 cartModel.findById = [];
                 await findCart.save();
@@ -129,29 +128,29 @@ console.log(findCart)
     };
 
 
-//ACTUALIZA CANT PROD EN CARRITO
-async updateProductQuantity(cid, pid, quantity) {
-    try {
-        const cart = await cartModel.findById(cid);
-        if (!cart) {
-            throw new Error("Cart not found");
+    //ACTUALIZA CANT PROD EN CARRITO
+    async updateProductQuantity(cid, pid, quantity) {
+        try {
+            const cart = await cartModel.findById(cid);
+            if (!cart) {
+                throw new Error("Cart not found");
+            }
+            const productToUpdate = cart.products.find(
+                (product) => product._id.toString() === pid
+            );
+            if (!productToUpdate) {
+                throw new Error("Product not found in cart");
+            }
+            // Actualiza la cantidad del producto
+            productToUpdate.quantity = quantity;
+            await cart.save();
+            // Devuelve el carrito actualizado
+            return cart;
+        } catch (error) {
+            console.error('Error updating product quantity:', error);
+            throw error;
         }
-        const productToUpdate = cart.products.find(
-            (product) => product._id.toString() === pid
-        );
-        if (!productToUpdate) {
-            throw new Error("Product not found in cart");
-        }
-        // Actualiza la cantidad del producto
-        productToUpdate.quantity = quantity;
-        await cart.save();
-        // Devuelve el carrito actualizado
-        return cart;
-    } catch (error) {
-        console.error('Error updating product quantity:', error);
-        throw error;
     }
-}
 
     async getCartById(id) {
         try {

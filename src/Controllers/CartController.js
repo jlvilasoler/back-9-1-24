@@ -4,16 +4,15 @@ import {
     getCartByIdService,
     getProductsInCartService,
     updateProductQuantityService,
-    deleteProductFromCartService,
     deleteCartService,
     getCartByIdServ,
     emptyCartService,
   } from "../../src/Services/CartServices.js";
 import { addProductService } from "../Services/ProductServices.js";
-import errorHandler from "../middlewares/ErrorHandler.js";
+import errorHandler from "../middlewares/errorHandler.js";
 
 
-// MUESTRA TODOS LOS CARRITOS - Ok
+// MUESTRA TODOS LOS CARRITOS - Okok
 export const getCartsController = async (req, res, next) => {
     try {
         const allCarts = await getAllCartsService();
@@ -24,7 +23,7 @@ export const getCartsController = async (req, res, next) => {
     }
 }
 
-// MUESTRA CARRITO POR ID - Ok
+// MUESTRA CARRITO POR ID - Okok
 export const getCartByIdController = async (req, res, next) => {
     try {
         const { cid } = req.params;
@@ -37,7 +36,7 @@ export const getCartByIdController = async (req, res, next) => {
     }
 };
 
-// CREA CARRITO - Ok
+// CREA CARRITO - Okok
 export const createCartController = async (req, res, next) => {
     try {
         const docs = await addCartService();

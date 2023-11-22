@@ -1,6 +1,9 @@
-const errorHandler = (error, req, res, next) => {
-    console.error('Error:', error);
-    res.status(500).json({ error: 'Internal server error' });
-};
+const errorHandler = async (error, req, res, next) => {
+    try {
+        await next();
+    } catch (erorr){
+        console.log(error);
+    }
+}
 
 export default errorHandler;

@@ -14,7 +14,7 @@ import userRouter from '../routes/userRouter.js'
 import Express from 'express-session';
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
-import errorHandler from '../src/middlewares/ErrorHandler.js';
+import errorHandler from '../src/middlewares/errorHandler.js';
 import { messageModel } from './dao/models/chat.model.js';
 import { productModel } from './dao/models/product.model.js';
 import { cartModel } from './dao/models/cart.model.js';

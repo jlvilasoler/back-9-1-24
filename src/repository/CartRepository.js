@@ -2,6 +2,7 @@ import { cartModel } from "../dao/models/cart.model.js";
 
 export default class CartRepository {
 
+    //Get All - okok
     async getCartRepository() {
         try {
             const get = await cartModel.find({}).lean();
@@ -12,6 +13,7 @@ export default class CartRepository {
         }
     }
 
+    //Get Id - okok
     async getIdRepository(cid) {
         try {
             const cart = await cartModel.findOne(cid).lean();
@@ -25,18 +27,8 @@ export default class CartRepository {
             throw error;
         }
     }
-    
-//ACTUALIZAR 
-    async updateRepository(cid, updateData) {
-        try {
-            const data = await cartModel.updateOne(cid, updateData);
-            return data;
-        } catch (error) {
-            console.error("error update cart", error);
-            throw error;
-        }
-    }
 
+    //Add cart- okok
     async postRepository(cart) {
         try {
             const add = await cartModel.create(cart);
@@ -47,14 +39,9 @@ export default class CartRepository {
         }
     }
 
-    async deleteProductRepository(cid,pid){
-        try {
-            const data = await cartModel.findOneAndUpdate(cid, pid);
-            return data;
-        } catch (error) {
-            console.error("error delete product", error);
-            throw error;
-        }
+    async deleteProductRepository(cid, pid) {
+        const data = await cartModel.findOne(cid, pid);
+        return data;
     }
 
 };

@@ -4,7 +4,7 @@ import { CartManager } from "../dao/database/cartManager.js";
 const cartRepository = new CartRepository();
 const CM = new CartManager();
 
-//Tomar carritos
+//Tomar carritos - okok
 export const getAllCartsService = async (id) => {
     try {
         const docs = await cartRepository.getCartRepository(id);
@@ -14,7 +14,7 @@ export const getAllCartsService = async (id) => {
     }
 };
 
-//Añadir carrito
+//Añadir carrito - okok
 export const addCartService = async (cart) => {
     try {
         const newCart = await cartRepository.postRepository(cart);
@@ -24,7 +24,7 @@ export const addCartService = async (cart) => {
     }
 };
 
-//Filtrar carrito por id
+//Filtrar carrito por id - okok
 export const getCartByIdService = async (cid) => {
     try {
         const cart = await cartRepository.getIdRepository({ _id: cid });
@@ -64,23 +64,18 @@ export const updateProductQuantityService = async (cid, pid, quantity) => {
 
 //DELETE PRODUCT FROM CART
 export const deleteProductFromCartService = async (cid, pid) => {
-    try {
-        const result = await CM.deleteProductFromCart(cid, pid);
+    const result = await CM.deleteProductRepository(
+        { _id: cid },
+        { $pull: { products: { _id: pid } } },
+        { new: true }
+    );
 
-        if (result === null) {
-            // Esto significa que el producto no fue encontrado en el carrito
-            return { success: false, message: `Product with ID ${pid} not found in the cart.` };
-        }
-
-        // La eliminación fue exitosa
-        return { success: true, message: `Product with ID ${pid} successfully removed from the cart.` };
-    } catch (error) {
-        // Manejo genérico de errores
-        console.error('Error deleting product from cart:', error);
-        return { success: false, message: 'Internal server error.' };
+    if (result) {
+        console.log('Product removed from the cart');
+    } else {
+        console.log('Product not found in the cart');
     }
 };
-
 
 //DELETE CART
 export const deleteCartService = async (cid) => {
