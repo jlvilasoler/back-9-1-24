@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { ProductManager } from "../src/dao/filesystem/productManager.js";
-import { productModel } from "../src/dao/models/product.model.js";
-import { cartModel } from "../src/dao/models/cart.model.js";
-import { CartManager } from "../src/dao/database/cartManager.js";
+import productModel from "../src/dao/models/product.model.js";
+import cartModel from "../src/dao/models/cart.model.js";
+import CartManager from "../src/dao/database/cartManager.js";
 import handlebars from "express-handlebars";
 import publicRoutes from "../src/middlewares/publicRoutes.js";
 import privateRoutes from "../src/middlewares/privateRoutes.js";

@@ -16,8 +16,8 @@ import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import errorHandler from '../src/middlewares/errorHandler.js';
 import { messageModel } from './dao/models/chat.model.js';
-import { productModel } from './dao/models/product.model.js';
-import { cartModel } from './dao/models/cart.model.js';
+import productModel from './dao/models/product.model.js';
+import cartModel from './dao/models/cart.model.js';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -50,7 +50,6 @@ const mensajes = [];
 
 const socketServer = new Server(httpServer);
 
-
 app.engine('handlebars', handlebars.engine());
 app.set('views', './src/views'); // declaramos donde van a estar las vistas
 app.set('view engine', 'handlebars');
@@ -73,13 +72,9 @@ app.use(errorHandler);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
 initializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 
 app.use('/static', express.static('./src/public'));
@@ -92,8 +87,6 @@ app.use('/api', productRouter);
 app.use('/api', cartRouter);
 
 app.use(viewsRouter);
-
-
 
 app.use('/img', imgRouter);
 app.use('/cart', viewsRouter);

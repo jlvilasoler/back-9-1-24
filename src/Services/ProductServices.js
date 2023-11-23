@@ -1,11 +1,58 @@
 import ProductManager from "../dao/database/productManager.js";
+import ProductRepository from "../repository/ProductRepository.js";
+
+const productRepository = new ProductRepository();
 const PM = new ProductManager();
 
-export const addProductService = async (id, obj) => {
+
+// GET ALL _ funciona
+export const getAllProductsService = async () => {
     try {
-        const newProd = await PM.updateProduct(id, obj)
+        const products = await productRepository.getProductRepository();
+        return products;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+//FILTER BY ID _ funciona
+export const getProductByIdService = async (pid) => {
+    try {
+        const product = await productRepository.getProductIdRepository({ _id: pid });
+        return product;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+//DELETE PROD BY ID _ funciona
+export const deleteProductService = async (pid) => {
+    try {
+        const product = await productRepository.deleteRepository({ _id: pid });
+        return product;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const addProductService = async (pid) => {
+    try {
+        const newProd = await productRepository.postProductRepository(pid)
         console.log(newProd)
-        if(!newProd){
+        if (!newProd) {
             throw new Error('Validation error')
         } else return newProd;
     } catch (error) {
@@ -14,34 +61,16 @@ export const addProductService = async (id, obj) => {
 };
 
 
-export const getProductsService = async () => {
-    try {
-        const docs = await PM.getProducts();
-        return docs;
-    } catch (error) {
-        //console.log()error);
-    }
-};
-
-export const getProductByIdService = async (id) => {
-    try {
-        const docs = await PM.getProductById(id);
-        return docs;
-    } catch (error) {
-        //console.log()error);
-    }
-};
 
 
 
-export const deleteProductService  = async (pid) => {
-    try {
-        const data = await productRepository.deleteRepository({ _id: pid });
-        return data;
-    } catch (error) {
-        console.log("Error when deleting product", error)
-    }
-}
+
+
+
+
+
+
+
 
 export const updateProductService = async (id, obj) => {
     try {

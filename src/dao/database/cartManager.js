@@ -1,15 +1,14 @@
-import { cartModel } from "../models/cart.model.js";
-import { productModel } from "../models/product.model.js";
+import cartModel from "../models/cart.model.js";
+import productModel from "../models/product.model.js";
 import errorHandler from "../../middlewares/errorHandler.js";
 
-export class CartManager {
+export default class CartManager {
     //Get All Carts - okok
     async getAllCarts() {
         try {
             const carts = await cartModel.find().lean();
             return carts;
         } catch (error) {
-            console.error('Error while fetching cart by ID', error);
             errorHandler();
         }
     }
@@ -20,23 +19,19 @@ export class CartManager {
             const newCart = await cartModel.create(cart);
             return newCart.id;
         } catch (error) {
-            console.error('Error while fetching cart by ID', error);
             errorHandler();
         }
     }
 
     //Get Cart By Id - okok
-    async getCartById(id) {//OK FUNCIONA
+    async getCartById(id) {
         try {
             const cart = await cartModel.findById(id);
             if (!cart) {
-                console.warn(`No cart found for ID: ${id}`);
-                return null; // o lanza un error según tus requisitos
+                return null;
             }
             return cart;
         } catch (error) {
-            console.error('Error while fetching cart by ID', error);
-            // Llama al middleware de error para manejar el error
             errorHandler();
         }
     }
@@ -50,7 +45,6 @@ export class CartManager {
                 return [];
             }
         } catch (error) {
-            console.error('Error while fetching cart by ID', error);
             errorHandler();
         }
     }
@@ -61,7 +55,6 @@ export class CartManager {
             const findProduct = await productModel.findById(pid);
 
             if (!findProduct) {
-                throw new Error(`The requested product id ${pid} doesnt exist!`);
             } else {
                 if (findCart) {
                     const productExist = findCart.products.find(
@@ -101,7 +94,6 @@ export class CartManager {
             // Si se encuentra el producto en el carrito, eliminarlo
             cart.products.splice(itemIndex, 1);
         } else {
-            console.log(`Product with id ${pid} not found in cart.`);
             return null; // o puedes lanzar un error si lo prefieres
         }
     

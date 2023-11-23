@@ -29,7 +29,6 @@ export const getCartByIdController = async (req, res, next) => {
         const { cid } = req.params;
        //const docs = await getCartByIdService(Number(cid));
        const docs = await getCartByIdServ(cid);
-
         res.status(200).json(docs);
     } catch (error) {
     next(error);

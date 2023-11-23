@@ -1,37 +1,87 @@
-import { productModel } from "../models/product.model.js";
-import { CartManager } from "./cartManager.js";
+import errorHandler from "../../middlewares/errorHandler.js";
+import productModel from "../models/product.model.js";
+
 
 export default class ProductManager {
 
+    // GET ALL _ funciona
     async getProducts() {
         try {
         const products = await productModel.find({}).lean();
-        //console.log()products);
-        return products;
-    } catch (error) {
-        throw error;
-    }
+        if (products) {
+            res.send(products)
+        } else {
+            res.status(404).send();
+        }
+        } catch (error) {
+            res.status(500).send("error getting products");
+            next(error)
+        }
     }
 
-    async getProductById(id) {
+//FILTER BY ID _ funciona
+    async getProductById(pid) {
         try {
-        const product = await productModel.find({ _id: id }).lean();
-        return product;
-    } catch (error) {
-        throw error;
-    }
-    }
+            const product = await productModel.findById(pid);
+            if (product) {
+                res.send(product)
+            } else {
+                res.status(404).send();
+            }
+            } catch (error) {
+                res.status(500).send("error filtering product");
+                next(error)
+            }
+        }
+
+    //DELETE PRODUCT BY ID _ funciona
+    async deleteProduct(id) {
+        try {
+            const product = await productModel.findByIdAndDelete(id);
+            if (product) {
+                res.send(product)
+            } else {
+                res.status(404).send();
+            }
+            } catch (error) {
+                res.status(500).send("error deleting product");
+                next(error)
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //VER
-    async addProduct(id) {
+    async addProduct(pid) {
         try {
-            const product = await productModel.create({ _id: id });
+            const product = await productModel.create(pid);
             return product;
         } catch (error) {
             throw error;
         }
     }
     
+
+
+
+
+
+
 
 
     async updateProduct(id, obj) {
@@ -44,14 +94,7 @@ export default class ProductManager {
     }
 
 
-    async deleteProduct(id) {
-        try {
-            const products = await productModel.findByIdAndDelete(id);
-            return products;
-        } catch (error) {
-            //console.log()error);
-        }
-    }
+
 
     
 

@@ -1,16 +1,21 @@
-import { productModel } from "../dao/models/product.model.js";
+import productModel from "../dao/models/product.model.js";
 import { getAllCartsService, getCartByIdService, addCartService } from "../../src/Services/CartServices.js";
-import { getProductsService, addProductService, deleteProductService, updateProductService } from "../Services/ProductServices.js";
+import { getAllProductsService, addProductService, deleteProductService, updateProductService, getProductByIdService } from "../Services/ProductServices.js";
 
-//MUESTRA TODOS LOS PRODUCTOS
+// GET ALL _ funciona
 export const getAllController = async (req, res, next) => {
     try {
-        const doc = await getProductsService();
-        res.json(doc);
-    } catch (error) {
-        next(error)
+        const products = await getAllProductsService();
+        if (products) {
+            res.send(products)
+        } else {
+            res.status(404).send();
+        }
+        } catch (error) {
+            res.status(500).send("error getting products");
+            next(error)
+        }
     }
-}
 
 export const getProdFilterPaginateController = async (req, res, next) => {
     try {
@@ -107,22 +112,60 @@ export const getProdFilterPaginateController = async (req, res, next) => {
             prevPage: result.prevPage,
             nextPage: result.nextPage
         };
-
     } catch (error) {
         next(error)
     }
 }
 
-
-export const getByIdController = async (req, res, next) => {
+//FILTER BY ID _ funciona
+export const getProductByIdController = async (req, res, next) => {
     try {
-        const { id } = req.params;
-        const doc = await getCartByIdServ(id);
-        res.json(doc)
+        const { pid } = req.params;
+       const product = await getProductByIdService(pid);
+       if (product) {
+        res.send(product)
+    } else {
+        res.status(404).send();
+    }
     } catch (error) {
+        res.status(500).send("error filtering product");
         next(error)
     }
 }
+
+//DELETE PRODUCT BY ID _ funciona
+export const deleteController = async (req, res, next) => {
+    try {
+        const { pid } = req.params;
+       const product =  await deleteProductService(pid);
+        if (product) {
+            res.send(product)
+        } else {
+            res.status(404).send();
+        }
+        } catch (error) {
+            res.status(500).send("error deleting product");
+            next(error)
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export const createController = async (req, res, next) => {
@@ -137,17 +180,30 @@ export const createController = async (req, res, next) => {
             stock,
             status
         });
-        res.json({ _id: newProductId });
+        res.json(newProductId);
     } catch (error) {
         next(error);
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const updateController = async (req, res, next) => {
     try {
         const { id } = req.params;
         const { title, description, price, thumbnail, code, stock, status } = req.body
-        await getCartByIdServ(id);
+        await getProductByIdService(id);
         const docUpd = await updateProductService(id, {
             title,
             description,
@@ -164,12 +220,3 @@ export const updateController = async (req, res, next) => {
 }
 
 
-export const deleteController = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        await deleteProductService(id);
-        res.json({ message: 'product deleted successfully' })
-    } catch (error) {
-        next(error)
-    }
-}

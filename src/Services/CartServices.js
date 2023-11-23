@@ -1,5 +1,5 @@
 import CartRepository from "../repository/CartRepository.js";
-import { CartManager } from "../dao/database/cartManager.js";
+import CartManager from '../dao/database/cartManager.js';
 
 const cartRepository = new CartRepository();
 const CM = new CartManager();
@@ -11,16 +11,6 @@ export const getAllCartsService = async (id) => {
         return docs;
     } catch (error) {
         console.log(error);
-    }
-};
-
-//Añadir carrito - okok
-export const addCartService = async (cart) => {
-    try {
-        const newCart = await cartRepository.postRepository(cart);
-        return newCart.id;
-    } catch (error) {
-        throw error;
     }
 };
 
@@ -38,6 +28,26 @@ export const getCartByIdService = async (cid) => {
         throw error; // o maneja el error de acuerdo a tus necesidades
     }
 };
+
+
+
+
+
+
+
+
+
+//Añadir carrito - okok
+export const addCartService = async (cart) => {
+    try {
+        const newCart = await cartRepository.postRepository(cart);
+        return newCart.id;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
 
 
 export const getProductsInCartService = async (id) => {

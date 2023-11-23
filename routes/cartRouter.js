@@ -4,7 +4,7 @@ import publicRoutes from "../src/middlewares/publicRoutes.js";
 
 import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteProductFromCartController, deleteCartController } from '../src/Controllers/CartController.js';
 import { getProdFilterPaginateController, updateController } from "../src/Controllers/ProductController.js";
-import { CartManager } from '../src/dao/database/cartManager.js';
+import CartManager from '../src/dao/database/cartManager.js';
 
 const router = Router();
 
