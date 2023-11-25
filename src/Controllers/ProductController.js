@@ -152,12 +152,6 @@ export const deleteController = async (req, res, next) => {
 
 
 
-
-
-
-
-
-
     
     export const createController = async (req, res, next) => {
         const { title, description, price, thumbnail, code, stock, category } = req.body;

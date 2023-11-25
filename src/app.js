@@ -10,7 +10,7 @@ import mongoose from 'mongoose';
 import imgRouter from '../routes/imgRouter.js'
 import session from "express-session";
 import MongoStore from 'connect-mongo';
-import userRouter from '../routes/userRouter.js'
+import userRouter from '../routes/userRouter.js';
 import Express from 'express-session';
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
@@ -18,6 +18,7 @@ import errorHandler from '../src/middlewares/errorHandler.js';
 import { messageModel } from './dao/models/chat.model.js';
 import productModel from './dao/models/product.model.js';
 import cartModel from './dao/models/cart.model.js';
+import ticketRouter from '../routes/ticketRouter.js'
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -80,17 +81,16 @@ app.use('/static', express.static('./src/public'));
 
 app.use('/api', userRouter); //este app.use va arriba de viewsrouter
 app.use('/', viewsRouter);
-app.use('/products', viewsRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);
-
+app.use('/api', ticketRouter);
 
 app.use(viewsRouter);
 
 app.use('/img', imgRouter);
 app.use('/cart', viewsRouter);
 app.use('/cookies', viewsRouter)
-
+app.use('/products', viewsRouter);
 
 
 socketServer.on('connection', async (socket) => {

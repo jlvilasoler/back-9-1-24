@@ -45,6 +45,16 @@ export const createCartController = async (req, res, next) => {
     }
 };
 
+
+
+
+
+
+
+
+
+
+
 //AGREGA UN PRODUCTO AL CARRITO
 export const addProductToCartController = async (req, res, next) => {
     try {

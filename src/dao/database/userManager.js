@@ -25,16 +25,6 @@ export default class UserManager {
         return newUser;
     }
 
-
-
-    async addUser(id) {
-        const newUser = await userModel.create(id);
-        return newUser.id;
-    }
-
-
-
-
     //DELETE USER
     async deleteUser(id) {
         try {
@@ -50,6 +40,13 @@ export default class UserManager {
             //console.log()error);
         }
     }
+
+    async addUser(uid) {
+        const newUser = await userModel.create(uid);
+        return newUser.uid;
+    }
+
+
 
 
     async getUserById(id) {

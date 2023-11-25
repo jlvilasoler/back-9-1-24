@@ -4,7 +4,7 @@ import CartManager from '../dao/database/cartManager.js';
 const cartRepository = new CartRepository();
 const CM = new CartManager();
 
-//Tomar carritos - okok
+//Tomar carritos -
 export const getAllCartsService = async (id) => {
     try {
         const docs = await cartRepository.getCartRepository(id);
@@ -14,7 +14,7 @@ export const getAllCartsService = async (id) => {
     }
 };
 
-//Filtrar carrito por id - okok
+//Filtrar carrito por id -
 export const getCartByIdService = async (cid) => {
     try {
         const cart = await cartRepository.getIdRepository({ _id: cid });
@@ -29,15 +29,7 @@ export const getCartByIdService = async (cid) => {
     }
 };
 
-
-
-
-
-
-
-
-
-//Añadir carrito - okok
+//Añadir carrito 
 export const addCartService = async (cart) => {
     try {
         const newCart = await cartRepository.postRepository(cart);
@@ -59,7 +51,6 @@ export const getProductsInCartService = async (id) => {
     }
 };
 
-
 // ACTUALIZA CARRITO POR CANT
 export const updateProductQuantityService = async (cid, pid, quantity) => {
     try {
@@ -69,8 +60,6 @@ export const updateProductQuantityService = async (cid, pid, quantity) => {
         //console.log()error);
     }
 };
-
-
 
 //DELETE PRODUCT FROM CART
 export const deleteProductFromCartService = async (cid, pid) => {
@@ -97,8 +86,6 @@ export const deleteCartService = async (cid) => {
         throw error;
     }
 };
-
-
 
 export const getCartByIdServ = async (id) => {
     try {
