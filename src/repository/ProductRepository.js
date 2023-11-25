@@ -36,23 +36,11 @@ export default class ProductRepository {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //ADD PRODUCT _
-    async postProductRepository(obj) {
+    //ADD PRODUCT _ en prueba ......
+    async postProductRepository(pid) {
         try {
-            const addproduct = await productModel.create(obj);
+            const addproduct = await productModel.create(pid);
+            console.log(productModel)
             return addproduct;
         } catch (error) {
             throw error;

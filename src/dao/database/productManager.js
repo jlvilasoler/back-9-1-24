@@ -7,19 +7,19 @@ export default class ProductManager {
     // GET ALL _ funciona
     async getProducts() {
         try {
-        const products = await productModel.find({}).lean();
-        if (products) {
-            res.send(products)
-        } else {
-            res.status(404).send();
-        }
+            const products = await productModel.find({}).lean();
+            if (products) {
+                res.send(products)
+            } else {
+                res.status(404).send();
+            }
         } catch (error) {
             res.status(500).send("error getting products");
             next(error)
         }
     }
 
-//FILTER BY ID _ funciona
+    //FILTER BY ID _ funciona
     async getProductById(pid) {
         try {
             const product = await productModel.findById(pid);
@@ -28,54 +28,46 @@ export default class ProductManager {
             } else {
                 res.status(404).send();
             }
-            } catch (error) {
-                res.status(500).send("error filtering product");
-                next(error)
-            }
+        } catch (error) {
+            res.status(500).send("error filtering product");
+            next(error)
         }
+    }
 
     //DELETE PRODUCT BY ID _ funciona
-    async deleteProduct(id) {
+    async deleteProduct(pid) {
         try {
-            const product = await productModel.findByIdAndDelete(id);
+            const product = await productModel.findByIdAndDelete(pid);
             if (product) {
                 res.send(product)
             } else {
                 res.status(404).send();
             }
-            } catch (error) {
-                res.status(500).send("error deleting product");
-                next(error)
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//VER
-    async addProduct(pid) {
-        try {
-            const product = await productModel.create(pid);
-            return product;
         } catch (error) {
-            throw error;
+            res.status(500).send("error deleting product");
+            next(error)
         }
     }
-    
+
+    //lo saque y sigue funcionando el codigo
+/*
+        //Add Product - okok
+        async addProduct(pid) {
+            try {
+                const newProduct = await productModel.create(pid);
+                return newProduct.pid;
+            } catch (error) {
+                errorHandler();
+            }
+        }
+*/
+
+
+
+
+
+
+
 
 
 
@@ -86,17 +78,17 @@ export default class ProductManager {
 
     async updateProduct(id, obj) {
         try {
-        await productModel.updateOne({ _id: id }, obj).lean();
-        return obj;
-    } catch (error) {
-        throw error;
+            await productModel.updateOne({ _id: id }, obj).lean();
+            return obj;
+        } catch (error) {
+            throw error;
+        }
     }
-    }
 
 
 
 
-    
+
 
 
 

@@ -35,28 +35,26 @@ export const deleteProductService = async (pid) => {
     }
 };
 
+//ADD PRODUCT _ 
+export const addProductService = async (title, description, price, thumbnail, code, stock, status, category) => {
+    const newProduct = {
+        title,
+        description,
+        price,
+        thumbnail,
+        code,
+        stock,
+        status,
+        category
+    };
 
-
-
-
-
-
-
-
-
-
-
-
-
-export const addProductService = async (pid) => {
+    
     try {
-        const newProd = await productRepository.postProductRepository(pid)
-        console.log(newProd)
-        if (!newProd) {
-            throw new Error('Validation error')
-        } else return newProd;
+        const productCreate = await productRepository.postProductRepository(newProduct);
+        console.log(productCreate," producto creado")
+        return productCreate;
     } catch (error) {
-        console.log(error);
+        console.log("Error when adding product", error);
     }
 };
 

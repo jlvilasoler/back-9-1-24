@@ -5,8 +5,23 @@ import publicRoutes from "../src/middlewares/publicRoutes.js";
 
 import bcrypt from "bcrypt"
 import passport from "passport";
+import { deleteController, getAllUsersController, getUserByIdController } from "../src/Controllers/UserController.js";
 
 const router = Router();
+
+
+
+// En la ruta GET, debe devolver los usuarios 
+router.get('/users', /*privateRoutes*/ getAllUsersController);
+
+// En la ruta GET, debe devolver el usuario indicado 
+router.get('/users/:uid', /*privateRoutes*/ getUserByIdController);
+
+// En la ruta DELETE, debe eliminar el usuario indicado
+router.delete('/users/:uid', /*privateRoutes*/ deleteController);
+
+
+
 
 
 //registrar el usuario en la base de datos

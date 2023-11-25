@@ -32,9 +32,7 @@ let response = await cartModel.find({}).explain("executionStats");
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
-db.once('open', () => {
-//console.log()'Connection to MongoDB established successfully');
-});
+
 
 const productManager = new ProductManager();
 const cartManager = new CartManager();
@@ -85,6 +83,7 @@ app.use('/', viewsRouter);
 app.use('/products', viewsRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);
+
 
 app.use(viewsRouter);
 

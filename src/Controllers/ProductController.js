@@ -2,6 +2,7 @@ import productModel from "../dao/models/product.model.js";
 import { getAllCartsService, getCartByIdService, addCartService } from "../../src/Services/CartServices.js";
 import { getAllProductsService, addProductService, deleteProductService, updateProductService, getProductByIdService } from "../Services/ProductServices.js";
 
+
 // GET ALL _ funciona
 export const getAllController = async (req, res, next) => {
     try {
@@ -157,42 +158,32 @@ export const deleteController = async (req, res, next) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-export const createController = async (req, res, next) => {
-    try {
-        const { title, description, price, thumbnail, code, stock, status } = req.body;
-        const newProductId = await addProductService({
+    
+    export const createController = async (req, res, next) => {
+        const { title, description, price, thumbnail, code, stock, category } = req.body;
+      
+        try {
+          const newProduct = new productModel({
             title,
             description,
             price,
             thumbnail,
             code,
             stock,
-            status
-        });
-        res.json(newProductId);
-    } catch (error) {
-        next(error);
-    }
-}
-
-
-
-
-
-
-
-
+            category,
+          });
+      
+          await newProduct.save();
+      
+          res.send(newProduct);
+          console.log(newProduct);
+        } catch (error) {
+          console.error("Error adding product:", error);
+          res.status(500).send(`Error adding product: ${error.message}`);
+          next(error);
+        }
+      };
+      
 
 
 
