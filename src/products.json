@@ -229,5 +229,16 @@
 		"stock": 11,
 		"status": "true",
 		"category": "chocolates"
+	},
+	{
+		"id": 22,
+		"title": "dsd",
+		"description": "sdsd",
+		"price": 2323,
+		"thumbnail": "dsdsd",
+		"code": 1212,
+		"stock": 2121,
+		"status": "true",
+		"category": "bebidas"
 	}
 ]

@@ -19,8 +19,9 @@ const router = Router();
 
 
 //router de Productos y paginación:
-router.get("/products", /*privateRoutes,*/ async (req, res, next) => {
-    await getProdFilterPaginateController(req, res, next);
+router.get("/products", /*privateRoutes,*/ async (req, res) => {
+    await getProdFilterPaginateController(req, res);
+
 });
 
 router.get('/', async (req, res) => {
