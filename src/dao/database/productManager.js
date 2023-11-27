@@ -49,36 +49,20 @@ export default class ProductManager {
         }
     }
 
-    //lo saque y sigue funcionando el codigo
-/*
-        //Add Product - okok
-        async addProduct(pid) {
-            try {
-                const newProduct = await productModel.create(pid);
-                return newProduct.pid;
-            } catch (error) {
-                errorHandler();
-            }
-        }
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    async updateProduct(id, obj) {
+    //ADD PRODUCT  _ funciona
+    async addProduct(pid) {
         try {
-            await productModel.updateOne({ _id: id }, obj).lean();
+            const newProduct = await productModel.create(pid);
+            return newProduct.pid;
+        } catch (error) {
+            errorHandler();
+        }
+    }
+
+        //UPDATE PRODUCT  _ funciona
+    async updateProduct(pid, obj) {
+        try {
+            await productModel.updateOne({ _id: pid }, obj).lean();
             return obj;
         } catch (error) {
             throw error;

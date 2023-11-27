@@ -7,8 +7,9 @@ import handlebars from "express-handlebars";
 import publicRoutes from "../src/middlewares/publicRoutes.js";
 import privateRoutes from "../src/middlewares/privateRoutes.js";
 import { getProdFilterPaginateController } from "../src/Controllers/ProductController.js";
-import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteProductFromCartController, deleteCartController } from '../src/Controllers/CartController.js';
+import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteCartController } from '../src/Controllers/CartController.js';
 import { updateController } from "../src/Controllers/ProductController.js";
+import { logger } from '../src/utils/logger.js';
 
 const productManager = new ProductManager();
 
@@ -21,7 +22,9 @@ const router = Router();
 //router de Productos y paginación:
 router.get("/products", /*privateRoutes,*/ async (req, res) => {
     await getProdFilterPaginateController(req, res);
-
+    logger.info("info");
+    logger.error("error");
+    logger.http("http")
 });
 
 router.get('/', async (req, res) => {

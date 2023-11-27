@@ -2,7 +2,7 @@ import { Router } from "express";
 import privateRoutes from "../src/middlewares/privateRoutes.js";
 import publicRoutes from "../src/middlewares/publicRoutes.js";
 
-import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteProductFromCartController, deleteCartController } from '../src/Controllers/CartController.js';
+import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteCartController } from '../src/Controllers/CartController.js';
 import { getProdFilterPaginateController, updateController } from "../src/Controllers/ProductController.js";
 import CartManager from '../src/dao/database/cartManager.js';
 
@@ -25,7 +25,7 @@ router.get('/cart/:cid/products/:pid', /*privateRoutes,*/ getProdFilterPaginateC
 router.post('/cart/:cid/products/:pid', /*privateRoutes,*/ addProductToCartController);
 
 // En la ruta DELETE, Elimina pid a un cart segun su cid
-router.delete('/cart/:cid/products/:pid',  /*privateRoutes,*/ deleteProductFromCartController); 
+router.delete('/cart/:cid/products/:pid',  /*privateRoutes,*/ /*deleteProductFromCartController*/); 
 
 // En la ruta DELETE, Eliminar todos los productos de un cart
 router.delete('/cart/:cid',  /*privateRoutes,*/ deleteCartController);

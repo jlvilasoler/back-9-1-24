@@ -47,8 +47,6 @@ export const addProductService = async (title, description, price, thumbnail, co
         status,
         category
     };
-
-    
     try {
         const productCreate = await productRepository.postProductRepository(newProduct);
         console.log(productCreate," producto creado")
@@ -58,26 +56,20 @@ export const addProductService = async (title, description, price, thumbnail, co
     }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-export const updateProductService = async (id, obj) => {
+//UPDATE PRODUCT _ 
+export const updateProductService = async (pid, updateData) => {
     try {
-        const docs = await PM.updateProduct(id, obj);
-        return docs;
+        const updateProduct = await productRepository.updateRepository({ _id: pid }, updateData);
+        return updateProduct;
     } catch (error) {
-        //console.log()error);
+        console.log("Error updating product", error)
     }
 }
+
+
+
+
+
 
 export const pageProductsService = async (modelQuery, modelLimit, modelPage, modelSort) => {
     try {

@@ -3,7 +3,7 @@ import { getAllCartsService, getCartByIdService, addCartService } from "../../sr
 import { getAllProductsService, addProductService, deleteProductService, updateProductService, getProductByIdService } from "../Services/ProductServices.js";
 
 
-// GET ALL _ funciona
+// GET ALL
 export const getAllController = async (req, res, next) => {
     try {
         const products = await getAllProductsService();
@@ -12,11 +12,11 @@ export const getAllController = async (req, res, next) => {
         } else {
             res.status(404).send();
         }
-        } catch (error) {
-            res.status(500).send("error getting products");
-            next(error)
-        }
+    } catch (error) {
+        res.status(500).send("error getting products");
+        next(error)
     }
+}
 
 export const getProdFilterPaginateController = async (req, res, next) => {
     try {
@@ -118,89 +118,82 @@ export const getProdFilterPaginateController = async (req, res, next) => {
     }
 }
 
-//FILTER BY ID _ funciona
+//FILTER BY ID
 export const getProductByIdController = async (req, res, next) => {
     try {
         const { pid } = req.params;
-       const product = await getProductByIdService(pid);
-       if (product) {
-        res.send(product)
-    } else {
-        res.status(404).send();
-    }
+        const product = await getProductByIdService(pid);
+        if (product) {
+            res.send(product)
+        } else {
+            res.status(404).send();
+        }
     } catch (error) {
         res.status(500).send("error filtering product");
         next(error)
     }
 }
 
-//DELETE PRODUCT BY ID _ funciona
+//DELETE PRODUCT BY ID
 export const deleteController = async (req, res, next) => {
     try {
         const { pid } = req.params;
-       const product =  await deleteProductService(pid);
+        const product = await deleteProductService(pid);
         if (product) {
             res.send(product)
         } else {
             res.status(404).send();
         }
-        } catch (error) {
-            res.status(500).send("error deleting product");
-            next(error)
-        }
+    } catch (error) {
+        res.status(500).send("error deleting product");
+        next(error)
     }
+}
 
-
-    
-    export const createController = async (req, res, next) => {
-        const { title, description, price, thumbnail, code, stock, category } = req.body;
-      
-        try {
-          const newProduct = new productModel({
+//ADD PRODUCT
+export const createController = async (req, res, next) => {
+    const { title, description, price, thumbnail, code, stock, status, category } = req.body;
+    try {
+        const newProduct = new productModel({
             title,
             description,
             price,
             thumbnail,
             code,
             stock,
+            status,
             category,
-          });
-      
-          await newProduct.save();
-      
-          res.send(newProduct);
-          console.log(newProduct);
-        } catch (error) {
-          console.error("Error adding product:", error);
-          res.status(500).send(`Error adding product: ${error.message}`);
-          next(error);
-        }
-      };
-      
+        });
+        await newProduct.save();
+        res.send(newProduct);
+        console.log(newProduct);
+    } catch (error) {
+        console.error("Error adding product:", error);
+        res.status(500).send(`Error adding product: ${error.message}`);
+        next(error);
+    }
+};
 
-
-
-
-
-
+//UPDATE PRODUCT  _ funciona
 export const updateController = async (req, res, next) => {
     try {
-        const { id } = req.params;
-        const { title, description, price, thumbnail, code, stock, status } = req.body
-        await getProductByIdService(id);
-        const docUpd = await updateProductService(id, {
+        const { pid } = req.params;
+        const { title, description, price, thumbnail, code, stock, status, category } = req.body
+        await getProductByIdService(pid);
+        const updateProduct = await updateProductService(pid, {
             title,
             description,
             price,
             thumbnail,
             code,
             stock,
-            status
+            status,
+            category
         })
-        res.json(docUpd);
+        res.json(updateProduct);
     } catch (error) {
         next(error)
     }
 }
 
-
+////////////////////////////////

@@ -19,6 +19,7 @@ import { messageModel } from './dao/models/chat.model.js';
 import productModel from './dao/models/product.model.js';
 import cartModel from './dao/models/cart.model.js';
 import ticketRouter from '../routes/ticketRouter.js'
+import { errors } from './middlewares/errors.js';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -75,6 +76,8 @@ initializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+app.use(errors);
 
 app.use('/static', express.static('./src/public'));
 

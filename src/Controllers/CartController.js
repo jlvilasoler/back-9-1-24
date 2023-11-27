@@ -5,8 +5,7 @@ import {
     getProductsInCartService,
     updateProductQuantityService,
     deleteCartService,
-    getCartByIdServ,
-    emptyCartService,
+    getCartByIdServ
   } from "../../src/Services/CartServices.js";
 import { addProductService } from "../Services/ProductServices.js";
 import errorHandler from "../middlewares/errorHandler.js";
@@ -44,6 +43,27 @@ export const createCartController = async (req, res, next) => {
         next(error);
     }
 };
+
+//DELETE PRODUCT BY ID
+export const deleteCartController = async (req, res, next) => {
+    try {
+        const { cid } = req.params;
+        const cart = await deleteCartService(cid);
+        if (cart) {
+            res.send(cart)
+        } else {
+            res.status(404).send();
+        }
+    } catch (error) {
+        res.status(500).send("error deleting cart");
+        next(error)
+    }
+}
+
+
+
+
+
 
 
 
@@ -107,46 +127,8 @@ export const updateAllCartController = async (req, res, next) => {
         next(error);
     }
 }
-//DELETE CART
-export const deleteCartController = async (req, res, next) => {
-    try {
-        const { cid } = req.params;
-        const productsDeleted = await deleteCartService(cid);
-        if (productsDeleted !== null) {
-            res.status(201).send({ status: "success", mensaje: "Cart deleted successfully!", payload: productsDeleted });
-        } else {
-            res.status(404).send({ status: "error", mensaje: "Cart not found" });
-        }
-    } catch (error) {
-        next(error);
-    }
-};
-//ELIMINA PRODUCTO AL CARRITO
-export const deleteProductFromCartController = async (req, res, next) => {
-    try {
-        const cid = req.params.cid;
-        const pid = req.params.pid;
-    
-        await deleteCartService(cid, pid);
-        res.json({ message: 'Product removed from the cart' });
-    } catch (error) {
-        console.error('Error deleting product from the cart:', error);
-        res.status(500).json({ error: 'Internal server error' });
-        next(error)
-    }
-}
 
-//VACIAR CARRITO
-export const emptyCartController = async (req, res, next) => {
-    try{
-        const cid = req.params.cid;
-    
-        await emptyCartService(cid); 
-        res.send('Updated successfully');
-        
-        }catch(error){
-            console.error('Error when deleting cart', error);
-            res.status(500).json({ error: 'Internal server error' });
-            next(error)
-        }
-}
+
+
+
+

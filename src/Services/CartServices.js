@@ -4,7 +4,7 @@ import CartManager from '../dao/database/cartManager.js';
 const cartRepository = new CartRepository();
 const CM = new CartManager();
 
-//Tomar carritos -
+//GET ALL CARTS
 export const getAllCartsService = async (id) => {
     try {
         const docs = await cartRepository.getCartRepository(id);
@@ -14,7 +14,7 @@ export const getAllCartsService = async (id) => {
     }
 };
 
-//Filtrar carrito por id -
+//FILTER CART BY ID
 export const getCartByIdService = async (cid) => {
     try {
         const cart = await cartRepository.getIdRepository({ _id: cid });
@@ -29,7 +29,7 @@ export const getCartByIdService = async (cid) => {
     }
 };
 
-//Añadir carrito 
+//ADD CART
 export const addCartService = async (cart) => {
     try {
         const newCart = await cartRepository.postRepository(cart);
@@ -38,6 +38,35 @@ export const addCartService = async (cart) => {
         throw error;
     }
 };
+
+// REFRESH CART BY ID
+export const updateProductQuantityService = async (cid, pid, quantity) => {
+    try {
+        const docs = await CartRepository.updateProductQuantity(cid, pid, quantity);
+        return docs;
+    } catch (error) {
+        throw error;
+    }
+};
+
+
+
+//DELETE CART BY ID _ 
+export const deleteCartService = async (cid) => {
+    try {
+        const cart = await cartRepository.deleteRepository({ _id: cid });
+        return cart;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
+
+
+
+
+
 
 
 
@@ -51,15 +80,7 @@ export const getProductsInCartService = async (id) => {
     }
 };
 
-// ACTUALIZA CARRITO POR CANT
-export const updateProductQuantityService = async (cid, pid, quantity) => {
-    try {
-        const docs = await CartRepository.updateProductQuantity(cid, pid, quantity);
-        return docs;
-    } catch (error) {
-        //console.log()error);
-    }
-};
+
 
 //DELETE PRODUCT FROM CART
 export const deleteProductFromCartService = async (cid, pid) => {
@@ -76,16 +97,7 @@ export const deleteProductFromCartService = async (cid, pid) => {
     }
 };
 
-//DELETE CART
-export const deleteCartService = async (cid) => {
-    try {
-        const docs = await CM.deleteCart(cid);
-        return docs;
-    } catch (error) {
-        console.error('Error deleting cart service:', error);
-        throw error;
-    }
-};
+
 
 export const getCartByIdServ = async (id) => {
     try {
@@ -97,17 +109,3 @@ export const getCartByIdServ = async (id) => {
 };
 
 
-// Vaciar carrito
-export const emptyCartService = async (cid) => {
-    try {
-        const cartFind = await CM.getCartById({ _id: cid });
-
-        if (!cartFind) {
-            console.log("Cart not found");
-        }
-        cartFind.products = [];
-        await cartFind.save();
-    } catch (error) {
-        console.log('Error when emptying cart ', error);
-    }
-};

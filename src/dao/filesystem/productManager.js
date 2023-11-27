@@ -8,13 +8,13 @@ export class ProductManager {
         this.path = "./src/products.json";
     }
 
-    // Nos da la lista de productos guardados
+    // GET ALL PRODCUCTS
     async getId() {
         let data = await this.getProducts();
         return data.length + 1;
     }
 
-    // Agrega un nuevo producto a la lista de productos
+    // ADD PRODUCT
     async addProduct(id, title, description, price, thumbnail, code, stock, status, category) {
         const newProduct = {
             id,
@@ -44,18 +44,17 @@ export class ProductManager {
 
             }
         } catch (error) {
-            //console.log()error);
         }
     }
 
-    // Elimina un producto determinado de la lista
+    // DELETE PRODUCT
     async deleteProduct(id) {
         const products = await this.getProducts();
         const productsNotId = products.filter((product) => product.id != id);
         await fs.promises.writeFile("./src/Products.json", JSON.stringify(productsNotId, null, "\t"));
     }
 
-    // Obtenemos la lista de productos almacenados
+    // GET PRODUCTS
     async getProducts() {
         try {
             const content = await fs.promises.readFile("./src/Products.json", "utf-8");
@@ -67,7 +66,7 @@ export class ProductManager {
         }
     }
 
-    // Obtenemos la lista de productos almacenados , segun el numero de id
+    // GET PRODUCT BY ID
     async getProductById(id) {
         try {
             let data = await this.getProducts()
@@ -80,7 +79,7 @@ export class ProductManager {
         }
     }
 
-    // Actualizamos un producto según su Id
+    // UPDATE PRODUCT BY ID
     async updateProduct(id, product) {
         let data = await this.getProducts();
         let i = data.findIndex((e) => e.id === id);

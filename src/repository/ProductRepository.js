@@ -36,7 +36,7 @@ export default class ProductRepository {
         }
     }
 
-    //ADD PRODUCT _ en prueba ......
+    //ADD PRODUCT
     async postProductRepository(pid) {
         try {
             const addproduct = await productModel.create(pid);
@@ -46,6 +46,18 @@ export default class ProductRepository {
             throw error;
         }
     }
+
+    //UPDATE PRODUCT
+    async updateRepository(pid, updateData) {
+        try {
+            const updateProduct = await productModel.updateOne({ _id: pid }, updateData);
+            return updateProduct;
+        } catch (error) {
+            console.log("Error updating product", error)
+        }
+    }
+
+
 };
 
 

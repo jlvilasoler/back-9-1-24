@@ -3,7 +3,7 @@ import productModel from "../models/product.model.js";
 import errorHandler from "../../middlewares/errorHandler.js";
 
 export default class CartManager {
-    //Get All Carts - okok
+    //GET ALL CARTS
     async getAllCarts() {
         try {
             const carts = await cartModel.find().lean();
@@ -13,7 +13,7 @@ export default class CartManager {
         }
     }
 
-    //Add Cart - okok
+    //ADD CART
     async addCart(cart) {
         try {
             const newCart = await cartModel.create(cart);
@@ -23,7 +23,7 @@ export default class CartManager {
         }
     }
 
-    //Get Cart By Id - okok
+    //GET CART BY ID
     async getCartById(id) {
         try {
             const cart = await cartModel.findById(id);
@@ -36,18 +36,60 @@ export default class CartManager {
         }
     }
 
-    async getProductsInCart(cartId) {
+    //UPDATE QUANTITY ON CART
+    async updateProductQuantity(cid, pid, quantity) {
         try {
-            const cart = await this.getCartById(cartId);
-            if (cart) {
-                return cart.products;
-            } else {
-                return [];
+            const cart = await cartModel.findById(cid);
+            if (!cart) {
+                throw new Error("Cart not found");
             }
+            const productToUpdate = cart.products.find(
+                (product) => product._id.toString() === pid
+            );
+            if (!productToUpdate) {
+                throw new Error("Product not found in cart");
+            }
+            // Actualiza la cantidad del producto
+            productToUpdate.quantity = quantity;
+            await cart.save();
+            // Devuelve el carrito actualizado
+            return cart;
         } catch (error) {
-            errorHandler();
+            console.error('Error updating product quantity:', error);
+            throw error;
         }
     }
+
+    //DELETE CART BY ID 
+    async deleteCart(cid) {
+        try {
+            const cart = await cartModel.findByIdAndDelete(cid);
+            if (cart) {
+                res.send(cart)
+            } else {
+                res.status(404).send();
+            }
+        } catch (error) {
+            res.status(500).send("error deleting cart");
+            next(error)
+        }
+    }
+
+
+////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     async addProductToCartId(cid, pid) {
         try {
@@ -101,48 +143,10 @@ export default class CartManager {
         return pid;
     }
 
-    //DELETE CART
-    async deleteCart(cid) {
-        try {
-            const findCart = await cartModel.findById(cid);
-            console.log(findCart)
-            if (findCart) {
-                cartModel.findById = [];
-                await findCart.save();
-                return findCart;
-            } else {
-                return null;
-            }
-        } catch (error) {
-            console.error('Error deleting cart:', error);
-            throw error;
-        }
-    };
 
 
-    //ACTUALIZA CANT PROD EN CARRITO
-    async updateProductQuantity(cid, pid, quantity) {
-        try {
-            const cart = await cartModel.findById(cid);
-            if (!cart) {
-                throw new Error("Cart not found");
-            }
-            const productToUpdate = cart.products.find(
-                (product) => product._id.toString() === pid
-            );
-            if (!productToUpdate) {
-                throw new Error("Product not found in cart");
-            }
-            // Actualiza la cantidad del producto
-            productToUpdate.quantity = quantity;
-            await cart.save();
-            // Devuelve el carrito actualizado
-            return cart;
-        } catch (error) {
-            console.error('Error updating product quantity:', error);
-            throw error;
-        }
-    }
+
+
 
     async getCartById(id) {
         try {
