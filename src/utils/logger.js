@@ -1,20 +1,26 @@
-import { createLogger, format, transports } from "winston";
+import winston from "winston";
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const { combine, timestamp, label, printf } = format;
+console.log(process.env.environment);
 
-const myformat  = printf(({ level, message, label, timestamp}) => {
-    return `${timestamp} [${label}] ${level}: ${message}`
-});
+const config = {
+    PRODUCTION: {
+        transports: [
+            new winston.transports.Console({
+                level: 'warn',
+            })
+        ]
+    },
+    DEVELOPMENT: {
+        transports: [
+            new winston.transports.Console({
+                level: 'silly',
+            })
+        ]
+    },
+} 
 
-export const logger = createLogger({
-            format: combine(label({ label: 'right!'}),
-            timestamp(), myformat),
-            transports: [
-                new transports.Console({
-                    level: 'info',
-                }),
-            ],
-        });
-
+export const logger = winston.createLogger(config[process.env.environment]);
 
 

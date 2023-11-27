@@ -1,3 +1,5 @@
+import { logger } from './utils/logger.js';
+import { errors } from './middlewares/errors.js';
 import ProductManager from './dao/filesystem/productManager.js';
 import CartManager from './dao/filesystem/cartManager.js';
 import handlebars from 'express-handlebars';
@@ -18,11 +20,9 @@ import errorHandler from '../src/middlewares/errorHandler.js';
 import { messageModel } from './dao/models/chat.model.js';
 import productModel from './dao/models/product.model.js';
 import cartModel from './dao/models/cart.model.js';
-import ticketRouter from '../routes/ticketRouter.js'
-import { errors } from './middlewares/errors.js';
+import ticketRouter from '../routes/ticketRouter.js';
 
-import * as dotenv from 'dotenv';
-dotenv.config();
+
 
 mongoose.connect(
     process.env.MONGO_URI, {
