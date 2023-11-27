@@ -8,14 +8,14 @@ const config = {
     PRODUCTION: {
         transports: [
             new winston.transports.Console({
-                level: 'warn',
+                level: 'info',
             })
         ]
     },
     DEVELOPMENT: {
         transports: [
             new winston.transports.Console({
-                level: 'silly',
+                level: 'debug',
             })
         ]
     },
