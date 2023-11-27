@@ -22,5 +22,3 @@ const config = {
 } 
 
 export const logger = winston.createLogger(config[process.env.environment]);
-
-
