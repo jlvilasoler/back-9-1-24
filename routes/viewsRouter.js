@@ -9,7 +9,7 @@ import privateRoutes from "../src/middlewares/privateRoutes.js";
 import { getProdFilterPaginateController } from "../src/Controllers/ProductController.js";
 import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteCartController } from '../src/Controllers/CartController.js';
 import { updateController } from "../src/Controllers/ProductController.js";
-import { logger } from '../src/utils/logger.js';
+
 
 const productManager = new ProductManager();
 

@@ -7,11 +7,10 @@ const router = Router();
 //router de Productos y paginación:
 router.get("/", /*privateRoutes,*/ async (req, res) => {
     await getProdFilterPaginateController(req, res);
+    logger.debug("debug");
     logger.info("info");
+    logger.warn("warning");
     logger.error("error");
-    logger.http("http")
 });
 
-
-
-export default router;  
+export default router;
