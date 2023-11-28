@@ -3,3 +3,32 @@
 [34mdebug[39m: [34mGET en /loggertest[39m
 [34mdebug[39m: [34mGET en /loggertest[39m
 [34mdebug[39m: [34mGET en /loggertest[39m
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"GET en /api/github"}
+{"level":"error","message":"GET en /api/githubcallback?code=4c4fa91b661cc119c6a6"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
