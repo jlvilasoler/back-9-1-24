@@ -25,14 +25,27 @@ export default class TicketRepository {
         }
     }
 
-    //ADD TICKET - ver
-    async postTicketRepository(newTicket) {
+    //ADD TICKET
+    async postTicketRepository(tid) {
         try {
-          const ticket = new ticketModel(newTicket);
-          const ticketCreate = await ticket.save();
-          return ticketCreate;
+            const addTicket = await ticketModel.create(tid);
+            console.log(ticketModel)
+            return addTicket;
         } catch (error) {
-          console.error("Error adding ticket to the database:", error);
-          throw error;
+            throw error;
         }
-      }}
+    }
+
+
+    //DELETE TICKEt BY ID _ ver
+    async deleteRepository(tid) {
+        try {
+            const ticket = await ticketModel.deleteOne({ _id: tid });
+            return ticket;
+        } catch (error) {
+            console.error("error deleting ticket", error);
+            throw error;
+        }
+    }
+
+}

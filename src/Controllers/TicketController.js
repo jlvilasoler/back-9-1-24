@@ -1,5 +1,5 @@
 import ticketModel from "../dao/models/ticket.model.js";
-import { getAllTicketsService, getTicketByIdService , addTicketService} from "../../src/Services/TicketServices.js";
+import { getAllTicketsService, getTicketByIdService , addTicketService, deleteTicketService} from "../../src/Services/TicketServices.js";
 
 // GET ALL _ funciona
 export const getAllController = async (req, res, next) => {
@@ -32,7 +32,7 @@ export const getTicketByIdController = async (req, res, next) => {
     }
 };
 
-// CREA CARRITO - ver
+// CREA TICKET - ver
 export const createTicketController = async (req, res, next) => {
     const { number, description, quantity, price } = req.body;
     try {
@@ -45,3 +45,21 @@ export const createTicketController = async (req, res, next) => {
       next(error);
     }
   };
+
+
+  //DELETE TICKET BY ID - ver
+export const deleteTicketController = async (req, res, next) => {
+    try {
+        const { tid } = req.params;
+        const ticket = await deleteTicketService(tid);
+        if (ticket) {
+            res.send(ticket)
+        } else {
+            res.status(404).send();
+        }
+    } catch (error) {
+        res.status(500).send("error deleting ticket");
+        next(error)
+    }
+}
+

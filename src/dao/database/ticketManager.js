@@ -35,7 +35,7 @@ export default class TicketsManager {
     }
 
 
-        //Add Cart - ver
+        //Add Ticket - ver
         async addTicket(tid) {
             try {
                 const newTicket = await ticketModel.create(tid);

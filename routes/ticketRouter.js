@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { getAllController , getTicketByIdController, createTicketController } from "../src/Controllers/TicketController.js";
+import { getAllController , getTicketByIdController, createTicketController, deleteTicketController } from "../src/Controllers/TicketController.js";
 
 
 
@@ -19,4 +19,8 @@ router.get('/ticket/:tid', /*privateRoutes*/ getTicketByIdController);
 
 // En la ruta POST, agregar ticket
 router.post('/ticket/:tid', /*privateRoutes,*/ createTicketController);
+
+// En la ruta DELETE, eliminar ticket
+router.delete('/ticket/:tid', /*privateRoutes,*/ deleteTicketController);
+
 export default router;

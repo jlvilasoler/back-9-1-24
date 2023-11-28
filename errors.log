@@ -32,3 +32,27 @@
 {"level":"error","message":"error"}
 {"level":"error","message":"GET en /profile"}
 {"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"GET en /api/ticket"}
+{"level":"error","message":"GET en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket"}
+{"level":"error","message":"POST en /api/ticket/:tid"}
+{"level":"error","message":"POST en /api/ticket/:tid"}
+{"level":"error","message":"POST en /api/ticket/:tid"}
+{"level":"error","message":"GET en /api/ticket"}
+{"level":"error","message":"DELETE en /api/delete/ticket/65666f531b60944ee6881e94"}
+{"level":"error","message":"DELETE en /api/delete/ticket/65666f531b60944ee6881e94"}
+{"level":"error","message":"DELETE en /api/ticket/65666f531b60944ee6881e94"}
+{"level":"error","message":"GET en /api/ticket"}

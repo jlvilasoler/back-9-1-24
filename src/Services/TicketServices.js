@@ -16,7 +16,7 @@ export const getAllTicketsService = async () => {
 };
 
 //FILTER BY ID _ funciona
-export const getTicketByIdService = async (iid) => {
+export const getTicketByIdService = async (tid) => {
     try {
         const ticket = await ticketRepository.getTicketIdRepository({ _id: tid });
         return ticket;
@@ -36,9 +36,20 @@ export const addTicketService = async (number, description, quantity, price) => 
   
     try {
       const ticketCreate = await ticketRepository.postTicketRepository(newTicket);
-      console.log(ticketCreate, " ticket added");
+      console.log(ticketCreate, "ticket added");
       return ticketCreate;
     } catch (error) {
       console.log("Error when adding ticket", error);
     }
   };
+
+
+  //DELETE TICKET BY ID _ 
+export const deleteTicketService = async (tid) => {
+  try {
+      const ticket = await ticketRepository.deleteRepository({ _id: tid });
+      return ticket;
+  } catch (error) {
+      console.log(error);
+  }
+};
