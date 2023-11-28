@@ -174,7 +174,7 @@ export const createController = async (req, res, next) => {
     }
 };
 
-//UPDATE PRODUCT  _ funciona
+//UPDATE PRODUCT  _ ver
 export const updateController = async (req, res, next) => {
     try {
         const { pid } = req.params;
@@ -196,4 +196,3 @@ export const updateController = async (req, res, next) => {
     }
 }
 
-////////////////////////////////

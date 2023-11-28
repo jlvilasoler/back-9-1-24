@@ -20,7 +20,7 @@ const router = Router();
 
 
 //router de Productos y paginación:
-router.get("/products", /*privateRoutes,*/ async (req, res) => {
+router.get("/products", privateRoutes, async (req, res) => {
     await getProdFilterPaginateController(req, res);
     logger.info("info");
     logger.error("error");
@@ -37,31 +37,31 @@ router.get('/realtimeproducts', privateRoutes, async (req, res) => {
     res.render('realTimeProducts', {});
 });
 
-router.get('/messages', /*privateRoutes,*/ async (req, res) => res.render('chat',
+router.get('/messages', privateRoutes, async (req, res) => res.render('chat',
     {}));
 
-router.get('/verimg', /*privateRoutes,*/ async (req, res) => res.render('img',
+router.get('/verimg', privateRoutes, async (req, res) => res.render('img',
     {}));
 
-router.get('/carts/:cid', /*privateRoutes,*/ async (req, res) => {
+router.get('/carts/:cid', privateRoutes, async (req, res) => {
     const cart = await cartManager.getCartById(req.params.cid);
     res.render('cart', { cart })
 });
 
-router.get('/cookies', /*privateRoutes,*/ (req, res) => {
+router.get('/cookies', privateRoutes, (req, res) => {
     res.render('cookies');
 });
 
-router.get('/getCookies',/* privateRoutes,*/ (req, res) => {
+router.get('/getCookies', privateRoutes, (req, res) => {
     res.send(req.cookies);
 });
 
-router.post('/setCookies', /*privateRoutes,*/ (req, res) => {
+router.post('/setCookies', privateRoutes, (req, res) => {
     const { nombre, valor } = req.body;
     res.cookie(nombre, valor, { maxAge: 1000 * 10 }).send('Cookie creada'); // con maxAge se borra la cookie , si no queremos que se borre hay que sacar maxAge
 })
 
-router.get('/login', /*publicRoutes,*/ (req, res) => {
+router.get('/login', publicRoutes, (req, res) => {
     if (req.session.isLogged) {
         res.redirect('/profile')
     }
@@ -69,7 +69,7 @@ router.get('/login', /*publicRoutes,*/ (req, res) => {
     res.render('login')
 })
 
-router.get('/signup', /*publicRoutes,*/ (req, res) => {
+router.get('/signup', publicRoutes, (req, res) => {
     if (req.session.isLogged) {
         return res.redirect('/profile')
     }
@@ -92,11 +92,11 @@ router.get('/profile', (req, res) => {
     res.render('profile', { first_name, last_name, email, age, role, visitCount: userVisitDB[req.session.email], dateToday });
 });
 
-router.get('/recover', /*publicRoutes,*/ (req, res) => {
+router.get('/recover', publicRoutes, (req, res) => {
     res.render('recover')
 })
 
-router.get('/logout', /*privateRoutes,*/ (req, res) => {
+router.get('/logout', privateRoutes, (req, res) => {
     req.session.destroy();
     res.redirect('/login');
 });
