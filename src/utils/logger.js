@@ -8,17 +8,19 @@ const config = {
     PRODUCTION: {
         transports: [
             new winston.transports.Console({
-                level: 'info',
+                level: 'debug',
             })
         ]
     },
     DEVELOPMENT: {
         transports: [
             new winston.transports.Console({
-                level: 'debug',
+                filename: 'errors.log',
+                level: 'error',
             })
         ]
     },
 } 
 
-export const logger = winston.createLogger(config[process.env.environment]);
+const environment = process.env.environment || 'DEVELOPMENT';
+export const logger = winston.createLogger(config[environment]);

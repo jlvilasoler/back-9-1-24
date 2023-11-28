@@ -21,7 +21,7 @@ import { messageModel } from './dao/models/chat.model.js';
 import productModel from './dao/models/product.model.js';
 import cartModel from './dao/models/cart.model.js';
 import ticketRouter from '../routes/ticketRouter.js';
-
+import loggerRouter from '../routes/loggerRouter.js';
 
 
 mongoose.connect(
@@ -94,6 +94,9 @@ app.use('/img', imgRouter);
 app.use('/cart', viewsRouter);
 app.use('/cookies', viewsRouter)
 app.use('/products', viewsRouter);
+app.use('/loggertest', loggerRouter);
+
+
 
 
 socketServer.on('connection', async (socket) => {
