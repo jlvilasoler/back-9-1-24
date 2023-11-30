@@ -21,7 +21,7 @@ export const getAllController = async (req, res, next) => {
 export const getProdFilterPaginateController = async (req, res, next) => {
     try {
         const pageId = parseInt(req.query.page) || 1; //con esto sabemos a la pagina que vamos a acceder, para hacer la numeracion de cada pagina /1, /2 ,/3...
-        const limit = parseInt(req.query.limit) || 10; //Por defecto es limite 10 por pagina , pero se le puede poner un lmite n
+        const limit = parseInt(req.query.limit) || 12; //Por defecto es limite 10 por pagina , pero se le puede poner un lmite n
         const sort = req.query.sort || 'asc';
         const query = req.query.query || '';
         const stockQuery = req.query.status || '';

@@ -61,7 +61,14 @@ export const deleteCartService = async (cid) => {
     }
 };
 
-
+export const addProductToCartService = async (cid, pid) => {
+    try {
+        const cart = await cartRepository.addProductToCart(cid, pid);
+        return cart;
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 
 
@@ -82,20 +89,23 @@ export const getProductsInCartService = async (id) => {
 
 
 
-//DELETE PRODUCT FROM CART
-export const deleteProductFromCartService = async (cid, pid) => {
-    const result = await CM.deleteProductRepository(
-        { _id: cid },
-        { $pull: { products: { _id: pid } } },
-        { new: true }
-    );
-
-    if (result) {
-        console.log('Product removed from the cart');
-    } else {
-        console.log('Product not found in the cart');
+// DELETE PRODUCT FROM CART (WITH_ID)
+    export const deleteProductOfCartService = async (cid, pid) => {
+        try {
+            const result = await cartRepository.deleteProductfromCartRepository(
+                { _id: cid },
+                { $pull: { products: { _id: pid } } },
+                { new: true }
+            );
+            if (result) {
+                console.log('Product removed from the cart');
+            } else {
+                console.log('Product not found in the cart');
+            }
+        } catch (error) {
+            console.log('Error when removing product from cart', error);
+        }
     }
-};
 
 
 

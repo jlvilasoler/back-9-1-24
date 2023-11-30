@@ -96,6 +96,8 @@ app.use('/cookies', viewsRouter)
 app.use('/products', viewsRouter);
 app.use('/loggertest', loggerRouter);
 
+
+
 socketServer.on('connection', async (socket) => {
     //console.log()'A user has connected:', socket.id);
     socket.emit("Socket-Products", await productManager.getProducts()); //le aviso al usuario que hay productos a visualizar

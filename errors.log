@@ -93,3 +93,599 @@
 {"level":"error","message":"GET en /profile"}
 {"level":"error","message":"GET en /public/js/profile.js"}
 {"level":"error","message":"GET en /messages"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"GET en /favicon.ico"}
+{"level":"error","message":"GET en /api/github"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /failogin"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /failogin"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510b4104c0b4ac4bf374c01"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510736030b5adb6dbad8172"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=3"}
+{"level":"error","message":"GET en /products?page=3"}
+{"level":"error","message":"error"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=3"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"error"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products?page=3"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510737930b5adb6dbad8178"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510737930b5adb6dbad8178"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510737930b5adb6dbad8178"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510736030b5adb6dbad8172"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510736030b5adb6dbad8172"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510736030b5adb6dbad8172"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /api/cart/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510737930b5adb6dbad8178"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567cc4ce8f75fad17e0f7d0"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /api/products/"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /api/products/"}
+{"level":"error","message":"DELETE en /api/products/6567cbce30c64b9eefade9ee"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"DELETE en /api/products/6567cbce30c64b9eefade9ee"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"DELETE en /api/products/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"DELETE en /api/products/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"DELETE en /api/products/6510737930b5adb6dbad8178"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"DELETE en /api/products/6510737930b5adb6dbad8178"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"DELETE en /api/products/6567c7fd10cef669a422b34c"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"GET en /api/products/"}
+{"level":"error","message":"DELETE en /api/products/651072ee30b5adb6dbad8166"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"GET en /api/products/"}
+{"level":"error","message":"DELETE en /api/products/"}
+{"level":"error","message":"DELETE en /api/products/"}
+{"level":"error","message":"DELETE en /api/products/6510733330b5adb6dbad8169"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"DELETE en /api/products/6510733330b5adb6dbad8169"}
+{"level":"error","message":"DELETE en /api/products/6510733330b5adb6dbad8169"}
+{"level":"error","message":"GET en /api/products/"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"DELETE en /api/products/6567cbce30c64b9eefade9f0"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"DELETE en /api/products/6567cc4ce8f75fad17e0f7d0"}
+{"level":"error","message":"DELETE en /api/products/6567ca7991c4ceb56efc7e2b"}
+{"level":"error","message":"DELETE en /api/products/6567cc70e8f75fad17e0f7d3"}
+{"level":"error","message":"DELETE en /api/products/6567cbce30c64b9eefade9ee"}
+{"level":"error","message":"DELETE en /api/products/6567c7fd10cef669a422b34c"}
+{"level":"error","message":"DELETE en /api/products/6567cbcd30c64b9eefade9ea"}
+{"level":"error","message":"DELETE en /api/products/6567c88a730857932ac9671b"}
+{"level":"error","message":"GET en /api/products/"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"DELETE en /api/products/6510735230b5adb6dbad816f"}
+{"level":"error","message":"DELETE en /api/products/6510734430b5adb6dbad816c"}
+{"level":"error","message":"DELETE en /api/products/651072ee30b5adb6dbad8166"}
+{"level":"error","message":"DELETE en /api/products/6510736d30b5adb6dbad8175"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"DELETE en /api/products/651073b730b5adb6dbad8187"}
+{"level":"error","message":"DELETE en /api/products/6510b303015d18c81663b4d7"}
+{"level":"error","message":"DELETE en /api/products/6510b39abcf060a9d5c88c65"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"DELETE en /api/products/6510b040015d18c81663b4b9"}
+{"level":"error","message":"DELETE en /api/products/6510aff9015d18c81663b4b2"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/products"}
+{"level":"error","message":"POST en /login"}
+{"level":"error","message":"POST en /api/products"}
+{"level":"error","message":"POST en /login"}
+{"level":"error","message":"POST en /api/products"}
+{"level":"error","message":"POST en /login"}
+{"level":"error","message":"POST en /api/products"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/products"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=1"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/products"}
+{"level":"error","message":"GET en /products?page=1"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=1"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/products"}
+{"level":"error","message":"GET en /products?page=1"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/products"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=1"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=1"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/products"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=1"}
+{"level":"error","message":"error"}
+{"level":"error","message":"PUT en /api/products/65689c95e83acfd7f6988f1e"}
+{"level":"error","message":"PUT en /login"}
+{"level":"error","message":"PUT en /api/products/65689c95e83acfd7f6988f1e"}
+{"level":"error","message":"PUT en /login"}
+{"level":"error","message":"PUT en /api/products/65689c95e83acfd7f6988f1e"}
+{"level":"error","message":"GET en /products?page=1"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /messages"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567cc4ce8f75fad17e0f7d0"}
+{"level":"error","message":"DELETE en /login"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567cc4ce8f75fad17e0f7d0"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567cc4ce8f75fad17e0f7d0"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567cc4ce8f75fad17e0f7d0"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567cc4ce8f75fad17e0f7d0"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/65688d7361d6c0e5513cec6d"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/65688d7361d6c0e5513cec6d"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/65688d7361d6c0e5513cec6d"}
+{"level":"error","message":"GET en /api/cart/65688d7361d6c0e5513cec6d"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567d7b6396bdb6c0cf4305e"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567d7b6396bdb6c0cf4305e"}
+{"level":"error","message":"GET en /api/cart/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567d7b6396bdb6c0cf4305e"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567d7b6396bdb6c0cf4305e"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"GET en /api/cart/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"GET en /api/cart/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"GET en /api/cart/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"GET en /api/cart/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /api/cart/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/651073a330b5adb6dbad8181"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510736030b5adb6dbad8172"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510736030b5adb6dbad8172"}
+{"level":"error","message":"GET en /api/cart/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567da01910a3bc795537e92"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"DELETE en /api/cart/65161b18b4f0ae3a37ba72e2/products/6567d746582f9df358e05082"}
+{"level":"error","message":"GET en /api/cart/"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"GET en /products?page=2"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510b0eb015d18c81663b4c2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}

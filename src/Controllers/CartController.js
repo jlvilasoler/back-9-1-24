@@ -5,9 +5,12 @@ import {
     getProductsInCartService,
     updateProductQuantityService,
     deleteCartService,
-    getCartByIdServ
+    getCartByIdServ,
+    addProductToCartService,
+    deleteProductOfCartService
   } from "../../src/Services/CartServices.js";
 import { addProductService } from "../Services/ProductServices.js";
+import cartModel from "../dao/models/cart.model.js";
 import errorHandler from "../middlewares/errorHandler.js";
 
 
@@ -79,7 +82,7 @@ export const deleteCartController = async (req, res, next) => {
 export const addProductToCartController = async (req, res, next) => {
     try {
         const { cid, pid } = req.params;
-        const product = await addProductService(cid,pid);
+        const product = await addProductToCartService(cid,pid);
         //console.log(product)
         if (product) {
             res.status(201).send({status: "success",mensaje: "Product successfully added to cart!",payload: product});
@@ -128,6 +131,23 @@ export const updateAllCartController = async (req, res, next) => {
     }
 }
 
+
+
+// DELETE PRODUCT FROM CART (WITH_ID)
+export const deleteProductOfCartController = async (req, res, next) => {
+    try {
+        const cid = req.params.cid;
+        const pid = req.params.pid;
+    
+        await deleteProductOfCartService(cid, pid);
+
+        res.json({ message: 'Product removed from the cart' });
+    } catch (error) {
+        console.error('Error deleting product from the cart:', error);
+        res.status(500).json({ error: 'Internal server error' });
+        next(error)
+    }
+}
 
 
 

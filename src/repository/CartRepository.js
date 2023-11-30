@@ -1,4 +1,5 @@
 import cartModel from "../dao/models/cart.model.js";
+import productModel from "../dao/models/product.model.js";
 
 export default class CartRepository {
 
@@ -68,6 +69,50 @@ export default class CartRepository {
     }
 
 ////////////////////////////////
+/////
+async addProductToCart(cid, pid) {
+    try {
+    const findCart = await cartModel.findById(cid);
+    const findProduct = await productModel.findById(pid);
 
+    if (!findProduct) {
+        throw new Error(`The requested product id ${pid} doesnt exist!`);
+    } else {
+        if (findCart) {
+        const productExist = findCart.products.find(
+            (elemento) => elemento.product ? elemento.product.toString() === pid : false
+        );
+        if (!productExist) {
+            const newProd = {
+            quantity: 1,
+            product: pid,
+            };
+            findCart.products.push(newProd);
+        } else {
+            const indexProduct = findCart.products.findIndex(
+                (elemento) => elemento.product ? elemento.product.toString() === pid : false
+            );
+            findCart.products[indexProduct].quantity += 1;
+        }
+        await findCart.save();
+        return findCart;
+        } else {
+        throw new Error("The cart you are searching for does not exist!");
+        }
+    }
+    } catch (error) {
+    console.log(error);
+    }
+}
 
+// DELETE PRODUCT FROM CART (WITH_ID)
+async deleteProductfromCartRepository(cid,pid){
+    try {
+        const data = await cartModel.findOneAndUpdate(cid, pid);
+        return data;
+    } catch (error) {
+        console.error("error delete product", error);
+        throw error;
+    }
+}
 };

@@ -76,21 +76,7 @@ export default class CartManager {
     }
 
 
-////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // ADD PROD TO CART
     async addProductToCartId(cid, pid) {
         try {
             const findCart = await cartModel.findById(cid);
@@ -125,20 +111,18 @@ export default class CartManager {
         }
     }
 
-
-
-    // Eliminando un producto del carrito
+// DELETE PRODUCT FROM CART (WITH_ID)
     async deleteProductFromCart(cid, pid) {
         const cart = await this.getCartById(cid);
         const itemIndex = cart.products.findIndex((product) => product.product.toString() === pid);
-    
+
         if (itemIndex !== -1) {
             // Si se encuentra el producto en el carrito, eliminarlo
             cart.products.splice(itemIndex, 1);
         } else {
             return null; // o puedes lanzar un error si lo prefieres
         }
-    
+
         await cart.save();
         return pid;
     }
