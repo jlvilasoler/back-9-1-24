@@ -138,9 +138,9 @@ export const deleteProductOfCartController = async (req, res, next) => {
     try {
         const cid = req.params.cid;
         const pid = req.params.pid;
-    
-        await deleteProductOfCartService(cid, pid);
 
+        await deleteProductOfCartService(cid, pid);
+        console.log(cid, pid)
         res.json({ message: 'Product removed from the cart' });
     } catch (error) {
         console.error('Error deleting product from the cart:', error);

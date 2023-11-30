@@ -22,7 +22,7 @@ router.put('/products/:pid', /*privateRoutes,*/ updateController);
 router.delete('/products/:pid', /*privateRoutes,*/ deleteController);
 
 // Agregar producto a carrito:
-router.post('/cart/:cid/products/:pid', privateRoutes, addProductToCartController);
+router.post('/cart/:cid/products/:pid', /*privateRoutes,*/ addProductToCartController);
 
 
 export default router;

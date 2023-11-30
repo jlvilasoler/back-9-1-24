@@ -21,7 +21,7 @@ router.get('/cart/:cid', /*privateRoutes,*/ getCartByIdController);
 router.get('/cart/:cid/products/:pid', privateRoutes, getProdFilterPaginateController);
 
 // En la ruta POST, Agregar pid a cart segun su cid
-router.post('/cart/:cid/products/:pid', privateRoutes, addProductToCartController);
+router.post('/cart/:cid/products/:pid', /*privateRoutes,*/ addProductToCartController);
 
 // En la ruta DELETE, Elimina pid a un cart segun su cid
 router.delete('/cart/:cid/products/:pid',  /*privateRoutes,*/ deleteProductOfCartController); 

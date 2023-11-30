@@ -1,7 +1,7 @@
 console.log("OK")
 
 
-
+// ADD PRODUCT TO CART
 const addToCart = async (cid, pid) => {
     console.log(cid, pid);
     const res = await fetch(`/api/cart/${cid}/products/${pid}`, {method: 'POST'});
