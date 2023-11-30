@@ -761,3 +761,47 @@
 {"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510739630b5adb6dbad817e"}
 {"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
 {"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/65689c95e83acfd7f6988f1e"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/65689ac1e4e133de80e4eb69"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/65689ac1e4e133de80e4eb69"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /src/public/js/cart.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"GET en /login"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"POST en /api/login"}
+{"level":"error","message":"GET en /profile"}
+{"level":"error","message":"GET en /public/js/profile.js"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510736030b5adb6dbad8172"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}
+{"level":"error","message":"POST en /api/cart/65161b18b4f0ae3a37ba72e2/products/6510aefd015d18c81663b4a4"}
+{"level":"error","message":"GET en /carts/65161b18b4f0ae3a37ba72e2"}
+{"level":"error","message":"GET en /products"}
+{"level":"error","message":"error"}

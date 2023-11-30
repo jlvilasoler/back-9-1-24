@@ -106,7 +106,7 @@ async addProductToCart(cid, pid) {
 }
 
 // DELETE PRODUCT FROM CART (WITH_ID)
-async deleteProductfromCartRepository(cid,pid){
+async deleteProductfromCartRepository(cid, pid){
     try {
         const data = await cartModel.findOneAndUpdate(cid, pid);
         return data;

@@ -1,6 +1,5 @@
 import CartRepository from "../repository/CartRepository.js";
 import CartManager from '../dao/database/cartManager.js';
-
 const cartRepository = new CartRepository();
 const CM = new CartManager();
 
@@ -49,8 +48,6 @@ export const updateProductQuantityService = async (cid, pid, quantity) => {
     }
 };
 
-
-
 //DELETE CART BY ID _ 
 export const deleteCartService = async (cid) => {
     try {
@@ -61,6 +58,7 @@ export const deleteCartService = async (cid) => {
     }
 };
 
+//ADD PRODUCT FROM CART BY ID _ 
 export const addProductToCartService = async (cid, pid) => {
     try {
         const cart = await cartRepository.addProductToCart(cid, pid);
@@ -69,6 +67,30 @@ export const addProductToCartService = async (cid, pid) => {
         console.log(error);
     }
 };
+
+// DELETE PRODUCT FROM CART (WITH_ID)
+export const deleteProductOfCartService = async (cid, pid) => {
+    try {
+        const result = await cartRepository.deleteProductfromCartRepository(
+            { _id: cid },
+            { $pull: { products: { _id: pid } } },
+            { new: true }
+        );
+        if (result) {
+            console.log('Product removed from the cart');
+        } else {
+            console.log('Product not found in the cart');
+        }
+    } catch (error) {
+        console.log('Error when removing product from cart', error);
+    }
+}
+
+
+
+
+
+
 
 
 
@@ -83,38 +105,16 @@ export const getProductsInCartService = async (id) => {
         const docs = await cartRepository.addProductToCartId(id);
         return docs;
     } catch (error) {
-        //console.log()error);
+        console.log(error);
     }
 };
-
-
-
-// DELETE PRODUCT FROM CART (WITH_ID)
-    export const deleteProductOfCartService = async (cid, pid) => {
-        try {
-            const result = await cartRepository.deleteProductfromCartRepository(
-                { _id: cid },
-                { $pull: { products: { _id: pid } } },
-                { new: true }
-            );
-            if (result) {
-                console.log('Product removed from the cart');
-            } else {
-                console.log('Product not found in the cart');
-            }
-        } catch (error) {
-            console.log('Error when removing product from cart', error);
-        }
-    }
-
-
 
 export const getCartByIdServ = async (id) => {
     try {
         const docs = await CM.getCartById(id);
         return docs;
     } catch (error) {
-        //console.log()error);
+        console.log(error);
     }
 };
 
