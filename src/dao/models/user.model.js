@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema( {
     first_name: { type: String },
     last_name: { type: String },
     email: { type: String, required: true },
+    ticket: { type: mongoose.Schema.Types.ObjectId, ref: "tickets"},
     age: { type: Number },
     password: { type: String },
     cart: { type: mongoose.Schema.Types.ObjectId, ref: 'carts' },

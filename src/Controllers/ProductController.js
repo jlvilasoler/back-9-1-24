@@ -152,7 +152,7 @@ export const deleteController = async (req, res, next) => {
 
 //ADD PRODUCT
 export const createController = async (req, res, next) => {
-    const { title, description, price, thumbnail, code, stock, status, category } = req.body;
+    const { title, description, price, thumbnail, code, stock, status, category, owner } = req.body;
     try {
         const newProduct = new productModel({
             title,
@@ -163,6 +163,7 @@ export const createController = async (req, res, next) => {
             stock,
             status,
             category,
+            owner
         });
         await newProduct.save();
         res.send(newProduct);
@@ -178,7 +179,7 @@ export const createController = async (req, res, next) => {
 export const updateController = async (req, res, next) => {
     try {
         const { pid } = req.params;
-        const { title, description, price, thumbnail, code, stock, status, category } = req.body
+        const { title, description, price, thumbnail, code, stock, status, category, owner } = req.body
         await getProductByIdService(pid);
         const updateProduct = await updateProductService(pid, {
             title,
@@ -188,7 +189,8 @@ export const updateController = async (req, res, next) => {
             code,
             stock,
             status,
-            category
+            category,
+            owner
         })
         res.json(updateProduct);
     } catch (error) {

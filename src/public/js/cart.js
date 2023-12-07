@@ -7,4 +7,7 @@ const deleteProductFromCart = async (cid, pid) => {
     const json = await res.json();
     //console.log()json);
     alert(`Product deleted from cart`);
+
+        // Recarga la página después de eliminar el producto
+        window.location.reload();
 }

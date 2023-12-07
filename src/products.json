@@ -240,5 +240,16 @@
 		"stock": 2121,
 		"status": "true",
 		"category": "bebidas"
+	},
+	{
+		"id": 23,
+		"title": "sasas",
+		"description": "asas",
+		"price": 12,
+		"thumbnail": "1212",
+		"code": 1212,
+		"stock": 12,
+		"status": "true",
+		"category": "caña"
 	}
 ]

@@ -10,6 +10,7 @@ import { getProdFilterPaginateController } from "../src/Controllers/ProductContr
 import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteCartController } from '../src/Controllers/CartController.js';
 import { updateController } from "../src/Controllers/ProductController.js";
 import { logger } from '../src/utils/logger.js';
+import sendMail from '../src/Services/mail.service.js';
 
 const productManager = new ProductManager();
 
@@ -109,6 +110,9 @@ router.get('/faillogin', (req, res) => {
     res.send("Login failure")
 });
 
+router.get('/reset', (req, res) => {
+        sendMail(res);
+});
 
 export default router;
 

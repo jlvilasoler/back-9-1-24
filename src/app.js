@@ -22,7 +22,8 @@ import productModel from './dao/models/product.model.js';
 import cartModel from './dao/models/cart.model.js';
 import ticketRouter from '../routes/ticketRouter.js';
 import loggerRouter from '../routes/loggerRouter.js';
-
+//import mailRouter from '../routes/mail.router.js';
+import settingsRouter from '../routes/settingsRouter.js';
 
 mongoose.connect(
     process.env.MONGO_URI, {
@@ -90,6 +91,9 @@ app.use('/api', ticketRouter);
 
 app.use(viewsRouter);
 
+
+//app.use('/mail', mailRouter);
+app.use('/settings', settingsRouter);
 app.use('/img', imgRouter);
 app.use('/cart', viewsRouter);
 app.use('/cookies', viewsRouter)
