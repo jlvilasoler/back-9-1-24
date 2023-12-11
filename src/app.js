@@ -13,7 +13,6 @@ import imgRouter from '../routes/imgRouter.js'
 import session from "express-session";
 import MongoStore from 'connect-mongo';
 import userRouter from '../routes/userRouter.js';
-import Express from 'express-session';
 import passport from 'passport';
 import initializePassport from './config/passport.config.js';
 import errorHandler from '../src/middlewares/errorHandler.js';
@@ -24,11 +23,20 @@ import ticketRouter from '../routes/ticketRouter.js';
 import loggerRouter from '../routes/loggerRouter.js';
 //import mailRouter from '../routes/mail.router.js';
 import settingsRouter from '../routes/settingsRouter.js';
+import path from 'path';
+
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
+
+const someFilePath = path.join(__dirname, 'utils', 'index.js');
+
+import swaggerUiExpress from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
 
 mongoose.connect(
     process.env.MONGO_URI, {
-useNewUrlParser: true,
-useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 let response = await cartModel.find({}).explain("executionStats");
@@ -42,10 +50,31 @@ const cartManager = new CartManager();
 
 import express from "express";
 
+
+
 const app = express();
 const httpServer = app.listen(8080, () => {
     console.log("HTTP server running on port 8080");
 });
+
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.1',
+        info: {
+            title: 'TIENDAONLINE.UY',
+            description: 'Documentación App',
+        },
+    },
+    apis: [`${__dirname}/utils/docs/**/*.yaml`],
+};
+console.log(`${__dirname}/utils/docs/**/*.yaml`)
+const specs = swaggerJSDoc(swaggerOptions); 
+
+
+
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+
+
 
 const mensajes = [];
 
@@ -107,7 +136,7 @@ socketServer.on('connection', async (socket) => {
     socket.emit("Socket-Products", await productManager.getProducts()); //le aviso al usuario que hay productos a visualizar
 
     const product = new ProductManager("/products.json")
-    socket.on('newProduct', async (productPost)=>{ // me entero (como servidor) que un socket agrega un nuevo producto
+    socket.on('newProduct', async (productPost) => { // me entero (como servidor) que un socket agrega un nuevo producto
         await product.addProduct(productPost.id, productPost.title, productPost.description, productPost.price, productPost.thumbnail, productPost.code, productPost.stock, productPost.status, productPost.category)
         socketServer.emit('Socket-Products', await product.getProducts()); //aviso a todos los sockets que hay nuevos productos
     })
@@ -126,7 +155,7 @@ socketServer.on('connection', async (socket) => {
         //console.log()mensajes);
         socketServer.emit("nuevo-mensaje", mensajes)
     })
-    
+
     socket.on('disconnect', () => {
         console.log(`Usuario desconectado con ID: ${socket.id}`);
     });

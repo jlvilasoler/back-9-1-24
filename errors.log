@@ -2772,3 +2772,6 @@
 {"level":"error","message":"DELETE en /api/products/657109a92e745cfbe6a3215d"}
 {"level":"error","message":"DELETE en /api/products/657109a92e745cfbe6a3215d"}
 {"level":"error","message":"GET en /api/products/"}
+{"level":"error","message":"GET en /"}
+{"level":"error","message":"GET en /public/js/login.js"}
+{"level":"error","message":"GET en /favicon.ico"}
