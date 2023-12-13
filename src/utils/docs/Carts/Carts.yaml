@@ -1,6 +1,101 @@
 paths:
-  /api/carts:
+  /api/cart:
     get:
-      summary: Obtiene todos los carritos
+      summary: Obtiene todos los carts
       tags:
-        - Carts
+        - carts
+      responses:
+        "200":
+          description: Los carts fueron obtenidos satisfactoriamente desde la BD.
+          content: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/cart'
+        "500":
+          description: Algo falló en la búsqueda de carts en la BD.
+
+  /api/cart/{cid}:
+    get:
+      summary: Obtiene un cart según su id
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          description: Id del cart a buscar
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Carrito encontrado
+          content:
+            application/json:
+              schema:
+                type: string  # Ajusta según tus necesidades
+
+    put:
+      summary: Actualiza un carrito a partir de su id
+      tags:
+        - carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: Id del carrito
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              # Ajusta según tus necesidades
+
+components:
+  schemas:
+    cart:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Id autogenerado de mongo
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              quantity:
+                type: number
+                description: Cantidad del producto
+              product:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    description: Id autogenerado de mongo
+                  title:
+                    type: string
+                    description: Nombre de producto
+                  description:
+                    type: string
+                    description: Descripcion de producto
+                  price:                
+                    type: number
+                    description: Precio de producto
+                  thumbnail:                
+                    type: string
+                    description: Imagen de producto
+                  code:                
+                    type: string
+                    description: Codigo de producto
+                  stock:                
+                    type: string
+                    description: Stock de producto
+                  status:                
+                    type: string
+                    description: Status de producto
+                  category:                
+                    type: string
+                    description: Nombre de Categoria de producto

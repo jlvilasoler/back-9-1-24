@@ -7,7 +7,7 @@ import cartRouter from '../routes/cartRouter.js';
 import productRouter from '../routes/productRouter.js';
 import viewsRouter from '../routes/viewsRouter.js';
 import { Server } from 'socket.io';
-import { Socket } from 'socket.io';
+//import { Socket } from 'socket.io';
 import mongoose from 'mongoose';
 import imgRouter from '../routes/imgRouter.js'
 import session from "express-session";
@@ -23,15 +23,15 @@ import ticketRouter from '../routes/ticketRouter.js';
 import loggerRouter from '../routes/loggerRouter.js';
 //import mailRouter from '../routes/mail.router.js';
 import settingsRouter from '../routes/settingsRouter.js';
-import path from 'path';
 
-const __filename = new URL(import.meta.url).pathname;
-const __dirname = path.dirname(__filename);
-
-const someFilePath = path.join(__dirname, 'utils', 'index.js');
-
+import __dirname from './utils/index.js';
+import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
-import swaggerJSDoc from 'swagger-jsdoc';
+
+
+
+
+
 
 mongoose.connect(
     process.env.MONGO_URI, {
@@ -54,26 +54,23 @@ import express from "express";
 
 const app = express();
 const httpServer = app.listen(8080, () => {
-    console.log("HTTP server running on port 8080");
+    console.log("🚀 HTTP server running on port 8080");
 });
+
 
 const swaggerOptions = {
     definition: {
-        openapi: '3.0.1',
-        info: {
-            title: 'TIENDAONLINE.UY',
-            description: 'Documentación App',
-        },
+      openapi: '3.0.1',
+      info: {
+        title: 'TIENDAONLINE.UY',
+        description: 'Documentación',
+      },
     },
-    apis: [`${__dirname}/utils/docs/**/*.yaml`],
-};
-console.log(`${__dirname}/utils/docs/**/*.yaml`)
-const specs = swaggerJSDoc(swaggerOptions); 
-
-
-
-app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
-
+    apis: [`${__dirname}/docs/**/*.yaml`],
+  };
+  
+  const specs = swaggerJsdoc(swaggerOptions);
+  app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
 
 const mensajes = [];
@@ -125,11 +122,11 @@ app.use(viewsRouter);
 app.use('/settings', settingsRouter);
 app.use('/img', imgRouter);
 app.use('/cart', viewsRouter);
-app.use('/cookies', viewsRouter)
+app.use('/cookies', viewsRouter);
 app.use('/products', viewsRouter);
 app.use('/loggertest', loggerRouter);
 
-
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
 socketServer.on('connection', async (socket) => {
     //console.log()'A user has connected:', socket.id);
