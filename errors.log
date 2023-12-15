@@ -3500,3 +3500,4 @@
 {"level":"error","message":"PUT en /api/products/6510737930b5adb6dbad8178"}
 {"level":"error","message":"PUT en /api/products/6510737930b5adb6dbad8178"}
 {"level":"error","message":"PUT en /api/products/6510737930b5adb6dbad8178"}
+{"level":"error","message":"GET en /api/products/"}

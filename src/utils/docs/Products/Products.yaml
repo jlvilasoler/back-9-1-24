@@ -7,7 +7,7 @@ paths:
       responses:
         "200":
           description: Los productos fueron obtenidos satisfactoriamente desde la BD.
-          content: 
+          content:
             application/json:
               schema:
                 type: array
@@ -52,6 +52,17 @@ paths:
             schema:
               $ref: '#/components/schemas/product'
 
+    post:
+      summary: Crea un producto nuevo
+      tags:
+        - products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/addProduct'
+
 components:
   schemas:
     product:
@@ -66,21 +77,62 @@ components:
         description:
           type: string
           description: Descripcion de producto
-        price:                
+        price:
           type: number
           description: Precio de producto
-        thumbnail:                
+        thumbnail:
           type: string
           description: Imagen de producto
-        code:                
+        code:
           type: string
           description: Codigo de producto
-        stock:                
+        stock:
           type: string
           description: Stock de producto
-        status:                
+        status:
           type: string
           description: Status de producto
-        category:                
+        category:
           type: string
           description: Nombre de Categoria de producto
+
+  requestBodies:
+    addProduct:
+      type: object
+      properties:
+        product:
+          type: object
+          properties:
+            title:
+              type: string
+              description: Nombre de producto
+            description:
+              type: string
+              description: Descripcion de producto
+            price:
+              type: number
+              description: Precio de producto
+            thumbnail:
+              type: string
+              description: Imagen de producto
+            code:
+              type: string
+              description: Codigo de producto
+            stock:
+              type: string
+              description: Stock de producto
+            status:
+              type: string
+              description: Status de producto
+            category:
+              type: string
+              description: Nombre de Categoria de producto
+      example:
+        title: Coca Cola
+        description: Botella 1L
+        price: 100
+        thumbnail: https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg
+        code: 121212
+        stock: 10000
+        status: true
+        category: bebidas
