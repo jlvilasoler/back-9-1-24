@@ -33,7 +33,17 @@ paths:
           content:
             application/json:
               schema:
-                type: string  # Ajusta según tus necesidades
+                $ref: '#/components/schemas/cart'
+
+    post:
+      summary: Crea un carrito nuevo
+      tags:
+        - carts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/addCart'
 
     put:
       summary: Actualiza un carrito a partir de su id
@@ -51,7 +61,7 @@ paths:
         content:
           application/json:
             schema:
-              # Ajusta según tus necesidades
+              $ref: '#/components/schemas/cart'
 
 components:
   schemas:
@@ -81,21 +91,46 @@ components:
                   description:
                     type: string
                     description: Descripcion de producto
-                  price:                
+                  price:
                     type: number
                     description: Precio de producto
-                  thumbnail:                
+                  thumbnail:
                     type: string
                     description: Imagen de producto
-                  code:                
+                  code:
                     type: string
                     description: Codigo de producto
-                  stock:                
+                  stock:
                     type: string
                     description: Stock de producto
-                  status:                
+                  status:
                     type: string
                     description: Status de producto
-                  category:                
+                  category:
                     type: string
                     description: Nombre de Categoria de producto
+
+  requestBodies:
+    addCart:
+      type: object
+      properties:
+        quantity:
+          type: number
+          description: Cantidad de producto en el carrito
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/cart'
+      example:
+        quantity: 1
+        products:
+          - _id: "cid"
+            products:
+              - title: Coca Cola
+                description: Botella 1L
+                price: 100
+                thumbnail: https://tiendacdn.farmashop.com.uy/media/catalog/product/cache/6eba75f60f78a39a4b9228a06a950068/1/9/19511_10.jpg
+                code: 121212
+                stock: 10000
+                status: true
+                category: bebidas
