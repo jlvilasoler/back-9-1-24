@@ -23,11 +23,11 @@ router.delete('/users/:uid', /*privateRoutes*/ deleteController);
 
 
 
-//registrar el usuario en la base de datos
-router.post('/signup', passport.authenticate('register',
-  { failureRedirect: '/failregister' }), async (req, res) => {
-    res.redirect('/login'); // en vez de redirigirlo a profile , lo redirigimos a login
-  });
+  //registrar el usuario en la base de datos
+  router.post('/signup', passport.authenticate('register',
+    { failureRedirect: '/failregister' }), async (req, res) => {
+      res.redirect('/login'); // en vez de redirigirlo a profile , lo redirigimos a login
+    });
 
 router.post('/login', passport.authenticate('login', { failureRedirect: '/failogin' }), async (req, res) => {
   if (!req.user) {
