@@ -22,6 +22,3 @@ describe('Test de actualizar carrito', () => {
 
     });
 });
-
-
-//ok

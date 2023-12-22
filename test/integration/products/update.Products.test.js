@@ -29,5 +29,3 @@ describe('Test de actualizar productos', () => {
     });
 });
 
-
-// ok

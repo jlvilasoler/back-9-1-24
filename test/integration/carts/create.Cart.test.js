@@ -30,7 +30,3 @@ describe('Test de crear carrito', () => {
     expect(statusCode).to.be.ok;
   });
 });
-
-
-
-// VERRR .....
