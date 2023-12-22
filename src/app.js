@@ -53,6 +53,10 @@ import express from "express";
 
 
 const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const httpServer = app.listen(8080, () => {
     console.log("🚀 HTTP server running on port 8080");
 });
@@ -96,8 +100,6 @@ app.use((req, res, next) => {
 
 app.use(errorHandler);
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 initializePassport();
 app.use(passport.initialize());

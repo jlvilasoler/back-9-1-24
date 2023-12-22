@@ -30,7 +30,7 @@ router.delete('/cart/:cid/products/:pid',  /*privateRoutes,*/ deleteProductOfCar
 router.delete('/cart/:cid',  privateRoutes, deleteCartController);
 
 // En la ruta PUT, debe actualizar el carrito
-router.put('/cart/:cid',  privateRoutes, updateAllCartController);
+router.put('/cart/:cid',  /*privateRoutes*/ updateAllCartController);
 
 // En la ruta PUT, debe actualizar solo la cantidad de ejemplares del carrito
 router.put('/cart/:cid/products/:pid',  privateRoutes, updateController);

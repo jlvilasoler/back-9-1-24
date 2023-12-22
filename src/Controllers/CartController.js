@@ -122,7 +122,7 @@ export const updateAllCartController = async (req, res, next) => {
             productId
         }]
         })
-        return res.status(200).json({
+        return res.status(200).send({
             message: "Cart updated successfully",
             payload: cartUpd,
         });
