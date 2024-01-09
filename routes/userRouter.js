@@ -20,6 +20,40 @@ router.get('/users/:uid', /*privateRoutes*/ getUserByIdController);
 // En la ruta DELETE, debe eliminar el usuario indicado
 router.delete('/users/:uid', /*privateRoutes*/ deleteController);
 
+router.post('users/premium/:uid', async (req, res) => {
+  if(!user) {}
+  if(user.rol === 'user') {
+    user.role = 'premium'
+  }
+
+  await user.updateUser(uid, user)
+}) 
+
+router.post('users/:uid/documents', async (req, res, next) => {
+  try{
+      const {uid} = req.params;
+      const user = await userController.updateUser(uid)
+      if(!user) {}
+
+      if(!req.body.multer) {
+        req.body.multer = {}
+      }  req.body.multer.userId = uid;
+      next();
+  } catch(error) {
+    console.error(error); 
+  }
+  upload.fields([
+    {name: "profileImage", maxCount: 1},
+    {name: "productImage", maxCount: 1},
+    {name: "document"}
+  ]),
+  (req, res) => {
+    const {uid} = req?.params;
+    const userId = req.body.multer?.userId;
+    res.send("Uploaded Files")
+  }
+}) 
+
 
 
 

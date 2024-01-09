@@ -62,5 +62,16 @@ export default class UserManager {
     }
 
 
+    async loginUser(email) {
+        const user = await userModel.findOne({email})
+        if(user) {
+            user.last_connection = [{action: "login", date: new Date()}]
+            await user.save()
+            return user
+        }
+        return null
+    }
+
+
 }
 
