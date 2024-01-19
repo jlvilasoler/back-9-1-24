@@ -21,6 +21,8 @@ import productModel from './dao/models/product.model.js';
 import cartModel from './dao/models/cart.model.js';
 import ticketRouter from '../routes/ticketRouter.js';
 import loggerRouter from '../routes/loggerRouter.js';
+import userstatusRouter from '../routes/userstatusRouter.js';
+import addproductRouter from '../routes/addproductsRouter.js';
 //import mailRouter from '../routes/mail.router.js';
 import settingsRouter from '../routes/settingsRouter.js';
 
@@ -117,7 +119,10 @@ app.use('/api', productRouter);
 app.use('/api', cartRouter);
 app.use('/api', ticketRouter);
 
+
 app.use(viewsRouter);
+
+
 
 
 //app.use('/mail', mailRouter);
@@ -127,6 +132,8 @@ app.use('/cart', viewsRouter);
 app.use('/cookies', viewsRouter);
 app.use('/products', viewsRouter);
 app.use('/loggertest', loggerRouter);
+app.use('/users', userstatusRouter);
+app.use('/addproducts', addproductRouter);
 
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 

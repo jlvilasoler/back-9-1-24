@@ -1,8 +1,5 @@
 import mongoose from "mongoose";
-
 const userCollection = "users";
-
-
 
 const documentSchema = new mongoose.Schema({
     name: { type: String },
@@ -13,8 +10,6 @@ const connectionSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now },
     action: { type: String, enum: ["login", "logout"], required: true }
 })
-
-
 
 const userSchema = new mongoose.Schema( {
     first_name: { type: String },

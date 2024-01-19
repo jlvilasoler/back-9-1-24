@@ -9,6 +9,8 @@ import privateRoutes from "../src/middlewares/privateRoutes.js";
 import { getProdFilterPaginateController } from "../src/Controllers/ProductController.js";
 import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteCartController } from '../src/Controllers/CartController.js';
 import { updateController } from "../src/Controllers/ProductController.js";
+import { getCartByIdService } from "../src/Services/CartServices.js";
+import { getTicketByIdService } from "../src/Services/TicketServices.js";
 import { logger } from '../src/utils/logger.js';
 import sendMail from '../src/Services/mail.service.js';
 
@@ -41,13 +43,25 @@ router.get('/realtimeproducts', privateRoutes, async (req, res) => {
 router.get('/messages', privateRoutes, async (req, res) => res.render('chat',
     {}));
 
-router.get('/verimg', privateRoutes, async (req, res) => res.render('img',
+router.get('/verimg', privateRoutes, async (req, res) => res.render('add',
     {}));
 
 router.get('/carts/:cid', privateRoutes, async (req, res) => {
     const cart = await cartManager.getCartById(req.params.cid);
     res.render('cart', { cart })
 });
+
+router.get('/carts/:cid/checkout', privateRoutes, async (req, res) => {
+    const users = await getCartByIdService();
+    res.render('checkout', { users })
+});
+
+///////
+router.get('/carts/:cid/checkout', privateRoutes, async (req, res) => {
+    const users = await getTicketByIdService();
+    res.render('checkout', { tickets })
+});
+/////
 
 router.get('/cookies', privateRoutes, (req, res) => {
     res.render('cookies');
@@ -113,6 +127,8 @@ router.get('/faillogin', (req, res) => {
 router.get('/reset', (req, res) => {
         sendMail(res);
 });
+
+
 
 export default router;
 

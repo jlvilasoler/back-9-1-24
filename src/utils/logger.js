@@ -34,6 +34,7 @@ const config = {
         transports: [
             new winston.transports.Console({
                 level: 'debug',
+                format: winston.format.cli(),
             }),
             new winston.transports.DailyRotateFile({
                 filename: 'errors.log',
@@ -49,6 +50,7 @@ const config = {
         transports: [
             new winston.transports.Console({
                 level: 'debug',
+                format: winston.format.cli(),
             }),
             new winston.transports.File({
                 filename: 'errors.log',
