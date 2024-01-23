@@ -11,8 +11,7 @@ const router = Router();
 
 
 
-// En la ruta GET, debe devolver los usuarios 
-router.get('/users', /*privateRoutes*/ getAllUsersController);
+
 
 // En la ruta GET, debe devolver el usuario indicado 
 router.get('/users/:uid', /*privateRoutes*/ getUserByIdController);
@@ -20,12 +19,12 @@ router.get('/users/:uid', /*privateRoutes*/ getUserByIdController);
 // En la ruta DELETE, debe eliminar el usuario indicado
 router.delete('/users/:uid', /*privateRoutes*/ deleteController);
 
+// Usuarios
 router.post('users/premium/:uid', async (req, res) => {
   if(!user) {}
   if(user.rol === 'user') {
     user.role = 'premium'
   }
-
   await user.updateUser(uid, user)
 }) 
 
@@ -33,7 +32,7 @@ router.post('users/:uid/documents', async (req, res, next) => {
   try{
       const {uid} = req.params;
       const user = await userController.updateUser(uid)
-      if(!user) {}
+      if(!user) {return res.status(404).send('Usuario no encontrado');}
 
       if(!req.body.multer) {
         req.body.multer = {}
@@ -63,21 +62,27 @@ router.post('users/:uid/documents', async (req, res, next) => {
       res.redirect('/login'); // en vez de redirigirlo a profile , lo redirigimos a login
     });
 
-router.post('/login', passport.authenticate('login', { failureRedirect: '/failogin' }), async (req, res) => {
-  if (!req.user) {
-    res.status(400).send();
-  }
-
-  req.session.user = {
-    first_name: req.user.first_name,
-    last_name: req.user.last_name,
-    email: req.user.email,
-    age: req.user.age,
-    cart: req.user.cart,
-    role: req.user.role,
-
-  };
-  res.redirect('/profile')});
+    router.post('/login', passport.authenticate('login', { failureRedirect: '/failogin' }), async (req, res) => {
+      if (!req.user) {
+        res.status(400).send();
+      }
+    
+      req.session.user = {
+        first_name: req.user.first_name,
+        last_name: req.user.last_name,
+        email: req.user.email,
+        age: req.user.age,
+        cart: req.user.cart,
+        role: req.user.role,
+      };
+    
+      // Agregar la lógica de redireccionamiento según el rol del usuario
+      if (req.user.role === "admin") {
+        res.redirect('/profileadmin');
+      } else {
+        res.redirect('/profile');
+      }
+    });
 
 router.post('/recover', async (req, res) => {
   const { email, password } = req.body; // leemos los datos que llegan de formulario

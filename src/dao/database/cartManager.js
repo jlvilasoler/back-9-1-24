@@ -1,6 +1,7 @@
 import cartModel from "../models/cart.model.js";
 import productModel from "../models/product.model.js";
 import errorHandler from "../../middlewares/errorHandler.js";
+import ticketModel from "../models/ticket.model.js";
 
 export default class CartManager {
     //GET ALL CARTS
