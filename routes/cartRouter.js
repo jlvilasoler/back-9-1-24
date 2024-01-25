@@ -1,7 +1,7 @@
 import { Router } from "express";
 import privateRoutes from "../src/middlewares/privateRoutes.js";
 import publicRoutes from "../src/middlewares/publicRoutes.js";
-import { createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteCartController,deleteProductOfCartController } from '../src/Controllers/CartController.js';
+import { getTotalPurchasesController, createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteCartController,deleteProductOfCartController } from '../src/Controllers/CartController.js';
 import { getProdFilterPaginateController, updateController } from "../src/Controllers/ProductController.js";
 import CartManager from '../src/dao/database/cartManager.js';
 
@@ -36,5 +36,15 @@ router.put('/cart/:cid',  /*privateRoutes*/ updateAllCartController);
 router.put('/cart/:cid/products/:pid',  privateRoutes, updateController);
 
 
+
+
+
+
+// En la ruta GET, Me lee solo el carrito que quiero
+router.get('/carts/:cid/checkout', getCartByIdController);
+
+router.get('/carts/checkout/finish', privateRoutes, async (req, res) => {
+    res.render('checkoutFinal', {  })
+});
 
 export default router;

@@ -63,21 +63,6 @@ export const deleteCartController = async (req, res, next) => {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //AGREGA UN PRODUCTO AL CARRITO
 export const addProductToCartController = async (req, res, next) => {
     try {
@@ -112,6 +97,7 @@ export const updateProductQuantityController = async (req, res, next) => {
         next(error);
     }
 };
+
 //ACTUALIZA TODO EL CARRITO
 export const updateAllCartController = async (req, res, next) => {
     try {
@@ -131,8 +117,6 @@ export const updateAllCartController = async (req, res, next) => {
     }
 }
 
-
-
 // DELETE PRODUCT FROM CART (WITH_ID)
 export const deleteProductOfCartController = async (req, res, next) => {
     try {
@@ -150,5 +134,23 @@ export const deleteProductOfCartController = async (req, res, next) => {
 }
 
 
+// 
+export const getTotalPurchasesController = async (req, res, next) => {
+    try {
+        const allCarts = await getCartByIdServ();
 
+        // Calcular el precio total utilizando reduce
+        const precioTotal = allCarts.products.reduce((total, producto) => {
+            const precioProducto = producto.quantity * producto.product.price;
+            return total + precioProducto;
+        }, 0);
 
+        res.json({
+            carts: allCarts,
+            totalPrice: precioTotal
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+        next(error);
+    }
+}

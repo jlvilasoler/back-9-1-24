@@ -128,11 +128,7 @@ export default class CartManager {
         return pid;
     }
 
-
-
-
-
-
+    
     async getCartById(id) {
         try {
             const cart = await cartModel
@@ -144,7 +140,5 @@ export default class CartManager {
             //console.log()error);
         }
     }
-
-
 }
 

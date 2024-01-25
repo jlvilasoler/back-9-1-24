@@ -133,6 +133,7 @@ app.use('/products', viewsRouter);
 app.use('/loggertest', loggerRouter);
 app.use('/users', userstatusRouter);
 app.use('/addproducts', addproductRouter);
+app.use('/', cartRouter);
 
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 

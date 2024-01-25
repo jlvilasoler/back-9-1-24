@@ -56,12 +56,7 @@ router.get('/carts/:cid/checkout', privateRoutes, async (req, res) => {
     res.render('checkout', { users })
 });
 
-///////
-router.get('/carts/:cid/checkout', privateRoutes, async (req, res) => {
-    const users = await getTicketByIdService();
-    res.render('checkout', { tickets })
-});
-/////
+
 
 router.get('/cookies', privateRoutes, (req, res) => {
     res.render('cookies');
