@@ -46,8 +46,6 @@ document.getElementById('total-amount').innerText = message;
 }
 
 
-
-
 // TICKET
 async function getUser() {
       const response = await fetch(`/api/sessions/current`, {

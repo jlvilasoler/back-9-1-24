@@ -1,32 +1,27 @@
 import nodemailer from 'nodemailer';
-import express from 'express'; // Make sure to import Express if not already done
 
-const app = express(); // Assuming you have an instance of Express
-
-async function sendMailinfo(res, resetLink) {
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    auth: {
-      user: 'brennon94@ethereal.email',
-      pass: 'MbdJp76rRsUTma6bTW'
-    }
-  });
-
+async function sendMailinfo() {
   try {
-    const message = {
-      from: 'sender@server.com',
-      to: 'brennon94@ethereal.email',
-      subject: 'Tiendaonline.uy - purchase',
-      text: `Your payment of: ${'ddd'}`,
-      html: `<p>sdsdsdsdsdsdsdsdsdsdsds: <a href="${resetLink}">sdsdsd sdsdsd</a></p>`
+    let mailTransporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.mail,
+        pass: process.env.pass,
+      }
+    });
+
+    let mailDetails = {
+      from: 'jlvilasoler@gmail.com',
+      to: 'jlvilasoler@hotmail.com',
+      subject: 'Test mail',
+      text: 'Correo electrónico de prueba desde Node.js'
     };
 
-    await transporter.sendMail(message);
-    res.send('Hemos enviado un mail a su correo electronico con la información de su compra');
-  } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).send('Error sending email');
+    let info = await mailTransporter.sendMail(mailDetails);
+    console.log('Correo electrónico enviado correctamente:', info.response);
+  } catch (err) {
+    console.error('Se produjo un error:', err.message);
+    throw err;
   }
 }
 
