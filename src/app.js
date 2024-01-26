@@ -25,7 +25,6 @@ import userstatusRouter from '../routes/userstatusRouter.js';
 import addproductRouter from '../routes/addproductsRouter.js';
 //import mailRouter from '../routes/mail.router.js';
 import settingsRouter from '../routes/settingsRouter.js';
-
 import __dirname from './utils/index.js';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
@@ -113,16 +112,12 @@ app.use(errors);
 app.use('/static', express.static('./src/public'));
 
 
-app.use('/api', userRouter); //este app.use va arriba de viewsrouter
-
+app.use('/api', userRouter);
 app.use('/api', productRouter);
 app.use('/api', cartRouter);
 app.use('/api', ticketRouter);
 
-
 app.use(viewsRouter);
-
-
 
 //app.use('/mail', mailRouter);
 app.use('/settings', settingsRouter);
@@ -134,8 +129,12 @@ app.use('/loggertest', loggerRouter);
 app.use('/users', userstatusRouter);
 app.use('/addproducts', addproductRouter);
 app.use('/', cartRouter);
-
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+
+
+
+
+
 
 socketServer.on('connection', async (socket) => {
     //console.log()'A user has connected:', socket.id);
@@ -167,6 +166,3 @@ socketServer.on('connection', async (socket) => {
     });
 });
 
-app.get('/api/sessions/current', (req, res) => {
-    res.json(req.user)
-})

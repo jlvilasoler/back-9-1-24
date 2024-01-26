@@ -139,6 +139,11 @@ router.get('/mail', (req, res) => {
     sendMailinfo(res);
 });
 
+router.get('/api/sessions/current', (req, res) => {
+    res.json(req.user)
+});
+
+
 export default router;
 
 
