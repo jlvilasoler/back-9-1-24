@@ -26,9 +26,9 @@ export default class TicketRepository {
     }
 
     //ADD TICKET
-    async postTicketRepository(tid) {
+    async postTicketRepository(ticket) {
         try {
-            const addTicket = await ticketModel.create(tid);
+            const addTicket = await ticketModel.create(ticket);
             console.log(ticketModel)
             return addTicket;
         } catch (error) {

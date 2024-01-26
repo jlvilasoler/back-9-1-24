@@ -13,6 +13,7 @@ import { getCartByIdService } from "../src/Services/CartServices.js";
 import { getTicketByIdService } from "../src/Services/TicketServices.js";
 import { logger } from '../src/utils/logger.js';
 import sendMail from '../src/Services/mail.service.js';
+import sendMailinfo from "../src/Services/Checkoutmail.service.js";
 
 const productManager = new ProductManager();
 
@@ -90,11 +91,10 @@ router.get('/signup', publicRoutes, (req, res) => {
 const userVisitDB = {};
 
 router.get('/profile', (req, res) => {
-    // Verifica si el usuario ya tiene un contador de visitas
     if (!userVisitDB[req.session.email]) {
-        userVisitDB[req.session.email] = 1; // Inicializa el contador si es la primera visita
+        userVisitDB[req.session.email] = 1;
     } else {
-        userVisitDB[req.session.email]++; // Incrementa el contador si no es la primera visita
+        userVisitDB[req.session.email]++;
     }
     // Obtiene la fecha de hoy en formato 'YYYY-MM-DD'
     const dateToday = new Date().toISOString().split('T')[0];
@@ -103,13 +103,12 @@ router.get('/profile', (req, res) => {
 });
 
 router.get('/profileadmin', (req, res) => {
-    // Verifica si el usuario ya tiene un contador de visitas
     if (!userVisitDB[req.session.email]) {
-        userVisitDB[req.session.email] = 1; // Inicializa el contador si es la primera visita
+        userVisitDB[req.session.email] = 1;
     } else {
-        userVisitDB[req.session.email]++; // Incrementa el contador si no es la primera visita
+        userVisitDB[req.session.email]++;
     }
-    // Obtiene la fecha de hoy en formato 'YYYY-MM-DD'
+    // Obtiene la fecha , formato 'YYYY-MM-DD'
     const dateToday = new Date().toISOString().split('T')[0];
     const { first_name, last_name, email, age, role } = req.session.user;
     res.render('profileadmin', { first_name, last_name, email, age, role, visitCount: userVisitDB[req.session.email], dateToday });
@@ -136,7 +135,9 @@ router.get('/reset', (req, res) => {
         sendMail(res);
 });
 
-
+router.get('/mail', (req, res) => {
+    sendMailinfo(res);
+});
 
 export default router;
 

@@ -86,20 +86,6 @@ export const deleteProductOfCartService = async (cid, pid) => {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getProductsInCartService = async (id) => {
     try {
         const docs = await cartRepository.addProductToCartId(id);

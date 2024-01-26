@@ -4,6 +4,7 @@ import publicRoutes from "../src/middlewares/publicRoutes.js";
 import { getTotalPurchasesController, createCartController, getCartByIdController, getCartsController, addProductToCartController, updateAllCartController, deleteCartController,deleteProductOfCartController } from '../src/Controllers/CartController.js';
 import { getProdFilterPaginateController, updateController } from "../src/Controllers/ProductController.js";
 import CartManager from '../src/dao/database/cartManager.js';
+import sendMailinfo from "../src/Services/Checkoutmail.service.js";
 
 const router = Router();
 
@@ -44,7 +45,15 @@ router.put('/cart/:cid/products/:pid',  privateRoutes, updateController);
 router.get('/carts/:cid/checkout', getCartByIdController);
 
 router.get('/carts/checkout/finish', privateRoutes, async (req, res) => {
-    res.render('checkoutFinal', {  })
-});
+    try {
+      res.render('checkoutFinal', {});
+     /* await sendMailinfo({
+
+      }); */
+    } catch (error) {
+      console.error('Error rendering view or sending email:', error);
+      res.status(500).send('Error rendering view or sending email');
+    }
+  }); 
 
 export default router;

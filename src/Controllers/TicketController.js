@@ -34,11 +34,10 @@ export const getTicketByIdController = async (req, res, next) => {
 
 // CREA TICKET - ver
 export const createTicketController = async (req, res, next) => {
-    const { number, description, quantity, price } = req.body;
+    const { purchaser, amount } = req.body;
     try {
-      const newTicket = await addTicketService(number, description, quantity, price);
+      const newTicket = await addTicketService( purchaser, amount);
       res.send(newTicket);
-      console.log(newTicket);
     } catch (error) {
       console.error("Error adding ticket:", error);
       res.status(500).send(`Error adding ticket: ${error.message}`);

@@ -166,3 +166,7 @@ socketServer.on('connection', async (socket) => {
         console.log(`Usuario desconectado con ID: ${socket.id}`);
     });
 });
+
+app.get('/api/sessions/current', (req, res) => {
+    res.json(req.user)
+})

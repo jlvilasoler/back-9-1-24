@@ -1,5 +1,5 @@
 console.log("OK")
-
+let totalPrice = 0;
 async function updateCheckout() {
   const cartId = '65161cf7b4f0ae3a37ba7332';
   console.log(cartId);
@@ -23,7 +23,7 @@ async function updateCheckout() {
 
     // RESUMEN FINAL
     // PRECIO TOTAL PRODUCTOS CHECKOUT:
-    let totalPrice = data.products.reduce((acumulador, producto) => {
+    totalPrice = data.products.reduce((acumulador, producto) => {
       const price = parseInt(producto.product.price) || 0;
       const cantidad = parseInt(producto.quantity) || 0;
       return acumulador + (price * cantidad);
@@ -45,4 +45,45 @@ document.getElementById('total-amount').innerText = message;
   }
 }
 
-window.onload = updateCheckout;
+
+
+
+// TICKET
+async function getUser() {
+      const response = await fetch(`/api/sessions/current`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      return data.email
+};
+
+
+
+// CREATE TICKET
+async function createTicket() {
+  const userEmail = await getUser()
+  const response = await fetch(`/api/ticket`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({purchaser: userEmail, amount: totalPrice})
+  });
+};
+
+
+
+//START 
+async function start() {
+  await updateCheckout()
+  await createTicket()
+};
+window.onload = start;

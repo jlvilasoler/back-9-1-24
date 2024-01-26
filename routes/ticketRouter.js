@@ -18,7 +18,7 @@ router.get('/ticket', /*privateRoutes*/ getAllController);
 router.get('/ticket/:tid', /*privateRoutes*/ getTicketByIdController);
 
 // En la ruta POST, agregar ticket
-router.post('/ticket/:tid', /*privateRoutes,*/ createTicketController);
+router.post('/ticket', /*privateRoutes,*/ createTicketController);
 
 // En la ruta DELETE, eliminar ticket
 router.delete('/ticket/:tid', /*privateRoutes,*/ deleteTicketController);

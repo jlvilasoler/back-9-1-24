@@ -21,10 +21,6 @@ async function updateCheckout() {
 
     // Actualiza el contenido de la página con los resultados obtenidos
     document.getElementById('user-number').innerText = `Cart ID:  ${data._id}`;
-    document.getElementById('ticket-number').innerText = `Ticket Number: ${data._id}`;
-
-
-
 
     // DETALLE INFORMACION ARTICULO:
     // Cant. por producto

@@ -26,12 +26,10 @@ export const getTicketByIdService = async (tid) => {
 };
 
 //ADD TICKET - ver
-export const addTicketService = async (number, description, quantity, price) => {
+export const addTicketService = async (purchaser, amount) => {
     const newTicket = {
-      number,
-      description,
-      quantity,
-      price,
+      purchaser,
+      amount,
     };
   
     try {

@@ -6,8 +6,8 @@ async function sendMail(res, resetLink) {
         host: 'smtp.ethereal.email',
         port: 587,
         auth: {
-            user: 'ashleigh78@ethereal.email',
-            pass: 'vr7smwKcM4KhEjyzmD'
+            user: 'brennon94@ethereal.email',
+            pass: 'MbdJp76rRsUTma6bTW'
         }
     });
 
@@ -19,7 +19,7 @@ async function sendMail(res, resetLink) {
     // Datos del mensaje a enviar
     const message = {
         from: "sender@server.com",
-        to: "ashleigh78@ethereal.email",
+        to: "brennon94@ethereal.email",
         subject: "PASSWORD CHANGE EMAIL",
         text: `Click the following link to reset your password: ${`http://localhost:8080/recover`}`,
         html: `<p>Click the following link to reset your password: <a href="${`http://localhost:8080/recover`}">RESET PASSWORD</a></p>`
