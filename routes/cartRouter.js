@@ -13,25 +13,25 @@ const router = Router();
 router.post('/cart/', privateRoutes, createCartController);
 
 // En la ruta GET, Lee todos los carritos guardados
-router.get('/cart/', /*privateRoutes,*/ getCartsController);
+router.get('/cart/', privateRoutes, getCartsController);
 
 // En la ruta GET, Listado de productos según carrito
-router.get('/cart/:cid', /*privateRoutes,*/ getCartByIdController);
+router.get('/cart/:cid', privateRoutes, getCartByIdController);
 
 // En la ruta GET, Nos muestra determinado producto en un carrito
 router.get('/cart/:cid/products/:pid', privateRoutes, getProdFilterPaginateController);
 
 // En la ruta POST, Agregar pid a cart segun su cid
-router.post('/cart/:cid/products/:pid', /*privateRoutes,*/ addProductToCartController);
+router.post('/cart/:cid/products/:pid', privateRoutes, addProductToCartController);
 
 // En la ruta DELETE, Elimina pid a un cart segun su cid
-router.delete('/cart/:cid/products/:pid',  /*privateRoutes,*/ deleteProductOfCartController); 
+router.delete('/cart/:cid/products/:pid',  privateRoutes, deleteProductOfCartController); 
 
 // En la ruta DELETE, Eliminar todos los productos de un cart
 router.delete('/cart/:cid',  privateRoutes, deleteCartController);
 
 // En la ruta PUT, debe actualizar el carrito
-router.put('/cart/:cid',  /*privateRoutes*/ updateAllCartController);
+router.put('/cart/:cid',  privateRoutes, updateAllCartController);
 
 // En la ruta PUT, debe actualizar solo la cantidad de ejemplares del carrito
 router.put('/cart/:cid/products/:pid',  privateRoutes, updateController);

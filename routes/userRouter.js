@@ -2,7 +2,6 @@ import { Router } from "express";
 import { userModel } from "../src/dao/models/user.model.js";
 import privateRoutes from "../src/middlewares/privateRoutes.js";
 import publicRoutes from "../src/middlewares/publicRoutes.js";
-
 import bcrypt from "bcrypt"
 import passport from "passport";
 import { deleteController, getAllUsersController, getUserByIdController } from "../src/Controllers/UserController.js";
@@ -11,15 +10,12 @@ const router = Router();
 
 
 
-
-
 // En la ruta GET, debe devolver el usuario indicado 
-router.get('/users/:uid', /*privateRoutes*/ getUserByIdController);
+router.get('/users/:uid', privateRoutes, getUserByIdController);
 
 // En la ruta DELETE, debe eliminar el usuario indicado
-router.delete('/users/:uid', /*privateRoutes*/ deleteController);
+router.delete('/users/:uid', privateRoutes, deleteController);
 
-// Usuarios
 router.post('users/premium/:uid', async (req, res) => {
   if(!user) {}
   if(user.rol === 'user') {
@@ -101,7 +97,6 @@ router.get('/github', passport.authenticate('github', { scope: ['user:email'] })
 
 router.get('/githubcallback', passport.authenticate('github', { failureRedirect: '/login' }),
   (req, res) => {
-    //console.log()req.user);
     req.session.user = {
       first_name: req.user.first_name,
       last_name: req.user.last_name,

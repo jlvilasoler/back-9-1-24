@@ -39,7 +39,7 @@ export const createTicketController = async (req, res, next) => {
     try {
         const newTicket = await addTicketService(purchaser, amount);
 
-        sendEmailInfo('jlvilasoler@hotmail.com', `${purchaser} Your payment of ${amount} has been successful! \n Thank you for choosing us always!`)
+        sendEmailInfo('jlvilasoler@hotmail.com', `${purchaser} Your payment of $${amount} has been successful! \n Thank you for choosing us always!`)
         console.log(sendEmailInfo)
 
         res.send(newTicket);
