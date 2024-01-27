@@ -154,3 +154,5 @@ export const getTotalPurchasesController = async (req, res, next) => {
         next(error);
     }
 }
+
+export default getTotalPurchasesController;

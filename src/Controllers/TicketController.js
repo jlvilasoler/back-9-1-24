@@ -1,7 +1,8 @@
 import ticketModel from "../dao/models/ticket.model.js";
-import { getAllTicketsService, getTicketByIdService , addTicketService, deleteTicketService} from "../../src/Services/TicketServices.js";
+import { getAllTicketsService, getTicketByIdService, addTicketService, deleteTicketService } from "../../src/Services/TicketServices.js";
+import sendEmailInfo from "../Services/Checkoutmail.service.js";
 
-// GET ALL _ funciona
+// GET ALL
 export const getAllController = async (req, res, next) => {
     try {
         const tickets = await getAllTicketsService();
@@ -16,7 +17,7 @@ export const getAllController = async (req, res, next) => {
     }
 };
 
-// FILTER BY ID _ funciona
+// FILTER BY ID
 export const getTicketByIdController = async (req, res, next) => {
     try {
         const { tid } = req.params;
@@ -32,21 +33,25 @@ export const getTicketByIdController = async (req, res, next) => {
     }
 };
 
-// CREA TICKET - ver
+// CREA TICKET  
 export const createTicketController = async (req, res, next) => {
     const { purchaser, amount } = req.body;
     try {
-      const newTicket = await addTicketService( purchaser, amount);
-      res.send(newTicket);
+        const newTicket = await addTicketService(purchaser, amount);
+
+        sendEmailInfo('jlvilasoler@hotmail.com', `${purchaser} Your payment of ${amount} has been successful! \n Thank you for choosing us always!`)
+        console.log(sendEmailInfo)
+
+        res.send(newTicket);
     } catch (error) {
-      console.error("Error adding ticket:", error);
-      res.status(500).send(`Error adding ticket: ${error.message}`);
-      next(error);
+        console.error("Error adding ticket:", error);
+        res.status(500).send(`Error adding ticket: ${error.message}`);
+        next(error);
     }
-  };
+};
 
 
-  //DELETE TICKET BY ID - ver
+//DELETE TICKET BY ID 
 export const deleteTicketController = async (req, res, next) => {
     try {
         const { tid } = req.params;

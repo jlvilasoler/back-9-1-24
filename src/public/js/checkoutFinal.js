@@ -29,10 +29,10 @@ async function updateCheckout() {
       return acumulador + (price * cantidad);
     }, 0);
 
-const message = `Your payment of $${totalPrice.toFixed(2)} has been successful! \n \n Your order will arrive today. \n \n \n Thank you for choosing us always!`;
-document.getElementById('total-amount').innerText = message;
+    const message = `Your payment of $${totalPrice.toFixed(2)} has been successful! \n \n Your order will arrive today. \n \n \n Thank you for choosing us always!`;
+    document.getElementById('total-amount').innerText = message;
 
-    
+
     // FECHA Y HORA DEL MOMENTO DEL HACER EL CHECKOUT
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString();
@@ -48,19 +48,19 @@ document.getElementById('total-amount').innerText = message;
 
 // TICKET
 async function getUser() {
-      const response = await fetch(`/api/sessions/current`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      return data.email
+  const response = await fetch(`/api/sessions/current`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.email
 };
 
 
@@ -73,7 +73,7 @@ async function createTicket() {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({purchaser: userEmail, amount: totalPrice})
+    body: JSON.stringify({ purchaser: userEmail, amount: totalPrice })
   });
 };
 
@@ -83,5 +83,6 @@ async function createTicket() {
 async function start() {
   await updateCheckout()
   await createTicket()
+
 };
 window.onload = start;

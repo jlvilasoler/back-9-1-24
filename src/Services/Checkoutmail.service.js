@@ -1,28 +1,33 @@
 import nodemailer from 'nodemailer';
 
-async function sendMailinfo() {
+const sendEmailInfo = async (to, text) => {
   try {
-    let mailTransporter = nodemailer.createTransport({
+    const mailTransporter = nodemailer.createTransport({
       service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.mail,
         pass: process.env.pass,
-      }
+      },
     });
 
-    let mailDetails = {
-      from: 'jlvilasoler@gmail.com',
-      to: 'jlvilasoler@hotmail.com',
-      subject: 'Test mail',
-      text: 'Correo electrónico de prueba desde Node.js'
+    const mailDetails = {
+      from: {
+        name: 'TiendaOnline.uy',
+        address: process.env.mail,
+      },
+      to: `${to}`,
+      subject: 'TiendaOnline.uy | New purchase',
+      text: `${text}`,
     };
 
-    let info = await mailTransporter.sendMail(mailDetails);
-    console.log('Correo electrónico enviado correctamente:', info.response);
-  } catch (err) {
-    console.error('Se produjo un error:', err.message);
-    throw err;
+    const info = await mailTransporter.sendMail(mailDetails);
+    console.log('Email enviado correctamente:', info);
+  } catch (error) {
+    console.error('Error al enviar el correo:', error);
   }
-}
+};
 
-export default sendMailinfo;
+export default sendEmailInfo;

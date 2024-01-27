@@ -1,9 +1,9 @@
-import sendMailinfo from "../../Services/Checkoutmail.service.js";
+import { sendEmailInfo } from "../../Services/Checkoutmail.service.js";
 
 document.getElementById('payButton').addEventListener('click', async function() {
   console.log("payButton");
   try {
-    await sendMailinfo();
+    await sendEmailInfo();
     window.location.href = '/carts/checkout/finish';
   } catch (error) {
     console.error("Error al manejar clic en el botón de pago:", error);
